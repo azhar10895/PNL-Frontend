@@ -3,10 +3,10 @@ import { useFormik } from "formik";
 import "bootstrap/dist/css/bootstrap.min.css";
 
 const initialValues = {
+  username: "",
   firstname: "",
   lastname: "",
   email: "",
-  phone: "",
 };
 
 const onSubmit = (values) => {
@@ -26,8 +26,8 @@ const validate = (values) => {
   } else if (!/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(values.email)) {
     errors.email = "Invalid email";
   }
-  if (!values.phone) {
-    errors.phone = "Required";
+  if (!values.username) {
+    errors.username = "Required";
   }
   return errors;
 };
@@ -51,6 +51,20 @@ function SignupForm() {
       </div>
 
       <form onSubmit={formik.handleSubmit}>
+      <div className="row-12 my-row">
+          <input
+            type="text"
+            id="username"
+            name="username"
+            placeholder="Username"
+            onChange={formik.handleChange}
+            onBlur={formik.handleBlur}
+            value={formik.values.phone}
+          />
+          {formik.touched.username && formik.errors.username ? (
+            <div className="error">{formik.errors.username}</div>
+          ) : null}
+        </div>
         <div className="row">
           <div className="col-sm-6 my-row">
             <input
@@ -95,22 +109,8 @@ function SignupForm() {
             <div className="error">{formik.errors.email}</div>
           ) : null}
         </div>
-        <div className="row-12 my-row">
-          <input
-            type="text"
-            id="phone"
-            name="phone"
-            placeholder="Phone Number"
-            onChange={formik.handleChange}
-            onBlur={formik.handleBlur}
-            value={formik.values.phone}
-          />
-          {formik.touched.phone && formik.errors.phone ? (
-            <div className="error">{formik.errors.phone}</div>
-          ) : null}
-        </div>
         <button type="submit" className="btn btn-primary col-12 my-btn ">
-          Sign up
+          <h4>Sign up</h4>
         </button>
       </form>
     </div>
