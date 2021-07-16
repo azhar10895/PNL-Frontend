@@ -4,8 +4,8 @@ import {useFormik} from 'formik';
 const initialValues ={
     firstname: '',
     lastname:'',
-    email: '',
-    phone: ''
+    email: ''
+    // phone: ''
 }
 
 const onSubmit = values =>{
@@ -25,9 +25,10 @@ const validate = values=>{
     }else if (!/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(values.email)){
         errors.email='Invalid email'
     }
-    if(!values.phone){
+    /* if(!values.phone){
         errors.phone='Required'
-    }
+    } */
+    
     return errors
 }
 
@@ -61,11 +62,11 @@ function SignupForm(){
                     <input type='text' id='email' name='email' placeholder="Email" onChange={formik.handleChange} onBlur={formik.handleBlur} value={formik.values.email}/>
                     {formik.touched.email && formik.errors.email? <div className='error'>{formik.errors.email}</div>:null}
                 </div>
-                <div className='form-control'>
+                {/* <div className='form-control'>
                     <label htmlFor='phone'>Phone</label>
                     <input type='text' id='phone' name='phone' placeholder="Phone Number" onChange={formik.handleChange} onBlur={formik.handleBlur} value={formik.values.phone}/>
                     {formik.touched.phone && formik.errors.phone? <div className='error'>{formik.errors.phone}</div>:null}
-                </div>
+                </div> */}
                 <button type="submit">Sign up</button>
             </form>
         </div>
