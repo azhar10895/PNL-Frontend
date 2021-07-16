@@ -1,9 +1,10 @@
 import './App.css';
-import SignUp from './components/signup';
+
+import SignupForm from './components/SignupForm';
 function App() {
   return (
     <div className="App">
-      <SignUp />
+      <SignupForm />
     </div>
   );
 }
