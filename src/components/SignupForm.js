@@ -59,7 +59,7 @@ function SignupForm() {
             placeholder="Username"
             onChange={formik.handleChange}
             onBlur={formik.handleBlur}
-            value={formik.values.phone}
+            value={formik.values.username}
           />
           {formik.touched.username && formik.errors.username ? (
             <div className="error">{formik.errors.username}</div>
