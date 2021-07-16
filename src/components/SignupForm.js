@@ -44,7 +44,7 @@ function SignupForm(){
     return(
         <div>
             <h1>Create Account</h1>
-            <p>Already have an account?<a href="_blank"> Sign in </a></p>
+            <p>Already have an account?<a href=" "> Sign in </a></p>
             <form onSubmit={formik.handleSubmit}>
                 <div className='form-control'>
                     <label htmlFor='firstname'>First Name</label>
