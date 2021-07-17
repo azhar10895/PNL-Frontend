@@ -15,12 +15,16 @@ const onSubmit = (values) => {
 
 const validate = (values) => {
   let errors = {};
-  if (!values.firstname) {
-    errors.firstname = "Required";
-  }
-  if (!values.lastname) {
-    errors.lastname = "Required";
-  }
+  if(!values.firstname){
+    errors.firstname='Required'}
+    else if (!/^(?=.{2,30}$)(?![_.])(?!.*[_.]{2})[a-zA-Z0-9._]+(?<![_.])$/i.test(values.firstname)) {
+        errors.firstname = 'invalid firstname'
+}
+if(!values.lastname){
+    errors.lastname='Required'}
+    else if (!/^(?=.{2,30}$)(?![_.])(?!.*[_.]{2})[a-zA-Z0-9._]+(?<![_.])$/i.test(values.lastname)) {
+        errors.lastname = 'invalid lastname'
+}
   if (!values.email) {
     errors.email = "Required";
   } else if (!/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(values.email)) {
