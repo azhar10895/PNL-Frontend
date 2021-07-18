@@ -4,9 +4,10 @@
 }
 
 html, body{
-    background: transparent -moz-linear-gradient(174deg, rgba(13, 53, 148, .898039) 0, #35d3e1 100%) 0 0 no-repeat padding-box;
-    background: transparent linear-gradient( 276deg, rgba(13, 53, 148, .898039), #35d3e1) 0 0 no-repeat padding-box;
-    color: #fff;
+  /* background colour is not working */
+    background: transparent -moz-linear-gradient(174deg, rgba(224, 224, 230, 0.898) 0, #8797db 100%) 0 0 no-repeat padding-box;
+    background: transparent linear-gradient( 276deg, rgba(224, 228, 235, 0.898), #17171d) 0 0 no-repeat padding-box;
+    color: rgb(204, 203, 209);
     height: 100vh;
 }
 
@@ -19,6 +20,8 @@ input[type="text"]::-webkit-input-placeholder {
   font-size: 20px;
   line-height: 3;
   padding-left: 15px ;
+  background-color: rgb(237, 239, 245);
+  border:0px;    
 }
 
 
@@ -26,13 +29,16 @@ input[type='text'],
 input[type='email'],
 textarea {
   width: 100%;
-  height: 60px;
+  height: 40px;
   border-radius: 20px;
   border: 1px dotted;
+  background-color: rgb(237, 239, 245);
+  border:0px; 
 }
 
 .my-row {
   margin-bottom: 20px;
+  
 }
 
 .error {
@@ -40,27 +46,37 @@ textarea {
 }
 
 
-
-.error{
-  color:red;
-}
-
 .my-container{
   border-radius: 20px;
-  border: 1px solid #ccc;
-  margin-top: 20vh;
+  border: 1px solid rgb(221, 223, 230);
+  margin-top: 5vh;
+  
+  box-shadow: 5px 5px 10px 2px rgba(0,0,0,.8);
+  
 }
 
 
 .middle
 {
-  margin-top: 40px;
+  margin-top: 20px;
   text-align: center;
+  
 }
 
+
+body {
+  width: 100%;
+  height: 100%;
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center; 
+}
+
+
 .my-btn{
-  height: 60px;
+  height: 40px; /* sets height of the submit box */
   margin-bottom: 20px;
   border-radius: 20px; /* not working */
-  font-size: 20px;
+  font-size: 15px;  /*not working */
 }

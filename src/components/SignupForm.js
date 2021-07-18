@@ -54,7 +54,7 @@ function SignupForm() {
         </p>
       </div>
 
-      <form onSubmit={formik.handleSubmit}>
+      <form onSubmit={formik.handleSubmit} style={{ width: "25rem" , height:"70rm" }}>
       <div className="row-12 my-row">
           <input
             type="text"
@@ -113,8 +113,9 @@ function SignupForm() {
             <div className="error">{formik.errors.email}</div>
           ) : null}
         </div>
-        <button type="submit" className="btn btn-primary col-12 my-btn ">
-          <h4>Sign up</h4>
+        <button type="submit" className="btn btn-primary col-12 btn-sm " > 
+        {/* size of button is not decreasing */}
+          <h4 >Sign up</h4>
         </button>
       </form>
     </div>
