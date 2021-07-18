@@ -3,12 +3,17 @@
   justify-content: center;
 }
 
-html, body{
-  /* background colour is not working */
-    background: transparent -moz-linear-gradient(174deg, rgba(224, 224, 230, 0.898) 0, #8797db 100%) 0 0 no-repeat padding-box;
-    background: transparent linear-gradient( 276deg, rgba(224, 228, 235, 0.898), #17171d) 0 0 no-repeat padding-box;
-    color: rgb(204, 203, 209);
-    height: 100vh;
+html,
+body {
+  background: transparent -moz-linear-gradient(
+      174deg,
+      rgba(13, 53, 148, 0.898039) 0,
+      #35d3e1 100%
+    ) 0 0 no-repeat padding-box;
+  background: transparent
+    linear-gradient(276deg, rgba(13, 53, 148, 0.898039), #35d3e1) 0 0 no-repeat
+    padding-box;
+  color: #fff;
 }
 
 label {
@@ -19,50 +24,52 @@ label {
 input[type="text"]::-webkit-input-placeholder {
   font-size: 20px;
   line-height: 3;
-  padding-left: 15px ;
+  padding-left: 15px;
   background-color: rgb(237, 239, 245);
-  border:0px;    
+  border: 0px;
+  color: #436190;
+  opacity: 0.5;
 }
 
-
-input[type='text'],
-input[type='email'],
+input[type="text"],
+input[type="email"],
 textarea {
   width: 100%;
-  height: 40px;
+  height: 60px;
   border-radius: 20px;
   border: 1px dotted;
   background-color: rgb(237, 239, 245);
-  border:0px; 
+  border: 0px;
 }
 
 .my-row {
   margin-bottom: 20px;
-  
 }
 
 .error {
   color: red;
 }
 
-
-.my-container{
+.my-container {
   border-radius: 20px;
   border: 1px solid rgb(221, 223, 230);
   margin-top: 5vh;
-  
-  box-shadow: 5px 5px 10px 2px rgba(0,0,0,.8);
-  
+  box-shadow: 5px 5px 10px 2px rgba(0, 0, 0, 0.8);
+  padding: 30px;
 }
 
-
-.middle
-{
+.middle {
   margin-top: 20px;
   text-align: center;
-  
 }
 
+.color-forHeadings{
+  color: #264A9F;
+}
+
+.color-forSmallText{
+  color: #436190;
+}
 
 body {
   width: 100%;
@@ -70,13 +77,12 @@ body {
   min-height: 100vh;
   display: flex;
   justify-content: center;
-  align-items: center; 
+  align-items: center;
 }
 
-
-.my-btn{
-  height: 40px; /* sets height of the submit box */
+.my-btn {
+  height: 60px; /* sets height of the submit box */
   margin-bottom: 20px;
   border-radius: 20px; /* not working */
-  font-size: 15px;  /*not working */
+  font-size: 40px; /*not working */
 }

@@ -48,8 +48,8 @@ function SignupForm() {
   return (
     <div className="container-7 shadow p-3 mb-5 bg-body rounded my-container">
       <div className="middle">
-        <h1>Create Account</h1>
-        <p>
+        <h1 className="color-forHeadings">Create Account</h1>
+        <p className="color-forSmallText">
           Already have an account?<a href=" "> Sign in </a>
         </p>
       </div>
@@ -113,9 +113,8 @@ function SignupForm() {
             <div className="error">{formik.errors.email}</div>
           ) : null}
         </div>
-        <button type="submit" className="btn btn-primary col-12 btn-sm " > 
-        {/* size of button is not decreasing */}
-          <h4 >Sign up</h4>
+        <button type="submit" className="btn btn-primary col-12 my-btn" > 
+          Sign Up
         </button>
       </form>
     </div>
