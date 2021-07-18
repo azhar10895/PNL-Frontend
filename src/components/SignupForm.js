@@ -54,7 +54,7 @@ function SignupForm() {
         </p>
       </div>
 
-      <form onSubmit={formik.handleSubmit} style={{ width: "25rem" , height:"70rm" }}>
+      <form onSubmit={formik.handleSubmit}>
       <div className="row-12 my-row">
           <input
             type="text"
