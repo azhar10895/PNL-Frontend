@@ -43,6 +43,7 @@ class OtpClass extends Component {
                 value={this.state.otp}
                 onChange={this.handleOtpChange}
                 placeholder="Enter OTP"
+                required
               />
             </div>
           ) : (

@@ -2,6 +2,7 @@ import React from "react";
 import { useFormik } from "formik";
 import "bootstrap/dist/css/bootstrap.min.css";
 import OtpClass from "./OtpClass";
+import '../components/SignUpForm.css'
 
 const initialValues = {
   username: "",
@@ -55,7 +56,7 @@ function SignupForm() {
   //console.log('FormValues:', formik.values)
 
   return (
-    <div className="container-7 shadow p-3 mb-5 bg-body rounded my-container">
+    <div className="container-7 my-container">
       <div className="middle">
         <h1 className="color-forHeadings">Create Account</h1>
         <p className="color-forSmallText">
@@ -125,7 +126,7 @@ function SignupForm() {
         <div className="row-12 my-row">
           <OtpClass />
         </div>
-        <button type="submit" className="btn btn-primary col-12 my-btn">
+        <button type="submit" className="btn col-12 my-btn">
           Sign Up{" "}
           <svg
             xmlns="http://www.w3.org/2000/svg"
