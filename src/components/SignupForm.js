@@ -2,7 +2,7 @@ import React from "react";
 import { useFormik } from "formik";
 import "bootstrap/dist/css/bootstrap.min.css";
 import OtpClass from "./OtpClass";
-import '../components/SignUpForm.css'
+import './styles/SignUpForm.css'
 
 const initialValues = {
   username: "",
