@@ -38,11 +38,35 @@ const postApiCall = (url, paramsData = {}, reqBody) => {
         });
         requestUrl = requestUrl.slice(0, -1);
       }
-      resolve(await axios.post(requestUrl, reqBody));
+      resolve(
+        await axios.post(requestUrl, reqBody)
+      );
+    } catch (err) {
+      reject(err);
+    }
+  });
+};
+const postApiCallWithHeaders = (url, paramsData = {}, reqBody, headers = null) => {
+  return new Promise(async (resolve, reject) => {
+    try {
+      let requestUrl = baseURL + url;
+      const paramsLength = Object.values(paramsData);
+      if (paramsLength.length) {
+        requestUrl += `?`;
+        Object.keys(paramsData).forEach((key) => {
+          requestUrl += `${key}=${paramsData[key]}&`;
+        });
+        requestUrl = requestUrl.slice(0, -1);
+      }
+      resolve(
+        await axios.post(requestUrl, reqBody, {
+          headers: headers,
+        })
+      );
     } catch (err) {
       reject(err);
     }
   });
 };
 
-export { getApiCall, postApiCall };
+export { getApiCall, postApiCall, postApiCallWithHeaders };
