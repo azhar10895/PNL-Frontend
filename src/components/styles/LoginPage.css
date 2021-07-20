@@ -73,10 +73,13 @@ textarea :hover {
 
 .my-row {
   margin-bottom: 20px;
+  font-size: 15px;
 }
 
 .error {
   color: red;
+  margin-top: 5px;
+  margin-left: 10px;
 }
 .main-container
 {

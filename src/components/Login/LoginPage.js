@@ -60,7 +60,7 @@ const LoginPage = () => {
           </div>
 
           <form onSubmit={formik.handleSubmit} className="myForm">
-            <div className="row my-row">
+            <div className="my-row">
               <div className="col-12">
                 <input
                   type="text"
@@ -78,7 +78,7 @@ const LoginPage = () => {
                 ) : null}
               </div>
             </div>
-            <div className="row g-0 my-row">
+            <div className="my-row">
               <div className="col-12">
                 <input
                   type="password"
@@ -96,7 +96,7 @@ const LoginPage = () => {
                 ) : null}
               </div>
             </div>
-            <div className="row g-0">
+            <div className="my-row">
               <div className="col-12">
                 <button type="submit" className="btn col-12 my-btn">
                   Log In
