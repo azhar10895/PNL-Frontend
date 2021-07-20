@@ -3,18 +3,22 @@
   padding: 15px;
   border-radius: 4px;
   border: none !important;
-  box-shadow:  3px 3px 6px #bfc3cf, -3px -3px 6px #fff;
-  background-image: linear-gradient(
-  to bottom right,
-  #eff0f3,
-  #e5e6eb
-);
-width: calc(90vw);
+  box-shadow: 3px 3px 6px #bfc3cf, -3px -3px 6px #fff;
+  background-image: linear-gradient(to bottom right, #eff0f3, #e5e6eb);
+  width: calc(90vw);
   margin: auto;
 }
 
-.table-section{
+.table-section {
   padding: 20px !important;
   height: calc(80vh);
   overflow-y: scroll;
+}
+.table-header{
+  
+}
+
+th{
+  position: sticky;
+  top: 0;
 }

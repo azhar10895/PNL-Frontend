@@ -81,11 +81,7 @@ textarea :hover {
   margin-top: 5px;
   margin-left: 10px;
 }
-.main-container
-{
-  display: flex;
-  justify-content: center;
-}
+
 .my-container {
   border-radius: 20px !important;
   margin-top: 5vh;
