@@ -5,7 +5,7 @@ import { COLUMNS } from '../dashboard/coloumns.js'
 
 const Table = () => {
   const columns = useMemo(() => COLUMNS, [])
-//   const data = useMemo(() => MOCK_DATA, [])
+  const data = useMemo(() => MOCK_DATA, [])
   const tableInstance = useTable({
     columns:columns,
 })

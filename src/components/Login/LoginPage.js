@@ -19,8 +19,8 @@ const LoginPage = () => {
       if (values?.username && values?.password) {
         const res = await postApiCall(API_URLS.login, {}, values);
         if (res?.data?.res?.login === "success") {
-          if (res?.res?.token) {
-            localStorage.setItem("token", res?.res?.token);
+          if (res?.data?.res?.token) {
+            localStorage.setItem("token", res?.data?.res?.token);
           }
           setredirectToDashboard(true);
         }
