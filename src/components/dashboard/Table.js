@@ -1,3 +1,4 @@
+import { render } from "@testing-library/react";
 import React, { useMemo } from "react";
 
 import { useTable } from "react-table";
@@ -53,12 +54,12 @@ const Table = (props) => {
         ))}
       </thead>
       <tbody className="table-body" {...getTableBodyProps()}>
-        {rows.map((row, i) => {
+        {rows.map((row,i) => {
           prepareRow(row)
           return (
             <tr {...row.getRowProps()}>
               {row.cells.map(cell => {
-                return (<td {...cell.getCellProps()} style={{color: ["GrossPNL", "NetPNL"].includes(cell.accessor) ? rows[cell.accessor] > 0 ? "Green" : "Red" : "inherit" }}
+                return (<td {...cell.getCellProps()} style={{color: ["GrossPNL", "NetPNL"].includes(cell.accessor) ? row[cell.accessor] > 0 ? "Green" : "Red" : "inherit" }}
                 className="p-2">{cell.render('Cell')}</td>)
               })}
             </tr>
