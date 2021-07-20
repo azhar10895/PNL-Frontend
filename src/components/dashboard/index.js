@@ -2,17 +2,22 @@ import React, { useEffect } from "react";
 
 import "bootstrap/dist/css/bootstrap.min.css";
 import "../styles/dashboard.css";
-import { getApiCall } from "../../utils/axios";
+import { getApiCall, getApiCallWithHeader } from "../../utils/axios";
 import { API_URLS } from "../../config";
 
 const Dashboard = () => {
   useEffect(() => {
+    
     getPNL();
   }, []);
 
   const getPNL = async () => {
     try {
-      const res = await getApiCall(API_URLS.getPNL);
+      const token = localStorage.getItem("token");
+      const header = {
+        authorization: `Bearer ${token}`,
+      };
+      const res = await getApiCallWithHeader(API_URLS.getPNL, {}, header);
       console.log("API res", res);
     } catch (err) {
       console.log("Error in GetPNL", err);

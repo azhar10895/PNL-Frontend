@@ -25,6 +25,27 @@ const getApiCall = (url, paramsData = {}) => {
     }
   });
 };
+const getApiCallWithHeader = (url, paramsData = {}, header) => {
+  return new Promise(async (resolve, reject) => {
+    try {
+      let requestUrl = baseURL + url;
+      const paramsLength = Object.values(paramsData);
+      if (paramsLength.length) {
+        requestUrl += `?`;
+        Object.keys(paramsData).forEach((key) => {
+          requestUrl += `${key}=${paramsData[key]}&`;
+        });
+        requestUrl = requestUrl.slice(0, -1);
+      }
+      const res = await axios.get(requestUrl,{
+          headers: header,
+        });
+      resolve(res.data);
+    } catch (err) {
+      reject(err);
+    }
+  });
+};
 
 const postApiCall = (url, paramsData = {}, reqBody) => {
   return new Promise(async (resolve, reject) => {
@@ -69,4 +90,4 @@ const postApiCallWithHeaders = (url, paramsData = {}, reqBody, headers = null) =
   });
 };
 
-export { getApiCall, postApiCall, postApiCallWithHeaders };
+export { getApiCall, postApiCall, postApiCallWithHeaders, getApiCallWithHeader };
