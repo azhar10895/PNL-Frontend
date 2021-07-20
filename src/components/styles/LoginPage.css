@@ -1,15 +1,16 @@
 
 html,
 body {
-  background: transparent -moz-linear-gradient(
+  /* background: transparent -moz-linear-gradient(
       174deg,
       rgba(13, 53, 148, 0.898039) 0,
       #35d3e1 100%
-    ) 0 0 no-repeat padding-box;
-  background: transparent
+    ) 0 0 no-repeat padding-box; */
+  /* background: transparent
     linear-gradient(276deg, rgba(13, 53, 148, 0.898039), #35d3e1) 0 0 no-repeat
-    padding-box;
-  color: #fff;
+    padding-box; */
+    background: #f5f5f5;
+  /* color: #fff; */
 }
 
 .myForm {
@@ -36,13 +37,39 @@ input::-webkit-input-placeholder {
 input[type="text"],
 input[type="password"],
 textarea {
-  width: 100%;
-  height: 60px;
   border-radius: 20px;
-  border: 1px dotted;
-  background-color: rgb(237, 239, 245);
-  border: 0px;
+  /* color: $darkBlue; */
+  opacity: 0.8;
+  -webkit-appearance: none;
+  -moz-box-shadow: inset 3px 3px 6px #bfc3cf7b, inset -3px -3px 6px #fff;
+  -webkit-box-shadow: inset 3px 3px 6px #bfc3cf7b, inset -3px -3px 6px #fff;
+  box-shadow: inset 3px 3px 6px #bfc3cf7b, inset -3px -3px 6px #fff !important;
+  background: transparent !important;
+  border: none !important;
+
+
+  padding: 20px 0px;
+  padding-left: 25px;
+  font-size: 13px;
+  font-weight: 600;
 }
+
+input[type="text"],
+input[type="password"],
+textarea:focus {
+    /* color: $darkBlue; */
+    box-shadow: inset 3.5px 3.5px 6px rgba(7, 30, 84, 0.4),
+  inset -3.5px -3.5px 6px #fff;
+    background: transparent;
+    outline: none;
+  }
+
+ input[type="text"],
+input[type="password"],
+textarea :hover {
+    background: transparent;
+  }
+
 
 .my-row {
   margin-bottom: 20px;
@@ -54,10 +81,17 @@ textarea {
 
 .my-container {
   border-radius: 20px !important;
-  border: 1px solid rgb(221, 223, 230);
   margin-top: 5vh;
   padding: 40px;
   background-color: #fff;
+  border-radius: 20px;
+  /* border: none !important; */
+  box-shadow:  3px 3px 6px #bfc3cf, -3px -3px 6px #fff;
+  background-image: linear-gradient(
+  to bottom right,
+  #eff0f3,
+  #e5e6eb);
+  width: calc(36vw)
 }
 
 .color-forHeadings {

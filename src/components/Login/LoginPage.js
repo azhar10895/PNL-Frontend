@@ -1,7 +1,7 @@
 import React from "react";
 import { useFormik } from "formik";
 import "bootstrap/dist/css/bootstrap.min.css";
-import "./styles/LoginPage.css";
+import "../styles/LoginPage.css";
 
 const initialValues = {
   username: "",
@@ -31,7 +31,7 @@ function LoginPage() {
   });
 
   return (
-    <div className="container-7 my-container">
+    <div className=" my-container">
       <div className="header middle">
         <h2 className="color-forHeadings">Log In to your Account</h2>
       </div>

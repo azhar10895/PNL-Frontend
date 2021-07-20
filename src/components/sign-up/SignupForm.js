@@ -1,7 +1,7 @@
 import React from "react";
 import { useFormik } from "formik";
 import "bootstrap/dist/css/bootstrap.min.css";
-import OtpClass from "./OtpClass";
+import OtpClass from "../OtpClass";
 import './styles/SignUpForm.css'
 
 const initialValues = {
