@@ -50,7 +50,7 @@ textarea {
 
   padding: 20px 0px;
   padding-left: 25px;
-  font-size: 13px;
+  font-size: 20px;
   font-weight: 600;
 }
 
@@ -96,7 +96,9 @@ textarea :hover {
   to bottom right,
   #eff0f3,
   #e5e6eb);
-  width: calc(36vw)
+  min-width: 300px;
+  margin: auto !important;
+  margin-top: calc(15vh) !important;
 }
 
 .color-forHeadings {
