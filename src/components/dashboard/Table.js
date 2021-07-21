@@ -59,7 +59,7 @@ const Table = (props) => {
           return (
             <tr {...row.getRowProps()}>
               {row.cells.map(cell => {
-                return (<td {...cell.getCellProps()} style={{color: ["GrossPNL", "NetPNL"].includes(cell.accessor) ? row[cell.accessor] > 0 ? "Green" : "Red" : "inherit" }}
+                return (<td {...cell.getCellProps()} style={{color: ["GrossPNL", "NetPNL"].includes(cell.accessor) ? row[cell.accessor] > 0 ? "Green" : "Red" : "inherit"}}
                 className="p-2">{cell.render('Cell')}</td>)
               })}
             </tr>
