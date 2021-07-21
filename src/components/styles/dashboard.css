@@ -14,14 +14,18 @@
   height: calc(80vh);
   overflow-y: scroll;
 }
-.table-header{
-  
-}
 
 th{
   /* position: sticky;
-  top: 0;
+  top: 0; */
   font-size: 17px;
   font-weight: 600;
-  color:#3B5AA4; */
+  color:#3B5AA4;
+  text-align: center;
+}
+
+td{
+  font-size: 17px;
+  text-align: center;
+  font-weight: 500;
 }

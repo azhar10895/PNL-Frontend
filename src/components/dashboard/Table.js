@@ -8,16 +8,11 @@ const Table = (props) => {
   const columns = useMemo(() => COLUMNS, []);
   const data = useMemo(() => props.data, []);
 
-  const {
-    getTableProps,
-    getTableBodyProps,
-    headerGroups,
-    rows,
-    prepareRow,
-  } = useTable({
-    columns,
-    data,
-  })
+  const { getTableProps, getTableBodyProps, headerGroups, rows, prepareRow } =
+    useTable({
+      columns,
+      data,
+    });
 
   return (
     // <table className="m-auto">
@@ -31,11 +26,11 @@ const Table = (props) => {
     //   <tbody>
     //     {data.map((item) => (
     //       <tr>
-            // {columns.map((column) => (
-            //   <td
-            //     style={{color: ["GrossPNL", "NetPNL"].includes(column.accessor) ? item[column.accessor] > 0 ? "Green" : "Red" : "inherit" }}
-            //     className="p-2"
-              // >
+    // {columns.map((column) => (
+    //   <td
+    //     style={{color: ["GrossPNL", "NetPNL"].includes(column.accessor) ? item[column.accessor] > 0 ? "Green" : "Red" : "inherit" }}
+    //     className="p-2"
+    // >
     //             {item[column.accessor] || "-"}
     //           </td>
     //         ))}
@@ -44,26 +39,44 @@ const Table = (props) => {
     //   </tbody>
     // </table>
     <table className="m-auto" {...getTableProps()}>
-      <thead className="table-header">
-        {headerGroups.map(headerGroup => (
+      <thead>
+        {headerGroups.map((headerGroup) => (
           <tr {...headerGroup.getHeaderGroupProps()}>
-            {headerGroup.headers.map(column => (
-              <th className="p-2" {...column.getHeaderProps()}>{column.render('Header')}</th>
+            {headerGroup.headers.map((column) => (
+              <th className="p-2" {...column.getHeaderProps()}>
+                {column.render("Header")}
+              </th>
             ))}
           </tr>
         ))}
       </thead>
       <tbody className="table-body" {...getTableBodyProps()}>
-        {rows.map((row,i) => {
-          prepareRow(row)
+        {rows.map((row, i) => {
+          prepareRow(row);
+          
           return (
             <tr {...row.getRowProps()}>
-              {row.cells.map(cell => {
-                return (<td {...cell.getCellProps()} style={{color: ["GrossPNL", "NetPNL"].includes(cell.accessor) ? row[cell.accessor] > 0 ? "Green" : "Red" : "inherit"}}
-                className="p-2">{cell.render('Cell')}</td>)
+              {row.cells.map((cell) => {
+                console.log(cell.value);
+                return (
+                  <td
+                    {...cell.getCellProps()}
+                    style={{
+                      color: ["GrossPNL", "NetPNL"].includes(cell.column.Header)
+                        ? cell.value > 0
+                          ? "Green"
+                          : "Red"
+                        : "inherit",
+                    }}
+                    className="p-2"
+                  >
+                    {cell.value === undefined ? "-": cell.render('Cell')}
+                  </td>
+                );
               })}
             </tr>
-          )
+          );
+          
         })}
       </tbody>
     </table>
