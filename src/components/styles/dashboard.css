@@ -22,8 +22,8 @@ th{
   font-weight: 600;
   color:#3B5AA4;
   text-align: center;
-  background-color: #fff;
-  border: #fff;
+  background-color: #EBECF0;
+  border-color: transparent;
   z-index:1;
 }
 
@@ -33,3 +33,13 @@ td{
   font-weight: 500;
   z-index: -1;
 }
+
+.DashboardContainer{
+ display: grid;
+ margin: 0px 20px 20px 20px  ;
+}
+
+.Search{
+  background-color: white;
+}
+

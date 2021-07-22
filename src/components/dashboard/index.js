@@ -35,7 +35,7 @@ const Dashboard = () => {
 
   return (
     <>
-        <div className="container">
+        <div className="DashboardContainer">
         {data?.length ? <Table data={data} /> : "No Data to show"}
         </div>
     </>
