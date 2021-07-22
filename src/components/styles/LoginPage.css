@@ -58,9 +58,8 @@ input[type="text"],
 input[type="password"],
 textarea:focus {
     /* color: $darkBlue; */
-    box-shadow: inset 3.5px 3.5px 6px rgba(7, 30, 84, 0.4),
-  inset -3.5px -3.5px 6px #fff;
-    background: transparent;
+    box-shadow: inset 3.5px 3.5px 6px rgba(7, 30, 84, 0.4);
+    background: white;
     outline: none;
   }
 
@@ -73,16 +72,15 @@ textarea :hover {
 
 .my-row {
   margin-bottom: 20px;
+  font-size: 15px;
 }
 
 .error {
   color: red;
+  margin-top: 5px;
+  margin-left: 10px;
 }
-.main-container
-{
-  display: flex;
-  justify-content: center;
-}
+
 .my-container {
   border-radius: 20px !important;
   margin-top: 5vh;
