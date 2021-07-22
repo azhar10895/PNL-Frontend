@@ -1,0 +1,7 @@
+.SearchBar {
+    font-size: 17px;
+    border: none;
+    cursor: pointer;
+    background-color: white;
+    width: 250px;
+}
