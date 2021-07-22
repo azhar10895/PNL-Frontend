@@ -37,10 +37,10 @@ const Table = (props) => {
       <div className="row p-3 g-0">
         <div className="col-12 dashcard mt-2 align-top">
           <div className="row">
-            <div className="col-9">
+            <div className="col-7">
               <h2 className="color-forHeadings text-left">Dashboard</h2>
             </div>
-            <div className="col-2">
+            <div className="col-3">
               <SearchTable filter={globalFilter} setFilter={setGlobalFilter}/>
             </div>
             <div className="col-1">
@@ -52,7 +52,7 @@ const Table = (props) => {
         </div>
       </div>
       <div className="dashcard">
-      <table className="m-auto table-section" {...getTableProps()}>
+      <table className="table-section" {...getTableProps()}>
         <thead>
           {headerGroups.map((headerGroup) => (
             <tr {...headerGroup.getHeaderGroupProps()}>
