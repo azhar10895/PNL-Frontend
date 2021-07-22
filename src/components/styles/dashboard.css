@@ -16,16 +16,20 @@
 }
 
 th{
-  /* position: sticky;
-  top: 0; */
+  position: sticky;
+  top: 0;
   font-size: 17px;
   font-weight: 600;
   color:#3B5AA4;
   text-align: center;
+  background-color: #fff;
+  border: #fff;
+  z-index:1;
 }
 
 td{
   font-size: 17px;
   text-align: center;
   font-weight: 500;
+  z-index: -1;
 }
