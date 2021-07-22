@@ -9,5 +9,14 @@
 
 .SearchBar input::-webkit-input-placeholder {
     font-weight: 700;
-    padding-left: 40px;
+    padding-left: 20px;
+}
+input,
+textarea:focus {
+    /* color: $darkBlue; */
+    box-shadow: inset 3.5px 3.5px 6px rgba(7, 30, 84, 0.4),
+    inset -3.5px -3.5px 6px #fff;
+    background: transparent;
+    outline: none;
+    width: 90%;
 }

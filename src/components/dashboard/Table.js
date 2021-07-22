@@ -43,7 +43,7 @@ const Table = (props) => {
             <div className="col-3">
               <SearchTable filter={globalFilter} setFilter={setGlobalFilter}/>
             </div>
-            <div className="col-1">
+            <div className="col-2">
               <h3 onClick={logout} className="float-end cursor-">
                 Logout
               </h3>

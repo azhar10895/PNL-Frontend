@@ -58,9 +58,8 @@ input[type="text"],
 input[type="password"],
 textarea:focus {
     /* color: $darkBlue; */
-    box-shadow: inset 3.5px 3.5px 6px rgba(7, 30, 84, 0.4),
-  inset -3.5px -3.5px 6px #fff;
-    background: transparent;
+    box-shadow: inset 3.5px 3.5px 6px rgba(7, 30, 84, 0.4);
+    background: white;
     outline: none;
   }
 

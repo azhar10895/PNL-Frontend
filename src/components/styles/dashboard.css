@@ -12,30 +12,18 @@
 .table-section {
     padding: 20px !important;
     height: calc(80vh);
-    overflow-y: scroll;
     width: calc(88vw);
+    /* display: block;
+    overflow: scroll; */
 }
 
-table {
+/* table {
     margin: auto;
     caption-side: bottom;
     border: 1px solid black;
-}
+} */
 
-table th {
-    border: 1px solid #000;
-}
 
-<<<<<<< HEAD
-.DashboardContainer{
- display: grid;
- margin: 0px 20px 20px 20px;
-=======
-td {
-    border: 1px solid black;
-    text-align: center;
->>>>>>> e19e559fbea42fee563944ec24ec14b67b5b6c4a
-}
 
 th {
     position: sticky;
@@ -45,16 +33,27 @@ th {
     color: #3B5AA4;
     text-align: center;
     background-color: #EBECF0;
-    border-color: transparent;
-    z-index: 1;
+    border: 1px solid #b2b4b6;
+    width: 140px;
 }
 
 td {
     font-size: 17px;
     text-align: center;
     font-weight: 500;
-    z-index: -1;
+    border: 1px solid #b2b4b6;
 }
+
+tbody{
+    /* display: block; */
+    height: calc(80vh);
+    overflow-y: scroll !important;
+}
+
+/* tr{
+    display: block;
+    float: left;
+} */
 
 .DashboardContainer {
     display: grid;
