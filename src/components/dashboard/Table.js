@@ -110,10 +110,6 @@ const Table = (props) => {
             return (
               <tr {...row.getRowProps()}>
                 {row.cells.map((cell) => {
-                  console.log(
-                    "cell sorttt::::::",
-                    cell.column.getSortByToggleProps()
-                  );
                   return (
                     <td
                       {...cell.getCellProps()}

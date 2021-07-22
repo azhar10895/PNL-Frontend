@@ -101,7 +101,7 @@ const LoginPage = () => {
                 <button type="submit" className="btn col-12 my-btn">
                   Log In
                 </button>
-              </div>
+                </div>
             </div>
           </form>
         </div>

@@ -11,7 +11,7 @@
 
 .table-section {
     padding: 20px !important;
-    height: calc(80vh);
+    /* height: calc(80vh); */
     width: calc(88vw);
     /* display: block;
     overflow: scroll; */
@@ -45,9 +45,9 @@ td {
 }
 
 tbody{
-    /* display: block; */
-    height: calc(80vh);
-    overflow-y: scroll !important;
+    /* display: block;
+    height: 500px;
+    overflow-y: scroll !important; */
 }
 
 /* tr{

@@ -14,7 +14,7 @@ const Dashboard = () => {
 
   useEffect(() => {}, [data]);
 
-
+  console.log("data::::",data)
   const getPNL = async () => {
     try {
       const token = localStorage.getItem("token");
