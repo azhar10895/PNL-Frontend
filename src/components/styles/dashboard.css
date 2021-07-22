@@ -11,19 +11,18 @@
 
 .table-section {
     padding: 20px !important;
-    height: calc(80vh);
+    /* height: calc(80vh); */
     width: calc(88vw);
     /* display: block;
     overflow: scroll; */
 }
+
 
 /* table {
     margin: auto;
     caption-side: bottom;
     border: 1px solid black;
 } */
-
-
 
 th {
     position: sticky;
@@ -44,11 +43,12 @@ td {
     border: 1px solid #b2b4b6;
 }
 
-tbody{
+tbody {
     /* display: block; */
-    height: calc(80vh);
+    /* height: calc(80vh); */
     overflow-y: scroll !important;
 }
+
 
 /* tr{
     display: block;
