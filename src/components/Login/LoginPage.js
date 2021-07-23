@@ -40,7 +40,12 @@ const LoginPage = () => {
     }
     if (!values.password) {
       errors.password = "Password is required";
+    }else if (!/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,30}$/i.test(values.password)) {
+      errors.password = "invalid password write";
     }
+    // written the regex code for password that takes minimum 8 characterss
+    // and maximum 30- at least one upper case, one lowercase, one number 
+    // and one special character
     return errors;
   };
   const formik = useFormik({

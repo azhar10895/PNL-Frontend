@@ -15,6 +15,8 @@ const Table = (props) => {
     history.push("/");
   };
 
+  console.log('data:::::',data)
+
   const {
     getTableProps,
     getTableBodyProps,
