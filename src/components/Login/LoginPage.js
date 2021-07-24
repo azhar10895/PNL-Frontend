@@ -5,6 +5,7 @@ import "../styles/LoginPage.css";
 import { postApiCall } from "../../utils/axios";
 import { API_URLS } from "../../config";
 import { Redirect } from "react-router-dom";
+import Swal from "sweetalert2"; 
 
 const LoginPage = () => {
   const initialValues = {
@@ -28,7 +29,11 @@ const LoginPage = () => {
       }
     } catch (err) {
       console.log("Error", err);
-      alert("Invalid username or password");
+      Swal.fire({  
+        title: 'Try again',  
+        type: 'success',  
+        text: 'Invalid username or password',  
+      });  
     }
   };
   useEffect(() => {}, [redirectToDashboard]);
@@ -41,7 +46,7 @@ const LoginPage = () => {
     if (!values.password) {
       errors.password = "Password is required";
     }else if (!/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,30}$/i.test(values.password)) {
-      errors.password = "invalid password write";
+      errors.password = "invalid password";
     }
     // written the regex code for password that takes minimum 8 characterss
     // and maximum 30- at least one upper case, one lowercase, one number 
