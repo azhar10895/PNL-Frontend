@@ -6,15 +6,20 @@
     box-shadow: 3px 3px 6px #bfc3cf, -3px -3px 6px #fff;
     background-image: linear-gradient(to bottom right, #eff0f3, #e5e6eb);
     width: calc(90vw);
-    margin: auto;
+    margin:auto;
+}
+
+
+.table-body{
+    overflow:scroll;
 }
 
 .table-section {
     padding: 20px !important;
-    /* height: calc(80vh); */
+    height: calc(80vh);
     width: calc(88vw);
-    /* display: block;
-    overflow: scroll; */
+    display: block;
+    overflow: scroll;
 }
 
 
@@ -44,15 +49,11 @@ td {
 }
 
 tbody {
-    /* display: block; */
-    /* height: calc(80vh); */
     overflow-y: scroll !important;
 }
 
-
-/* tr{
-    display: block;
-    float: left;
+/* .table-Header{
+    position: sticky;
 } */
 
 .DashboardContainer {
