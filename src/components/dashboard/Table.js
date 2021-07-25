@@ -1,18 +1,13 @@
 import { render } from "@testing-library/react";
 import React, { useMemo } from "react";
 import SearchTable from "./SearchTable.js";
-import { useHistory } from "react-router-dom";
 import { useTable, useSortBy, useGlobalFilter } from "react-table";
 import { COLUMNS } from "../dashboard/coloumns.js";
 
 const Table = (props) => {
   const columns = useMemo(() => COLUMNS, []);
   const data = useMemo(() => props.data, []);
-  const history = useHistory();
-  const logout = () => {
-    localStorage.removeItem("token");
-    history.push("/");
-  };
+
   const {
     getTableProps,
     getTableBodyProps,
@@ -32,24 +27,8 @@ const Table = (props) => {
   const { globalFilter } = state;
   return (
     <>
-      <div className="row p-3 g-0">
-        <div className="col-12 dashcard mt-2 align-top">
-          <div className="row">
-            <div className="col-7">
-              <h2 className="color-forHeadings text-left">Dashboard</h2>
-            </div>
-            <div className="col-3">
-              <SearchTable filter={globalFilter} setFilter={setGlobalFilter} />
-            </div>
-            <div className="col-2">
-              <h3 onClick={logout} className="float-end cursor-">
-                Logout
-              </h3>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div className="dashcard fixedTable">
+
+      <div className="fixedTable">
         <table className="table-section" {...getTableProps()}>
           <thead>
             {headerGroups.map((headerGroup) => (

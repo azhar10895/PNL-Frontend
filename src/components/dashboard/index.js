@@ -5,16 +5,22 @@ import { getApiCall, getApiCallWithHeader } from "../../utils/axios";
 import { API_URLS } from "../../config";
 import Table from "./Table";
 import { useState } from "react";
+import { useHistory } from "react-router-dom";
 
 const Dashboard = () => {
   const [data, setData] = useState([]);
   useEffect(() => {
     getPNL();
   }, []);
+  const history = useHistory();
+  const logout = () => {
+    localStorage.removeItem("token");
+    history.push("/");
+  };
 
   useEffect(() => {}, [data]);
 
-  console.log("data::::",data,"typeof",typeof(data))
+  console.log("data::::", data, "typeof", typeof data);
   const getPNL = async () => {
     try {
       const token = localStorage.getItem("token");
@@ -28,7 +34,7 @@ const Dashboard = () => {
       if (resData.length) {
         setData([...resData]);
       }
-      console.log("API res", res, "typeof::::",typeof(res));
+      console.log("API res", res, "typeof::::", typeof res);
     } catch (err) {
       console.log("Error in GetPNL", err);
     }
@@ -79,25 +85,58 @@ const Dashboard = () => {
         NetPNL: 143231.625,
         NetPosition: 0,
       },
-    ]
+    ],
   };
 
   let data2 = [];
-      for(const i in new_data){
-          data2.push(new_data[i]);
-      }
+
+  for (const i in new_data) {
+    data2.push(new_data[i]);
+  }
 
   return (
     <>
-        {data2.map(dataToSend => {
-          return (
-            <div className="">
-              <div className="">
-              {data?.length ? <Table data={dataToSend} /> : "No Data to show"}
-              </div>
+      <div className="row">
+        <div className="dashcard align-top">
+          <div className="row">
+            <div className="col-7">
+              <h2 className="color-forHeadings text-left">Dashboard</h2>
             </div>
-          )
-        })}
+            {/* <div className="col-3">
+          <SearchTable
+            filter={globalFilter}
+            setFilter={setGlobalFilter}
+          />
+        </div> */}
+            <div className="col-2">
+              <h3 onClick={logout} className="float-end cursor-">
+                Logout
+              </h3>
+            </div>
+          </div>
+        </div>
+        <div>
+          <div>
+            {Object.keys(new_data).map((account) => {
+              return (
+                <div>
+                  <div className="dashcard">
+                    <div className="accountID">{account}</div>
+                    {console.log("helllooooooooo", new_data[account])}
+                    <div className="">
+                      {data?.length ? (
+                        <Table data={new_data[account]} />
+                      ) : (
+                        "No Data to show"
+                      )}
+                    </div>
+                  </div>
+                </div>
+              );
+            })}
+          </div>
+        </div>
+      </div>
     </>
   );
 };
