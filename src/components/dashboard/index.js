@@ -31,11 +31,11 @@ const Dashboard = () => {
 
       const res = await getApiCallWithHeader(API_URLS.getPNL, {}, header);
       const resData = res?.res?.data;
-      // console.log("Res data", resData);
+      console.log("Res data", resData);
       if (resData.length) {
         setData([...resData]);
       }
-      // console.log("API res", res, "typeof::::", typeof res);
+      console.log("API res", res, "typeof::::", typeof res);
     } catch (err) {
       console.log("Error in GetPNL", err);
     }
