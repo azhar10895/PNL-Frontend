@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "../styles/dashboard.css";
-import { getApiCall, getApiCallWithHeader } from "../../utils/axios";
+import { getApiCall, getApiCallWithHeader, postApiCallWithHeaders } from "../../utils/axios";
 import { API_URLS } from "../../config";
 import Table from "./Table";
 import { useState } from "react";
@@ -29,7 +29,7 @@ const Dashboard = () => {
         authorization: `Bearer ${token}`,
       };
 
-      const res = await getApiCallWithHeader(API_URLS.getPNL, {}, header);
+      const res = await postApiCallWithHeaders(API_URLS.getPNL, {}, {},header);
       const resData = res?.res?.data;
       console.log("Res data", resData);
       if (resData.length) {
