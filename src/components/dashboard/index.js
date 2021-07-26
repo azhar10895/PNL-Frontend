@@ -1,7 +1,11 @@
 import React, { useEffect } from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "../styles/dashboard.css";
+<<<<<<< HEAD
 import { getApiCall, getApiCallWithHeader, postApiCallWithHeaders } from "../../utils/axios";
+=======
+import { getApiCall, postApiCallWithHeaders } from "../../utils/axios";
+>>>>>>> 88d8441effcc37717b4e85fee55b9dcf20d9c040
 import { API_URLS } from "../../config";
 import Table from "./Table";
 import { useState } from "react";
@@ -22,19 +26,31 @@ const Dashboard = () => {
   useEffect(() => {}, [data]);
 
   // console.log("data::::", data, "typeof", typeof data);
-  const getPNL = async () => {
+  const getPNL = async (timeStamp = null) => {
     try {
       const token = localStorage.getItem("token");
       const header = {
         authorization: `Bearer ${token}`,
       };
+<<<<<<< HEAD
 
       const res = await postApiCallWithHeaders(API_URLS.getPNL, {}, {},header);
       const resData = res?.res?.data;
+=======
+      const req = timeStamp ? { timeStamp } : {};
+      const res = await postApiCallWithHeaders(
+        API_URLS.getPNL,
+        {},
+        req,
+        header
+      );
+      const resData = res?.data?.res;
+>>>>>>> 88d8441effcc37717b4e85fee55b9dcf20d9c040
       console.log("Res data", resData);
-      if (resData.length) {
-        setData([...resData]);
-      }
+      // if (resData.length) {
+      setData({ ...resData });
+      
+      // }
       console.log("API res", res, "typeof::::", typeof res);
     } catch (err) {
       console.log("Error in GetPNL", err);
@@ -215,17 +231,18 @@ const Dashboard = () => {
     ],
   };
   const saved = Object.keys(new_data);
-  console.log("saveddd::",saved)
-  console.log("Filter::::::::::::::::::",Object.keys(new_data).filter(val => {
-    console.log("value",val)
-    if(val===searchTerm)
-    {
-      return val
-    }
-    else{
-      return saved
-    }
-  }))
+  console.log("saveddd::", saved);
+  console.log(
+    "Filter::::::::::::::::::",
+    Object.keys(new_data).filter((val) => {
+      console.log("value", val);
+      if (val === searchTerm) {
+        return val;
+      } else {
+        return saved;
+      }
+    })
+  );
   return (
     <>
       <div className="container">
@@ -235,7 +252,13 @@ const Dashboard = () => {
               <h2 className="color-forHeadings text-left">Dashboard</h2>
             </div>
             <div className="col-3 SearchBar">
-              <input className="" placeholder="Search" onChange={e => {setSearchTerm(e.target.value)}}/>
+              <input
+                className=""
+                placeholder="Search"
+                onChange={(e) => {
+                  setSearchTerm(e.target.value);
+                }}
+              />
               {/* <SearchTable /> */}
             </div>
             <div className="col-2">
@@ -247,32 +270,35 @@ const Dashboard = () => {
         </div>
         <div>
           <div>
-            {Object.keys(new_data).filter(val => {
-              if(searchTerm===""){
-                return val
-              }
-              else if(val===searchTerm)
-              {
-                return val
-              }
-            }).map((account) => {
-              return (
-                <div>
-                  <div className="dashcard">
-                    <div className="accountID">{account}</div>
-                    
-                    {/* {console.log("helllooooooooo", new_data[account])} */}
-                    <div className="">
-                      {data?.length ? (
-                        <Table data={new_data[account]} key = {account} />
-                      ) : (
-                        "No Data to show"
-                      )}
+            {Object.keys(data)
+              // .filter(val => {
+              //   if(searchTerm===""){
+              //     return val
+              //   }
+              //   else if(val===searchTerm)
+              //   {
+              //     return val
+              //   }
+              // })
+              .map((account) => {
+                console.log("data[account]?.data", data[account]?.data);
+                return (
+                  <div>
+                    <div className="dashcard">
+                      <div className="accountID">A/C No: {account}</div>
+
+                      {/* {console.log("helllooooooooo", new_data[account])} */}
+                      <div className="">
+                        {data[account]?.data?.length ? (
+                          <Table data={data[account]?.data} key={account} />
+                        ) : (
+                          "No Data to show"
+                        )}
+                      </div>
                     </div>
                   </div>
-                </div>
-              );
-            })}
+                );
+              })}
           </div>
         </div>
       </div>
