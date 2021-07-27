@@ -1,5 +1,5 @@
 import { createStore, applyMiddleware } from 'redux'
-import { notesReducer } from './notesReducer'
+import { fetchReducer } from './Reducer/fetchReducer'
 import thunk from 'redux-thunk'
 
-export const store = createStore(notesReducer, applyMiddleware(thunk))
+export const store = createStore(fetchReducer, applyMiddleware(thunk))
