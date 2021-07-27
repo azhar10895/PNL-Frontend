@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useRef } from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "../styles/dashboard.css";
 import { getApiCall, postApiCallWithHeaders } from "../../utils/axios";
@@ -13,15 +13,17 @@ const Dashboard = () => {
   useEffect(() => {
     getPNL();
   }, []);
+  const timerId = useRef(null);
   const history = useHistory();
+  
+  const [searchTerm, setSearchTerm] = useState("");
+  // const [timerId, setTimerId] = useState(null);
   const logout = () => {
     localStorage.removeItem("token");
     history.push("/");
   };
-  const [searchTerm, setSearchTerm] = useState("");
   useEffect(() => {}, [data]);
 
-  // console.log("data::::", data, "typeof", typeof data);
   const getPNL = async (timeStamp = null) => {
     try {
       const token = localStorage.getItem("token");
@@ -36,29 +38,16 @@ const Dashboard = () => {
         req,
         header
       );
-      // console.log("Session:::",session)
-
       const resData = res?.data?.res;
-      console.log("Res data", resData);
-      // if (resData.length) {
       setData({ ...resData });
-      // }
-      // const time = resData[10942].lastTimeStamp;
-      // console.log("time::::",time)
-      // const session = sessionStorage.setItem("TimeStamp",time);
-      // setInterval(getPNL(time),5000);
-      // const TimeStamp = () => {
-      //   const [timeStamp, setTimeStamp] = useState('');
-
-      //   useEffect(() => {
-      //     const time = setInterval(() => {
-      //       setTimeStamp(resData[10942].lastTimeStamp);    //Manual picking
-      //     }, 5000);
-      //     return () => clearInterval(time);
-      //   }, []);
-      // }
-      console.log();
-      console.log("API res", res, "typeof::::", typeof res);
+      const accountId = Object.keys(resData)[0];
+      const time = resData[accountId].lastTimeStamp;
+      console.log("time::::", time);
+      sessionStorage.setItem("TimeStamp", time);
+      if (timerId.current === null) {
+        console.log("timerid ", timerId.current);
+        timerId.current = setInterval( () => getPNL(time), 5000);
+      }
     } catch (err) {
       console.log("Error in GetPNL", err);
     }
@@ -66,193 +55,6 @@ const Dashboard = () => {
 
   // setInterval(getPNL(new Date().getDate()),10000);
   // console.log("Timee:::::: 10 seconds up");
-  // const new_data = {
-  //   key1: [
-  //     {
-  //       BuyAvgPrice: "2807.78",
-  //       BuyQty: "130",
-  //       GrossPNL: 143375,
-  //       LastFillPrice: 85,
-  //       LastTimeStamp: "1304176443004645797",
-  //       NetPNL: 143231.625,
-  //       NetPosition: 0,
-  //     },
-  //     {
-  //       BuyAvgPrice: "873347",
-  //       BuyQty: "762372",
-  //       GrossPNL: 143375,
-  //       LastFillPrice: 85,
-  //       LastTimeStamp: "1304176443004645797",
-  //       NetPNL: 143231.625,
-  //       NetPosition: 0,
-  //     },
-  //     {
-  //       BuyAvgPrice: "2807.78",
-  //       BuyQty: "130",
-  //       GrossPNL: 143375,
-  //       LastFillPrice: 85,
-  //       LastTimeStamp: "1304176443004645797",
-  //       NetPNL: 143231.625,
-  //       NetPosition: 0,
-  //     },
-  //     {
-  //       BuyAvgPrice: "873347",
-  //       BuyQty: "762372",
-  //       GrossPNL: 143375,
-  //       LastFillPrice: 85,
-  //       LastTimeStamp: "1304176443004645797",
-  //       NetPNL: 143231.625,
-  //       NetPosition: 0,
-  //     },
-  //     {
-  //       BuyAvgPrice: "2807.78",
-  //       BuyQty: "130",
-  //       GrossPNL: 143375,
-  //       LastFillPrice: 85,
-  //       LastTimeStamp: "1304176443004645797",
-  //       NetPNL: 143231.625,
-  //       NetPosition: 0,
-  //     },
-  //     {
-  //       BuyAvgPrice: "873347",
-  //       BuyQty: "762372",
-  //       GrossPNL: 143375,
-  //       LastFillPrice: 85,
-  //       LastTimeStamp: "1304176443004645797",
-  //       NetPNL: 143231.625,
-  //       NetPosition: 0,
-  //     },
-  //     {
-  //       BuyAvgPrice: "2807.78",
-  //       BuyQty: "130",
-  //       GrossPNL: 143375,
-  //       LastFillPrice: 85,
-  //       LastTimeStamp: "1304176443004645797",
-  //       NetPNL: 143231.625,
-  //       NetPosition: 0,
-  //     },
-  //     {
-  //       BuyAvgPrice: "873347",
-  //       BuyQty: "762372",
-  //       GrossPNL: 143375,
-  //       LastFillPrice: 85,
-  //       LastTimeStamp: "1304176443004645797",
-  //       NetPNL: 143231.625,
-  //       NetPosition: 0,
-  //     },
-  //     {
-  //       BuyAvgPrice: "2807.78",
-  //       BuyQty: "130",
-  //       GrossPNL: 143375,
-  //       LastFillPrice: 85,
-  //       LastTimeStamp: "1304176443004645797",
-  //       NetPNL: 143231.625,
-  //       NetPosition: 0,
-  //     },
-  //     {
-  //       BuyAvgPrice: "873347",
-  //       BuyQty: "762372",
-  //       GrossPNL: 143375,
-  //       LastFillPrice: 85,
-  //       LastTimeStamp: "1304176443004645797",
-  //       NetPNL: 143231.625,
-  //       NetPosition: 0,
-  //     },
-  //     {
-  //       BuyAvgPrice: "2807.78",
-  //       BuyQty: "130",
-  //       GrossPNL: 143375,
-  //       LastFillPrice: 85,
-  //       LastTimeStamp: "1304176443004645797",
-  //       NetPNL: 143231.625,
-  //       NetPosition: 0,
-  //     },
-  //     {
-  //       BuyAvgPrice: "873347",
-  //       BuyQty: "762372",
-  //       GrossPNL: 143375,
-  //       LastFillPrice: 85,
-  //       LastTimeStamp: "1304176443004645797",
-  //       NetPNL: 143231.625,
-  //       NetPosition: 0,
-  //     },
-  //     {
-  //       BuyAvgPrice: "2807.78",
-  //       BuyQty: "130",
-  //       GrossPNL: 143375,
-  //       LastFillPrice: 85,
-  //       LastTimeStamp: "1304176443004645797",
-  //       NetPNL: 143231.625,
-  //       NetPosition: 0,
-  //     },
-  //     {
-  //       BuyAvgPrice: "873347",
-  //       BuyQty: "762372",
-  //       GrossPNL: 143375,
-  //       LastFillPrice: 85,
-  //       LastTimeStamp: "1304176443004645797",
-  //       NetPNL: 143231.625,
-  //       NetPosition: 0,
-  //     },
-  //     {
-  //       BuyAvgPrice: "2807.78",
-  //       BuyQty: "130",
-  //       GrossPNL: 143375,
-  //       LastFillPrice: 85,
-  //       LastTimeStamp: "1304176443004645797",
-  //       NetPNL: 143231.625,
-  //       NetPosition: 0,
-  //     },
-  //     {
-  //       BuyAvgPrice: "873347",
-  //       BuyQty: "762372",
-  //       GrossPNL: 143375,
-  //       LastFillPrice: 85,
-  //       LastTimeStamp: "1304176443004645797",
-  //       NetPNL: 143231.625,
-  //       NetPosition: 0,
-  //     },
-  //   ],
-  //   key2: [
-  //     {
-  //       BuyAvgPrice: "2807.78",
-  //       BuyQty: "133500",
-  //       GrossPNL: 143375,
-  //       LastFillPrice: 85,
-  //       LastTimeStamp: "1304176443004645797",
-  //       NetPNL: 143231.625,
-  //       NetPosition: 0,
-  //       SellAvgPrice: "2996.09",
-  //       SellQty: "133500",
-  //       Token: 35010,
-  //       TotalBuy: "315225000",
-  //       TotalQty: 267000,
-  //       TotalSell: "315368375",
-  //     },
-  //     {
-  //       BuyAvgPrice: "873347",
-  //       BuyQty: "76247",
-  //       GrossPNL: 143375,
-  //       LastFillPrice: 85,
-  //       LastTimeStamp: "1304176443004645797",
-  //       NetPNL: 143231.625,
-  //       NetPosition: 0,
-  //     },
-  //   ],
-  // };
-  // const saved = Object.keys(new_data);
-  // console.log("saveddd::", saved);
-  // console.log(
-  //   "Filter::::::::::::::::::",
-  //   Object.keys(new_data).filter((val) => {
-  //     console.log("value", val);
-  //     if (val === searchTerm) {
-  //       return val;
-  //     } else {
-  //       return saved;
-  //     }
-  //   })
-  // );
   return (
     <>
       <div className="container">
