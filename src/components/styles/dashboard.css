@@ -6,7 +6,7 @@
   box-shadow: 3px 3px 6px #bfc3cf, -3px -3px 6px #fff;
   background-image: linear-gradient(to bottom right, #eff0f3, #e5e6eb);
   width: calc(90vw);
-  margin: auto;
+  /* margin: auto; */
   margin-bottom: 30px;
 }
 
@@ -50,10 +50,10 @@ td {
     position: sticky;
 } */
 
-.DashboardContainer {
+/* .DashboardContainer {
   display: grid;
   margin: 10px 20px 20px 10px;
-}
+} */
 
 .Search input {
   width: 90%;
