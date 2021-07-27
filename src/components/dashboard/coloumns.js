@@ -59,4 +59,9 @@ export const COLUMNS = [
     accessor: "NetPNL",
     Sorted : false,
   },
+  {
+    Header: "LastFillPrice",
+    accessor: "LastFillPrice",
+    Sorted: false,
+  }
 ];
