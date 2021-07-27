@@ -57,7 +57,7 @@ const Dashboard = () => {
   // console.log("Timee:::::: 10 seconds up");
   return (
     <>
-      <div className="container">
+      <div className="container-fluid">
         <div className="dashcard align-top">
           <div className="row">
             <div className="col-7">
