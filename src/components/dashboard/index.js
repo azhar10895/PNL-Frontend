@@ -44,11 +44,20 @@ const Dashboard = () => {
       // if (resData.length) {
       setData({ ...resData });
       // }
-      const time = resData[10942].lastTimeStamp;
-      console.log("time::::",time)
-
-      const session = sessionStorage.setItem("TimeStamp",time);
+      // const time = resData[10942].lastTimeStamp;
+      // console.log("time::::",time)
+      // const session = sessionStorage.setItem("TimeStamp",time);
       // setInterval(getPNL(time),5000);
+      // const TimeStamp = () => {
+      //   const [timeStamp, setTimeStamp] = useState('');
+        
+      //   useEffect(() => {
+      //     const time = setInterval(() => {
+      //       setTimeStamp(resData[10942].lastTimeStamp);    //Manual picking
+      //     }, 5000);
+      //     return () => clearInterval(time);
+      //   }, []);
+      // }
       console.log()
       console.log("API res", res, "typeof::::", typeof res);
     } catch (err) {
