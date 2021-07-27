@@ -255,7 +255,7 @@ const Dashboard = () => {
   // );
   return (
     <>
-      <div className="container">
+      <div className="container-fluid">
         <div className="dashcard align-top">
           <div className="row">
             <div className="col-7">
