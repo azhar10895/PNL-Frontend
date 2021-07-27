@@ -25,7 +25,7 @@ const Dashboard = () => {
   const getPNL = async (timeStamp = null) => {
     try {
       const token = localStorage.getItem("token");
-      console.log("token:::::",token)
+      console.log("token:::::", token);
       const header = {
         authorization: `Bearer ${token}`,
       };
@@ -37,8 +37,7 @@ const Dashboard = () => {
         header
       );
       // console.log("Session:::",session)
-      
-      
+
       const resData = res?.data?.res;
       console.log("Res data", resData);
       // if (resData.length) {
@@ -50,7 +49,7 @@ const Dashboard = () => {
       // setInterval(getPNL(time),5000);
       // const TimeStamp = () => {
       //   const [timeStamp, setTimeStamp] = useState('');
-        
+
       //   useEffect(() => {
       //     const time = setInterval(() => {
       //       setTimeStamp(resData[10942].lastTimeStamp);    //Manual picking
@@ -58,7 +57,7 @@ const Dashboard = () => {
       //     return () => clearInterval(time);
       //   }, []);
       // }
-      console.log()
+      console.log();
       console.log("API res", res, "typeof::::", typeof res);
     } catch (err) {
       console.log("Error in GetPNL", err);

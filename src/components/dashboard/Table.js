@@ -24,7 +24,7 @@ const Table = (props) => {
     useGlobalFilter,
     useSortBy
   );
-  // const { globalFilter } = state;
+  const { globalFilter } = state;
   return (
     <>
 

@@ -1,10 +1,5 @@
-import {createStore, applyMiddleware} from 'redux';
-import thunk from 'redux-thunk';
-import fetchReducer from './Reducers/fetchReducer'
+import { createStore, applyMiddleware } from 'redux'
+import { notesReducer } from './notesReducer'
+import thunk from 'redux-thunk'
 
-
-
-const store = createStore(fetchReducer, applyMiddleware(thunk))
-  
-export default store;
-  
+export const store = createStore(notesReducer, applyMiddleware(thunk))
