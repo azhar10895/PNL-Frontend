@@ -1,4 +1,5 @@
 import * as types from '../types';
+
 const initialState = null;
 const rootReducer = (state= initialState,{type, payload})=>{
     switch(type){
@@ -6,6 +7,10 @@ const rootReducer = (state= initialState,{type, payload})=>{
             const updatedState=initialState;
             return updatedState;
         }
+        case types.MERGE_API:{
+            const mergeState=initialState(payload);
+            return mergeState;
+        };
         default:
             return state;
     }
