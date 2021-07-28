@@ -53,6 +53,10 @@ const Dashboard = () => {
         dispatch(actions.fetchApi(resData));
         setData({ ...resData });
       }
+      else{
+        dispatch(actions.mergeApi(resData));
+      }
+
       // else {
       //   const incomingData = {
       //     BuyQty: Number(cachedRow.BuyQty) + Number(row.BuyQty),

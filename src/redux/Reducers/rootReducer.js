@@ -1,7 +1,12 @@
 import * as types from '../types/rootReducerType';
 
 const initialState = null;
+const mergeData=(state,payload)=>{
+    
+}
+
 const rootReducer = (state= initialState,{type, payload})=>{
+
     switch(type){
         case types.FETCH_API:{
             const updatedState = payload;
