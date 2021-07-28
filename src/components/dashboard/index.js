@@ -15,7 +15,7 @@ const Dashboard = () => {
   }, []);
   const timerId = useRef(null);
   const history = useHistory();
-  
+
   const [searchTerm, setSearchTerm] = useState("");
   // const [timerId, setTimerId] = useState(null);
   const logout = () => {
@@ -27,7 +27,11 @@ const Dashboard = () => {
   const getPNL = async (timeStamp = null) => {
     try {
       const token = localStorage.getItem("token");
-      console.log("token:::::", token);
+      console.log(
+        "----------------------------------------------------------------"
+      );
+      console.log("timestamp:", timeStamp);
+
       const header = {
         authorization: `Bearer ${token}`,
       };
@@ -38,12 +42,34 @@ const Dashboard = () => {
         req,
         header
       );
+      console.log("ressssssss::", res);
       const resData = res?.data?.res;
-      setData({ ...resData });
+      console.log("resData::", resData);
+      console.log("//////");
       const accountId = Object.keys(resData)[0];
       const time = resData[accountId].lastTimeStamp;
-      console.log("time::::", time);
+      if (timeStamp===null) {
+        setData({ ...resData });
+      } 
+      // else {
+      //   const incomingData = {
+      //     BuyQty: Number(cachedRow.BuyQty) + Number(row.BuyQty),
+      //     SellQty: Number(cachedRow.SellQty) + Number(row.SellQty),
+      //     TotalBuy: Number(cachedRow.TotalBuy) + Number(row.TotalBuy),
+      //     TotalSell: Number(cachedRow.TotalSell) + Number(row.TotalSell),
+      //     BuyAvgPrice: (Number(cachedRow.BuyAvgPrice) + Number(row.BuyAvgPrice)) / 2,
+      //     SellAvgPrice: (Number(cachedRow.SellAvgPrice) + Number(row.SellAvgPrice)) / 2,
+      //     LastFillPrice: Number(row.LastFillPrice),
+      //     LastTimeStamp: row.LastTimeStamp,
+      //   };
+      //   const updatedData = {...resData,...incomingData};
+      //   setData({...updatedData});
+      // }
+      console.log("iterating", { ...resData });
+      console.log("//////////////////");
+      console.log("after setData:::::", resData);
       sessionStorage.setItem("TimeStamp", time);
+      console.log("time::::", time);
       if (timerId.current === null) {
         console.log("timerid ", timerId.current);
         timerId.current = setInterval( () => getPNL(time), 5000);
@@ -83,15 +109,15 @@ const Dashboard = () => {
         <div>
           <div>
             {Object.keys(data)
-              // .filter(val => {
-              //   if(searchTerm===""){
-              //     return val
-              //   }
-              //   else if(val===searchTerm)
-              //   {
-              //     return val
-              //   }
-              // })
+              .filter(val => {
+                if(searchTerm===""){
+                  return val
+                }
+                else if(val===searchTerm)
+                {
+                  return val
+                }
+              })
               .map((account) => {
                 console.log("data[account]?.data", data[account]?.data);
                 return (
