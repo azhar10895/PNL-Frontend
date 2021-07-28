@@ -1,11 +1,13 @@
-import * as types from '../types';
+import * as types from '../types/rootReducerType';
 
-export const fetchApi=(payload)=>({
+ const fetchApi=(payload)=>({
     type:types.FETCH_API,
     payload,
 });
 
-export const mergeApi=(payload)=>({
+ const mergeApi=(payload)=>({
     type:types.MERGE_API,
     payload,
 });
+
+export { fetchApi , mergeApi};

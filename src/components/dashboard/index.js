@@ -7,7 +7,8 @@ import Table from "./Table";
 import { useState } from "react";
 import { useHistory } from "react-router-dom";
 import SearchTable from "./SearchTable";
-
+import { useDispatch } from "react-redux";
+import * as actions from "../../redux/actions/rootReducerAction";
 const Dashboard = () => {
   const [data, setData] = useState([]);
   useEffect(() => {
@@ -15,7 +16,7 @@ const Dashboard = () => {
   }, []);
   const timerId = useRef(null);
   const history = useHistory();
-
+  const dispatch = useDispatch();
   const [searchTerm, setSearchTerm] = useState("");
   // const [timerId, setTimerId] = useState(null);
   const logout = () => {
@@ -48,9 +49,10 @@ const Dashboard = () => {
       // console.log("//////");
       const accountId = Object.keys(resData)[0];
       const time = resData[accountId].lastTimeStamp;
-      if (timeStamp===null) {
+      if (timeStamp === null) {
+        dispatch(actions.fetchApi(resData));
         setData({ ...resData });
-      } 
+      }
       // else {
       //   const incomingData = {
       //     BuyQty: Number(cachedRow.BuyQty) + Number(row.BuyQty),
@@ -72,7 +74,7 @@ const Dashboard = () => {
       // console.log("time::::", time);
       if (timerId.current === null) {
         console.log("timerid ", timerId.current);
-        timerId.current = setInterval( () => getPNL(time), 5000);
+        timerId.current = setInterval(() => getPNL(time), 5000);
       }
     } catch (err) {
       console.log("Error in GetPNL", err);
@@ -109,13 +111,11 @@ const Dashboard = () => {
         <div>
           <div>
             {Object.keys(data)
-              .filter(val => {
-                if(searchTerm===""){
-                  return val
-                }
-                else if(val===searchTerm)
-                {
-                  return val
+              .filter((val) => {
+                if (searchTerm === "") {
+                  return val;
+                } else if (val === searchTerm) {
+                  return val;
                 }
               })
               .map((account) => {
