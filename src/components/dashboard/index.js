@@ -27,9 +27,9 @@ const Dashboard = () => {
   const getPNL = async (timeStamp = null) => {
     try {
       const token = localStorage.getItem("token");
-      console.log(
-        "----------------------------------------------------------------"
-      );
+      // console.log(
+      //   "----------------------------------------------------------------"
+      // );
       console.log("timestamp:", timeStamp);
 
       const header = {
@@ -42,10 +42,10 @@ const Dashboard = () => {
         req,
         header
       );
-      console.log("ressssssss::", res);
+      // console.log("ressssssss::", res);
       const resData = res?.data?.res;
-      console.log("resData::", resData);
-      console.log("//////");
+      // console.log("resData::", resData);
+      // console.log("//////");
       const accountId = Object.keys(resData)[0];
       const time = resData[accountId].lastTimeStamp;
       if (timeStamp===null) {
@@ -65,11 +65,11 @@ const Dashboard = () => {
       //   const updatedData = {...resData,...incomingData};
       //   setData({...updatedData});
       // }
-      console.log("iterating", { ...resData });
-      console.log("//////////////////");
-      console.log("after setData:::::", resData);
+      // console.log("iterating", { ...resData });
+      // console.log("//////////////////");
+      // console.log("after setData:::::", resData);
       sessionStorage.setItem("TimeStamp", time);
-      console.log("time::::", time);
+      // console.log("time::::", time);
       if (timerId.current === null) {
         console.log("timerid ", timerId.current);
         timerId.current = setInterval( () => getPNL(time), 5000);
