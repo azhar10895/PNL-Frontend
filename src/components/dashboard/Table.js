@@ -3,7 +3,7 @@ import React, { useMemo } from "react";
 import SearchTable from "./SearchTable.js";
 import { useTable, useSortBy, useGlobalFilter } from "react-table";
 import { COLUMNS } from "../dashboard/coloumns.js";
-import Sort from "./Sort.js";
+import Sort from "./SortIcons.js";
 const Table = (props) => {
   const columns = useMemo(() => COLUMNS, []);
   const data = useMemo(() => props.data, []);
@@ -20,8 +20,7 @@ const Table = (props) => {
     {
       columns,
       data,
-      disableSortBy: false,
-
+      // disableSortBy: false,
       initialState: {
         sortBy: [{ id: "LastTimeStamp", desc: true }],
         hiddenColumns: ["LastTimeStamp"],
@@ -42,13 +41,14 @@ const Table = (props) => {
                   <th
                     className="p-2"
                     {...column.getHeaderProps(
-                      column.Sorted ? column.getSortByToggleProps() : ""
-                    )}
+                      // column.Sorted ? column.getSortByToggleProps() : ""
+                    )
+                  }
                   >
                     {column.render("Header")}
-                    <span>
+                    {/* <span>
                       <Sort column={column} />
-                    </span>
+                    </span> */}
                   </th>
                 ))}
               </tr>
@@ -58,6 +58,7 @@ const Table = (props) => {
             {rows.map((row, i) => {
               // console.log("Row", row);
               prepareRow(row);
+              // console.log("Row", row);
               return (
                 <tr
                   style={{
