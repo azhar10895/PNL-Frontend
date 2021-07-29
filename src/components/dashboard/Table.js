@@ -39,7 +39,7 @@ const Table = (props) => {
               <tr {...headerGroup.getHeaderGroupProps()}>
                 {headerGroup.headers.map((column) => (
                   <th
-                    className="p-2"
+                    className="headers"
                     {...column.getHeaderProps(
                       // column.Sorted ? column.getSortByToggleProps() : ""
                     )
@@ -62,7 +62,7 @@ const Table = (props) => {
               return (
                 <tr
                   style={{
-                    backgroundColor:
+                    backgroundColor: 
                       Number(row?.original?.LastTimeStamp) >
                       Number(data?.prevTimeStamp)
                         ? "#264a9f36"
@@ -83,7 +83,7 @@ const Table = (props) => {
                               : "Red"
                             : "inherit",
                         }}
-                        className="p-2"
+                        // className=""
                       >
                         {cell.value === undefined ? "-" : cell.render("Cell")}
                       </td>
