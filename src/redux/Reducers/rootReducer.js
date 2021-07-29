@@ -14,6 +14,7 @@ const mergeData = (state, payload) => {
       const newDataObj = dataNew ? convertToObject(dataNew, "Token") : {};
       const updated = { ...oldDataObj, ...newDataObj };
       const sortedArr = Object.values(updated).sort((a, b) => {
+        //   console.log("a",a);
         return b?.LastTimeStamp - a?.LastTimeStamp;
       });
       console.log("SortedArr", sortedArr);

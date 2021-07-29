@@ -10,7 +10,7 @@ import SearchTable from "./SearchTable";
 import { useDispatch, useSelector } from "react-redux";
 import * as actions from "../../redux/actions/rootReducerAction";
 const Dashboard = () => {
-  // const [data, setData] = useState([]);
+  // const [new_data, setNewData] = useState([]);
   const pnlData = useSelector((state) => state.pnlData);
   useEffect(() => {
     getPNL();
@@ -25,7 +25,7 @@ const Dashboard = () => {
     history.push("/");
   };
   useEffect(() => {
-    setData({ ...pnlData });
+    setData({ ...pnlData }); //setting data
   }, [pnlData]);
 
   const getPNL = async (timeStamp = null) => {
@@ -46,6 +46,7 @@ const Dashboard = () => {
         req,
         header
       );
+      //  setData({...pnlData});
       const resData = res?.data?.res;
       const accountId = Object.keys(resData)[0];
       const time = resData[accountId].lastTimeStamp;
@@ -54,7 +55,7 @@ const Dashboard = () => {
         dispatch(actions.fetchApi(resData));
       } else {
         console.log("TimeStamp:::::");
-
+        console.log("mergeapiconsole", resData);
         dispatch(actions.mergeApi(resData));
       }
 
@@ -105,14 +106,16 @@ const Dashboard = () => {
                   }
                 })
                 .map((account) => {
-                  console.log("data[account]?.data", data[account]?.data);
+                  // console.log("data[account]?.data", data[account]?.data);
                   return (
                     <div>
                       <div className="dashcard">
                         <div className="accountID">A/C No: {account}</div>
-
-                        {/* {console.log("helllooooooooo", new_data[account])} */}
                         <div className="">
+                          {console.log(
+                            "data[account]?.data",
+                            data[account]?.data
+                          )}
                           {data[account]?.data?.length ? (
                             <Table data={data[account]?.data} key={account} />
                           ) : (
