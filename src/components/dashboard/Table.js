@@ -33,7 +33,7 @@ const Table = (props) => {
   return (
     <>
       <div className="fixedTable">
-        <table className="table-section" {...getTableProps()}>
+        <table className="table table-striped table-section" {...getTableProps()}>
           <thead>
             {headerGroups.map((headerGroup) => (
               <tr {...headerGroup.getHeaderGroupProps()}>
