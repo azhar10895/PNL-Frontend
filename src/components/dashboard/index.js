@@ -7,10 +7,11 @@ import Table from "./Table";
 import { useState } from "react";
 import { useHistory } from "react-router-dom";
 import SearchTable from "./SearchTable";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import * as actions from "../../redux/actions/rootReducerAction";
 const Dashboard = () => {
-  const [data, setData] = useState([]);
+  // const [data, setData] = useState([]);
+  const pnlData = useSelector((state) => state.pnlData);
   useEffect(() => {
     getPNL();
   }, []);
@@ -18,12 +19,14 @@ const Dashboard = () => {
   const history = useHistory();
   const dispatch = useDispatch();
   const [searchTerm, setSearchTerm] = useState("");
-  // const [timerId, setTimerId] = useState(null);
+  const [data, setData] = useState({});
   const logout = () => {
     localStorage.removeItem("token");
     history.push("/");
   };
-  useEffect(() => {}, [data]);
+  useEffect(() => {
+    setData({ ...pnlData });
+  }, [pnlData]);
 
   const getPNL = async (timeStamp = null) => {
     try {
@@ -43,37 +46,18 @@ const Dashboard = () => {
         req,
         header
       );
-      // console.log("ressssssss::", res);
       const resData = res?.data?.res;
-      // console.log("resData::", resData);
-      // console.log("//////");
       const accountId = Object.keys(resData)[0];
       const time = resData[accountId].lastTimeStamp;
       if (timeStamp === null) {
+        console.log("No TimeStamp:::::");
         dispatch(actions.fetchApi(resData));
-        setData({ ...resData });
-      }
-      else{
+      } else {
+        console.log("TimeStamp:::::");
+
         dispatch(actions.mergeApi(resData));
       }
 
-      // else {
-      //   const incomingData = {
-      //     BuyQty: Number(cachedRow.BuyQty) + Number(row.BuyQty),
-      //     SellQty: Number(cachedRow.SellQty) + Number(row.SellQty),
-      //     TotalBuy: Number(cachedRow.TotalBuy) + Number(row.TotalBuy),
-      //     TotalSell: Number(cachedRow.TotalSell) + Number(row.TotalSell),
-      //     BuyAvgPrice: (Number(cachedRow.BuyAvgPrice) + Number(row.BuyAvgPrice)) / 2,
-      //     SellAvgPrice: (Number(cachedRow.SellAvgPrice) + Number(row.SellAvgPrice)) / 2,
-      //     LastFillPrice: Number(row.LastFillPrice),
-      //     LastTimeStamp: row.LastTimeStamp,
-      //   };
-      //   const updatedData = {...resData,...incomingData};
-      //   setData({...updatedData});
-      // }
-      // console.log("iterating", { ...resData });
-      // console.log("//////////////////");
-      // console.log("after setData:::::", resData);
       sessionStorage.setItem("TimeStamp", time);
       // console.log("time::::", time);
       if (timerId.current === null) {
@@ -84,9 +68,6 @@ const Dashboard = () => {
       console.log("Error in GetPNL", err);
     }
   };
-
-  // setInterval(getPNL(new Date().getDate()),10000);
-  // console.log("Timee:::::: 10 seconds up");
   return (
     <>
       <div className="container-fluid">
@@ -114,33 +95,34 @@ const Dashboard = () => {
         </div>
         <div>
           <div>
-            {Object.keys(data)
-              .filter((val) => {
-                if (searchTerm === "") {
-                  return val;
-                } else if (val === searchTerm) {
-                  return val;
-                }
-              })
-              .map((account) => {
-                console.log("data[account]?.data", data[account]?.data);
-                return (
-                  <div>
-                    <div className="dashcard">
-                      <div className="accountID">A/C No: {account}</div>
+            {data &&
+              Object.keys(data)
+                .filter((val) => {
+                  if (searchTerm === "") {
+                    return val;
+                  } else if (val === searchTerm) {
+                    return val;
+                  }
+                })
+                .map((account) => {
+                  console.log("data[account]?.data", data[account]?.data);
+                  return (
+                    <div>
+                      <div className="dashcard">
+                        <div className="accountID">A/C No: {account}</div>
 
-                      {/* {console.log("helllooooooooo", new_data[account])} */}
-                      <div className="">
-                        {data[account]?.data?.length ? (
-                          <Table data={data[account]?.data} key={account} />
-                        ) : (
-                          "No Data to show"
-                        )}
+                        {/* {console.log("helllooooooooo", new_data[account])} */}
+                        <div className="">
+                          {data[account]?.data?.length ? (
+                            <Table data={data[account]?.data} key={account} />
+                          ) : (
+                            "No Data to show"
+                          )}
+                        </div>
                       </div>
                     </div>
-                  </div>
-                );
-              })}
+                  );
+                })}
           </div>
         </div>
       </div>

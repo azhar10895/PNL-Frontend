@@ -2,66 +2,71 @@ export const COLUMNS = [
   {
     Header: "Seg",
     accessor: "Seg",
-    Sorted : false,
+    Sorted: false,
   },
   {
     Header: "Symbol",
     accessor: "Token",
-    Sorted : true, 
+    Sorted: false,
   },
   {
     Header: "Expiry",
     accessor: "Expiry",
-    Sorted : false,
+    Sorted: false,
   },
   {
     Header: "Opt",
     accessor: "Opt",
-    Sorted : false,
+    Sorted: false,
   },
   {
     Header: "Strike",
     accessor: "Strike",
-    Sorted : false,
+    Sorted: false,
   },
   {
     Header: "BuyQty",
     accessor: "BuyQty",
-    Sorted : false,
+    Sorted: false,
   },
   {
     Header: "BuyAvgPrice",
     accessor: "BuyAvgPrice",
-    Sorted : false,
+    Sorted: false,
   },
   {
     Header: "SellQty",
     accessor: "SellQty",
-    Sorted : false,
+    Sorted: false,
   },
   {
     Header: "SellAvgPrice",
     accessor: "SellAvgPrice",
-    Sorted : false,
+    Sorted: false,
   },
   {
     Header: "NetQty",
     accessor: "TotalQty",
-    Sorted : false,
+    Sorted: false,
   },
   {
     Header: "GrossPNL",
     accessor: "GrossPNL",
-    Sorted : false,
+    Sorted: false,
   },
   {
     Header: "NetPNL",
     accessor: "NetPNL",
-    Sorted : false,
+    Sorted: false,
   },
   {
     Header: "LastFillPrice",
     accessor: "LastFillPrice",
     Sorted: false,
-  }
+  },
+  {
+    Header: "LastTimeStamp",
+    accessor: "LastTimeStamp",
+    Sorted: true,
+  },
 ];

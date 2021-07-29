@@ -20,14 +20,19 @@ const Table = (props) => {
     {
       columns,
       data,
+      disableSortBy: false,
+
+      initialState: {
+        sortBy: [{ id: "LastTimeStamp", desc: true }],
+        hiddenColumns: ["LastTimeStamp"],
+      },
     },
-    useGlobalFilter,
+    // useGlobalFilter,
     useSortBy
   );
   const { globalFilter } = state;
   return (
     <>
-
       <div className="fixedTable">
         <table className="table-section" {...getTableProps()}>
           <thead>
@@ -42,7 +47,7 @@ const Table = (props) => {
                   >
                     {column.render("Header")}
                     <span>
-                      <Sort column={column}/>
+                      <Sort column={column} />
                     </span>
                   </th>
                 ))}
@@ -51,9 +56,19 @@ const Table = (props) => {
           </thead>
           <tbody className="table-body" {...getTableBodyProps()}>
             {rows.map((row, i) => {
+              // console.log("Row", row);
               prepareRow(row);
               return (
-                <tr {...row.getRowProps()}>
+                <tr
+                  style={{
+                    backgroundColor:
+                      Number(row?.original?.LastTimeStamp) >
+                      Number(data?.prevTimeStamp)
+                        ? "#264a9f36"
+                        : "inherit",
+                  }}
+                  {...row.getRowProps()}
+                >
                   {row.cells.map((cell) => {
                     return (
                       <td
