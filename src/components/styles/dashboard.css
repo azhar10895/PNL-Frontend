@@ -47,9 +47,9 @@ th {
     width: 140px;
 }
 
-tr:nth-child(even) {
+/* tr:nth-child(even) {
     background-color: white;
-}
+} */
 
 td {
     font-size: 17px;
