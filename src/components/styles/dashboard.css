@@ -17,28 +17,31 @@
   width: auto;
   display: block;
   overflow-y: scroll;
+  margin-top: 30px;
 }
 
 table {
-  border-top: 1px solid black;
+  border-top: 1px solid black
 }
 
 th {
   position: sticky;
   top: 0;
   font-size: 17px;
-  font-weight: 600;
-  color: #3b5aa4;
+  font-weight: 550;
+  color: white;
   text-align: center;
-  background-color: #ebecf0;
+  background-color: #4a5f94;
   border: 1px solid #b2b4b6;
   width: 140px;
+  
+
 }
 
 td {
   font-size: 17px;
   text-align: center;
-  font-weight: 500;
+  font-weight: 400;
   border: 1px solid #b2b4b6;
 }
 
