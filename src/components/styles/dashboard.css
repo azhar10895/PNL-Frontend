@@ -12,6 +12,7 @@
 
 .accountID {
     margin-top: 12px;
+    margin-left: 5px;
 }
 
 .table-section {
@@ -22,7 +23,7 @@
     display: block;
     overflow-y: scroll;
     overflow-x: hidden;
-    margin-top: 30px;
+    margin-top: 20px;
     margin-bottom: 30px;
 }
 
@@ -58,6 +59,8 @@ td {
 }
 
 
+
+
 /* tbody {
     overflow-y: scroll !important;
 } */
@@ -66,6 +69,7 @@ td {
 /* .table-Header{
     position: sticky;
 } */
+
 
 
 /* .DashboardContainer {
