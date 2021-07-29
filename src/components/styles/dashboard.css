@@ -42,16 +42,15 @@ th {
     font-weight: 550;
     color: white;
     text-align: center;
-    background-color: #4a5f94;
+    background-color: #4a5f94 !important;
     border: 1px black;
     width: 140px;
     /* padding: 10px; */
 }
 
-
-tr:nth-child(even) {
+/* tr:nth-child(even) {
     background-color: white;
-}
+} */
 
 td {
     font-size: 17px;
