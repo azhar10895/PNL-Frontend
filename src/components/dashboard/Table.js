@@ -1,13 +1,18 @@
 import { render } from "@testing-library/react";
-import React, { useMemo } from "react";
+import React, { useMemo, useState, useEffect } from "react";
 import SearchTable from "./SearchTable.js";
 import { useTable, useSortBy, useGlobalFilter } from "react-table";
 import { COLUMNS } from "../dashboard/coloumns.js";
 import Sort from "./SortIcons.js";
 const Table = (props) => {
   const columns = useMemo(() => COLUMNS, []);
-  const data = useMemo(() => props.data, []);
-
+  const propData = useMemo(() => props.data, {});
+  const data = propData?.data;
+  // const [data,setData] = useState([])
+  // useEffect(()=>{
+  //   setData({...new_data})
+  // },[new_data]);
+  console.log("data",propData)
   const {
     getTableProps,
     getTableBodyProps,
@@ -64,7 +69,7 @@ const Table = (props) => {
                   style={{
                     backgroundColor:
                       Number(row?.original?.LastTimeStamp) >
-                      Number(data?.prevTimeStamp)
+                      Number(propData?.prevTimeStamp)
                         ? "#264a9f36"
                         : "inherit",
                   }}

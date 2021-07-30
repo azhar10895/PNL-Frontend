@@ -67,6 +67,6 @@ export const COLUMNS = [
   {
     Header: "LastTimeStamp",
     accessor: "LastTimeStamp",
-    Sorted: true,
+    Sorted: false,
   },
 ];

@@ -14,7 +14,7 @@ const Dashboard = () => {
   const pnlData = useSelector((state) => state.pnlData);
   useEffect(() => {
     getPNL();
-  }, []);
+  },[]);      //component only mounting
   const timerId = useRef(null);
   const history = useHistory();
   const dispatch = useDispatch();
@@ -25,7 +25,10 @@ const Dashboard = () => {
     history.push("/");
   };
   useEffect(() => {
-    setData({ ...pnlData }); //setting data
+    // return () => {
+    //   setData({ ...pnlData });
+    // } 
+    setData({ ...pnlData });
   }, [pnlData]);
 
   const getPNL = async (timeStamp = null) => {
@@ -54,16 +57,18 @@ const Dashboard = () => {
         console.log("No TimeStamp:::::");
         dispatch(actions.fetchApi(resData));
       } else {
+        // setData({ ...pnlData });
         console.log("TimeStamp:::::");
         console.log("mergeapiconsole", resData);
         dispatch(actions.mergeApi(resData));
       }
-
+     
       sessionStorage.setItem("TimeStamp", time);
       // console.log("time::::", time);
       if (timerId.current === null) {
         console.log("timerid ", timerId.current);
         timerId.current = setInterval(() => getPNL(time), 5000);
+        // setInterval(()=> window.location.reload(false),5000);
       }
     } catch (err) {
       console.log("Error in GetPNL", err);
@@ -98,26 +103,27 @@ const Dashboard = () => {
           <div>
             {data &&
               Object.keys(data)
-                .filter((val) => {
-                  if (searchTerm === "") {
-                    return val;
-                  } else if (val === searchTerm) {
-                    return val;
-                  }
-                })
+                // .filter((val) => {
+                //   if (searchTerm === "") {
+                //     return val;
+                //   } else if (val === searchTerm) {
+                //     return val;
+                //   }
+                // })
                 .map((account) => {
                   // console.log("data[account]?.data", data[account]?.data);
+                  console.log("data2",data);
                   return (
                     <div>
                       <div className="dashcard">
                         <div className="accountID">A/C No: {account}</div>
                         <div className="">
-                          {console.log(
+                          {/* {console.log(
                             "data[account]?.data",
                             data[account]?.data
-                          )}
+                          )} */}
                           {data[account]?.data?.length ? (
-                            <Table data={data[account]?.data} key={account} />
+                            <Table data={data[account]} key={account} />
                           ) : (
                             "No Data to show"
                           )}
