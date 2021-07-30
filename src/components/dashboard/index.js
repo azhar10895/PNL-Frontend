@@ -9,6 +9,12 @@ import { useHistory } from "react-router-dom";
 import SearchTable from "./SearchTable";
 import { useDispatch, useSelector } from "react-redux";
 import * as actions from "../../redux/actions/rootReducerAction";
+import Navbar from '../Nav/Navbar';
+import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
+
+
+
+
 const Dashboard = () => {
   // const [new_data, setNewData] = useState([]);
   const pnlData = useSelector((state) => state.pnlData);
@@ -72,6 +78,13 @@ const Dashboard = () => {
   return (
     <>
       <div className="container-fluid">
+      <Router>
+        <Navbar />
+        <Switch>
+          <Route exact path='/' exact component={Dashboard} />
+          
+        </Switch>
+      </Router>
         <div className="dashcard align-top">
           <div className="row">
             <div className="col-7">
@@ -88,9 +101,20 @@ const Dashboard = () => {
               {/* <SearchTable /> */}
             </div>
             <div className="col-2">
-              <h3 onClick={logout} className="float-end cursor-">
-                Logout
-              </h3>
+              {/* <DropdownLogout /> */}
+            
+            <h2><button type="button"  className="button float-end cursor-">
+     Logout
+  </button></h2>
+  {/* <div className="dropdownn">
+    <ul>
+      <li onClick={logout}>Logout</li>
+      <li>Option 2</li>
+      <li>Option 3</li>
+      <li>Option 4</li>
+    </ul>
+  </div> */}
+              
             </div>
           </div>
         </div>
