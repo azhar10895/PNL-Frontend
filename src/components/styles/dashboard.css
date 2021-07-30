@@ -12,6 +12,7 @@
 
 .accountID {
     margin-top: 12px;
+    margin-left: 5px;
 }
 
 .table-section {
@@ -22,7 +23,7 @@
     display: block;
     overflow-y: scroll;
     overflow-x: hidden;
-    margin-top: 30px;
+    margin-top: 20px;
     margin-bottom: 30px;
 }
 
@@ -41,14 +42,14 @@ th {
     font-weight: 550;
     color: white;
     text-align: center;
-    background-color: #4a5f94;
+    background-color: #4a5f94 !important;
     border: 1px black;
     width: 140px;
 }
 
-tr:nth-child(even) {
+/* tr:nth-child(even) {
     background-color: white;
-}
+} */
 
 td {
     font-size: 17px;
@@ -56,6 +57,8 @@ td {
     font-weight: 400;
     border: 1px solid #b2b4b6;
 }
+
+
 
 
 /* tbody {
@@ -66,6 +69,7 @@ td {
 /* .table-Header{
     position: sticky;
 } */
+
 
 
 /* .DashboardContainer {
