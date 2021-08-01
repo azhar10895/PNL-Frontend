@@ -10,6 +10,11 @@
     margin-bottom: 30px;
 }
 
+.my-accountHeader{
+    display: grid;
+    grid-template-columns: 1.5fr 0.5fr;
+}
+
 .accountID {
     margin-top: 12px;
     margin-left: 5px;

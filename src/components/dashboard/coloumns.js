@@ -69,4 +69,9 @@ export const COLUMNS = [
     accessor: "LastTimeStamp",
     Sorted: false,
   },
+  {
+    Header: "NetPosition",
+    accessor: "NetPosition",
+    Sorted : false,
+  }
 ];

@@ -25,6 +25,7 @@ const mergeData = (state, payload) => {
         data: [...sortedArr],
       };
     });
+    // console.log("final:::",finalObj);
     return finalObj;
   } catch (err) {
     console.log("Error in mergeData", err);

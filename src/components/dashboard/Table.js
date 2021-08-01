@@ -6,13 +6,15 @@ import { COLUMNS } from "../dashboard/coloumns.js";
 import Sort from "./SortIcons.js";
 const Table = (props) => {
   const columns = useMemo(() => COLUMNS, []);
-  const propData = useMemo(() => props.data, {});
+  const propData = props.data;
   const data = propData?.data;
+  const account = props.account;
   // const [data,setData] = useState([])
   // useEffect(()=>{
   //   setData({...new_data})
   // },[new_data]);
-  console.log("data",propData)
+  console.log("coloums",columns);
+  console.log("data", propData);
   const {
     getTableProps,
     getTableBodyProps,
@@ -27,28 +29,42 @@ const Table = (props) => {
       data,
       // disableSortBy: false,
       initialState: {
-        sortBy: [{ id: "LastTimeStamp", desc: true }],
+        // sortBy: [{ id: "LastTimeStamp", desc: true }],
         hiddenColumns: ["LastTimeStamp"],
       },
     },
-    // useGlobalFilter,
+    useGlobalFilter,
     useSortBy
   );
+
+  console.log("data::::::::::::::::::", data);
   const { globalFilter } = state;
   return (
     <>
+      <div className="my-accountHeader">
+        <div className="accountID">A/C No: {account}</div>
+        <div>
+          <SearchTable
+            filter={globalFilter}
+            setFilter={setGlobalFilter}
+          />
+        </div>
+      </div>
       <div className="fixedTable">
-        <table className="table table-striped table-section" {...getTableProps()}>
+        <table
+          className="table table-striped table-section"
+          {...getTableProps()}
+        >
           <thead>
             {headerGroups.map((headerGroup) => (
               <tr {...headerGroup.getHeaderGroupProps()}>
                 {headerGroup.headers.map((column) => (
                   <th
                     className="p-2"
-                    {...column.getHeaderProps(
+                    {...column
+                      .getHeaderProps
                       // column.Sorted ? column.getSortByToggleProps() : ""
-                    )
-                  }
+                      ()}
                   >
                     {column.render("Header")}
                     {/* <span>

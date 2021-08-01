@@ -9,12 +9,13 @@ import { useHistory } from "react-router-dom";
 import SearchTable from "./SearchTable";
 import { useDispatch, useSelector } from "react-redux";
 import * as actions from "../../redux/actions/rootReducerAction";
+import Searchable from "react-searchable/lib/Searchable";
 const Dashboard = () => {
   // const [new_data, setNewData] = useState([]);
   const pnlData = useSelector((state) => state.pnlData);
   useEffect(() => {
     getPNL();
-  },[]);      //component only mounting
+  }, []); //component only mounting
   const timerId = useRef(null);
   const history = useHistory();
   const dispatch = useDispatch();
@@ -27,9 +28,13 @@ const Dashboard = () => {
   useEffect(() => {
     // return () => {
     //   setData({ ...pnlData });
-    // } 
+    // }
     setData({ ...pnlData });
-  }, [pnlData]);
+  }, [pnlData]);     //componentDidUpdate
+
+  // const predicate = (data, query) =>
+  //   Object.keys(data).includes(query) || Object.values(data).includes(query);
+
 
   const getPNL = async (timeStamp = null) => {
     try {
@@ -59,10 +64,10 @@ const Dashboard = () => {
       } else {
         // setData({ ...pnlData });
         console.log("TimeStamp:::::");
-        console.log("mergeapiconsole", resData);
+        // console.log("mergeapiconsole", resData);
         dispatch(actions.mergeApi(resData));
       }
-     
+
       sessionStorage.setItem("TimeStamp", time);
       // console.log("time::::", time);
       if (timerId.current === null) {
@@ -90,7 +95,6 @@ const Dashboard = () => {
                   setSearchTerm(e.target.value);
                 }}
               />
-              {/* <SearchTable /> */}
             </div>
             <div className="col-2">
               <h3 onClick={logout} className="float-end cursor-">
@@ -99,6 +103,17 @@ const Dashboard = () => {
             </div>
           </div>
         </div>
+        {/* <div>
+          <Searchable items={data} predicate={predicate}>
+            {({ items, query, handleChange }) => (
+              <>
+                <input type="text" onChange={handleChange} value={query} />
+
+           
+              </>
+            )}
+          </Searchable>
+        </div> */}
         <div>
           <div>
             {data &&
@@ -112,18 +127,18 @@ const Dashboard = () => {
                 // })
                 .map((account) => {
                   // console.log("data[account]?.data", data[account]?.data);
-                  console.log("data2",data);
+                  console.log("data2", data);
                   return (
                     <div>
                       <div className="dashcard">
-                        <div className="accountID">A/C No: {account}</div>
+                       
                         <div className="">
                           {/* {console.log(
                             "data[account]?.data",
                             data[account]?.data
                           )} */}
                           {data[account]?.data?.length ? (
-                            <Table data={data[account]} key={account} />
+                            <Table data={data[account]} account={account} key={account} />
                           ) : (
                             "No Data to show"
                           )}
@@ -134,7 +149,7 @@ const Dashboard = () => {
                 })}
           </div>
         </div>
-      </div>
+      </div>  
     </>
   );
 };
