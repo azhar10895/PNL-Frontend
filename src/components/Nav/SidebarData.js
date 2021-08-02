@@ -9,5 +9,11 @@ export const SidebarData = [{
         icon: < AiIcons.AiFillHome / > ,
         cName: 'nav-text'
     },
+    {
+        title: 'Trades',
+        path: '/trades',
+        icon: < AiIcons.AiFillSignal / > ,
+        cName: 'nav-text'
+    }
 
 ];

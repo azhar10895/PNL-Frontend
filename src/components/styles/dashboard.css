@@ -10,6 +10,10 @@
     margin-bottom: 30px;
 }
 
+.Logout {
+    color: #4a5f94;
+}
+
 .my-accountHeader {
     display: grid;
     grid-template-columns: 1.5fr 0.5fr;

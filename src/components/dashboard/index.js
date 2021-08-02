@@ -115,7 +115,7 @@ const Dashboard = () => {
               {/* <DropdownLogout /> */}
 
 <div class="dropdown">
-  <h2><span>Logout</span></h2>
+  <h2><span className="Logout">Logout</span></h2>
   <div className="dropdown-content float-end cursor-pointer">
   <ul>
      

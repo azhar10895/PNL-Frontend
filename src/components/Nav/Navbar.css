@@ -5,8 +5,13 @@
 }
 
 .navbar {
-    background-image: linear-gradient(to bottom right, #f1f5f8, white);
+    background-image: none;
 }
+
+
+/* element.style {
+    color: #060b26;
+}(used to set the colour of the sidebar icon but not working) */
 
 .nav-menu {
     background-color: #060b26;
@@ -46,6 +51,11 @@
     padding: 0 16px;
     border-radius: 4px;
 }
+
+
+/* element.style {
+    color: black;
+} */
 
 .nav-text a:hover {
     background-color: #1a83ff;
