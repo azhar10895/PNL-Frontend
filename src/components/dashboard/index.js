@@ -48,9 +48,6 @@ const Dashboard = () => {
   const getPNL = async (timeStamp = null) => {
     try {
       const token = localStorage.getItem("token");
-      // console.log(
-      //   "----------------------------------------------------------------"
-      // );
       console.log("timestamp:", timeStamp);
 
       const header = {
