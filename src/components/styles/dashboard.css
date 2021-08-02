@@ -10,14 +10,15 @@
     margin-bottom: 30px;
 }
 
-.my-accountHeader{
+.my-accountHeader {
     display: grid;
     grid-template-columns: 1.5fr 0.5fr;
 }
+
 .dropdownn {
-    /* position: absolute;
+    position: absolute;
     top: 100%;
-    left: 0; */
+    left: 0;
     width: 300px;
     z-index: 2;
     border: 1px solid rgba(0, 0, 0, 0.04);
@@ -37,6 +38,25 @@ li {
 li:hover {
     background-color: rgba(0, 0, 0, 0.14);
     cursor: pointer;
+}
+
+.dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #f9f9f9;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+    padding: 12px 16px;
+    z-index: 1;
+}
+
+.dropdown:hover .dropdown-content {
+    display: block;
 }
 
 .accountID {
