@@ -3,134 +3,55 @@ import Select from "react-select";
 import Tables from "./Tables.js";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "../styles/Trades.css";
-import axios from 'axios';
+import axios from "axios";
+import { postApiCallWithHeaders } from "../../utils/axios";
+import { API_URLS } from "../../config";
 
 const Trades = () => {
-  const data = {};
-  // const [data, setData] = useState([]);
-  // const data = {
-  //   account1: [
-  //     {
-  //       BuyAvgPrice: "280700000.78",
-  //       BuyQty: "2",
-  //       GrossPNL: 143375,
-  //       LastFillPrice: 85,
-  //       LastTimeStamp: "1304176443004645797",
-  //     },
-  //     {
-  //       BuyAvgPrice: "280700000.78",
-  //       BuyQty: "2",
-  //       GrossPNL: 143375,
-  //       LastFillPrice: 85,
-  //       LastTimeStamp: "1304176443004645797",
-  //     },
-  //     {
-  //       BuyAvgPrice: "280700000.78",
-  //       BuyQty: "2",
-  //       GrossPNL: 143375,
-  //       LastFillPrice: 85,
-  //       LastTimeStamp: "1304176443004645797",
-  //     },
-  //     {
-  //       BuyAvgPrice: "280700000.78",
-  //       BuyQty: "2",
-  //       GrossPNL: 143375,
-  //       LastFillPrice: 85,
-  //       LastTimeStamp: "1304176443004645797",
-  //     },
-  //     {
-  //       BuyAvgPrice: "280700000.78",
-  //       BuyQty: "2",
-  //       GrossPNL: 143375,
-  //       LastFillPrice: 85,
-  //       LastTimeStamp: "1304176443004645797",
-  //     },
-  //     {
-  //       BuyAvgPrice: "280700000.78",
-  //       BuyQty: "2",
-  //       GrossPNL: 143375,
-  //       LastFillPrice: 85,
-  //       LastTimeStamp: "1304176443004645797",
-  //     },
-  //     {
-  //       BuyAvgPrice: "280700000.78",
-  //       BuyQty: "2",
-  //       GrossPNL: 143375,
-  //       LastFillPrice: 85,
-  //       LastTimeStamp: "1304176443004645797",
-  //     },
-  //     {
-  //       BuyAvgPrice: "280700000.78",
-  //       BuyQty: "2",
-  //       GrossPNL: 143375,
-  //       LastFillPrice: 85,
-  //       LastTimeStamp: "1304176443004645797",
-  //     },
-  //     {
-  //       BuyAvgPrice: "280700000.78",
-  //       BuyQty: "2",
-  //       GrossPNL: 143375,
-  //       LastFillPrice: 85,
-  //       LastTimeStamp: "1304176443004645797",
-  //     },
-  //     {
-  //       BuyAvgPrice: "280700000.78",
-  //       BuyQty: "2",
-  //       GrossPNL: 143375,
-  //       LastFillPrice: 85,
-  //       LastTimeStamp: "1304176443004645797",
-  //     },
-  //     {
-  //       BuyAvgPrice: "280700000.78",
-  //       BuyQty: "2",
-  //       GrossPNL: 143375,
-  //       LastFillPrice: 85,
-  //       LastTimeStamp: "1304176443004645797",
-  //     },
-  //     {
-  //       BuyAvgPrice: "280700000.78",
-  //       BuyQty: "2",
-  //       GrossPNL: 143375,
-  //       LastFillPrice: 85,
-  //       LastTimeStamp: "1304176443004645797",
-  //     },
-  //   ],
-  //   account3: [
-  //     {
-  //       BuyAvgPrice: "280700000.78",
-  //       BuyQty: "1",
-  //     },
-  //     {
-  //       BuyAvgPrice: "280700000.78",
-  //       BuyQty: "1",
-  //     },
-  //   ],
-  //   account4: [
-  //     {
-  //       BuyAvgPrice: "280700000.78",
-  //       BuyQty: "1",
-  //     },
-  //     {
-  //       BuyAvgPrice: "280700000.78",
-  //       BuyQty: "1",
-  //     },
-      
-  //   ]
-  // };
+  const url = "http://3.108.174.21:3000/trades/get-accounts";
+  const [accounts, setAccounts] = useState([]);
+  useEffect(() => {
+    axios.get(url).then((response) => {
+      setAccounts(response.data.res);
+    });
+  }, [url]);
 
-  const accounts = Object.keys(data);
-  const accountsList = [];
-  accounts.forEach((account) => {
+  const [data, setData] = useState([]);
+  console.log(accounts);
+  const getTrades = async (account) => {
+    const res = await postApiCallWithHeaders(
+      API_URLS.getTrades,
+      {},
+      { limit: 10, offset: 0, accountNo: account }
+    );
+    console.log("resss:::::::", res?.data?.res);
+    const data2 = res?.data?.res;
+    // setData({...data2});
+  };
+
+  const hello = getTrades(10945);
+  hello.then(function(result){
+    console.log("result",result);
+  })
+  const getColumns = (account) => {
     const columns = [];
-    Object.keys(data[account][0]).forEach((item) => {
+    getTrades(account);
+    console.log(data);
+    Object.keys(data).forEach((item) => {
       columns.push({ Header: item, accessor: item });
     });
-    accountsList.push({
+    return columns;
+  };
+  const accountsData = [];
+  accounts.forEach((account) => {
+    console.log("hi");
+    const columns = getColumns(account);
+    accountsData.push({
       label: account,
-      value: <Tables data={data[account]} columns={columns} />,
+      value: account, //<Tables data={data[account]} columns={columns} />,
     });
   });
-  console.log(accountsList);
+  console.log("accountsData", accountsData);
 
   const [resultValue, handlerValue] = useState();
   const selectHandler = (event) => {
@@ -146,7 +67,7 @@ const Trades = () => {
           <div className="row select">
             <div className="col-12 my-col">
               <Select
-                options={accountsList}
+                options={accountsData}
                 onChange={selectHandler}
                 placeholder="Search Account...."
               />

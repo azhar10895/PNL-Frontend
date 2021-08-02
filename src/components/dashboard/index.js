@@ -29,9 +29,6 @@ const Dashboard = () => {
     history.push("/");
   };
   useEffect(() => {
-    // return () => {
-    //   setData({ ...pnlData });
-    // }
     setData({ ...pnlData });
   }, [pnlData]); //componentDidUpdate
 
@@ -111,25 +108,12 @@ const Dashboard = () => {
             <div className="col-2">
               {/* <DropdownLogout /> */}
 
-<div class="dropdown">
-  <h2><span>Logout</span></h2>
-  <div className="dropdown-content float-end cursor-pointer">
-  <ul>
-     
-      <li>Admin name</li>
-      <li>User profile</li>
-      <li>User history</li>
-      <li onClick={logout} className="cursor-pointer">Logout</li>
-    </ul>
-  </div>
-</div>
-
-              {/* <h2>
+              <h2>
                 <button type="button" className="button float-end cursor-">
                   Logout
                 </button>
               </h2>
-              <div className="dropdownn">
+              {/* <div className="dropdownn">
     <ul>
       <li onClick={logout}>Logout</li>
       <li>Option 2</li>
