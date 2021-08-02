@@ -94,7 +94,7 @@ const Dashboard = () => {
         <Router>
           <Navbar />
           <Switch>
-            <Route exact path="/" exact component={Dashboard} />
+            <Route exact path="/" component={Dashboard} />
           </Switch>
         </Router>
         <div className="dashcard align-top">
