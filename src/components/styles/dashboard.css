@@ -64,6 +64,16 @@ li:hover {
     margin-left: 5px;
 }
 
+.table-section::-webkit-scrollbar {
+    width: 10px;
+    height: 8px;
+    background-color: rgb(201, 194, 194); /* or add it to the track */
+  }
+
+.table-section::-webkit-scrollbar-thumb {
+    background: rgb(131, 128, 128);
+}
+
 .table-section {
     /* padding: 20px !important; */
     /* height: auto; */
