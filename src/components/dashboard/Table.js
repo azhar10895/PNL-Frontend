@@ -9,12 +9,9 @@ const Table = (props) => {
   const propData = props.data;
   const data = propData?.data;
   const account = props.account;
-  // const [data,setData] = useState([])
   // useEffect(()=>{
   //   setData({...new_data})
-  // },[new_data]);
-  console.log("coloums",columns);
-  console.log("data", propData);
+  // },[new_data]); 
   const {
     getTableProps,
     getTableBodyProps,
@@ -36,24 +33,23 @@ const Table = (props) => {
     useGlobalFilter,
     useSortBy
   );
+  const { globalFilter } = state;
+  // props.OnSavefilterProperties(globalFilter, setGlobalFilter);
 
   console.log("data::::::::::::::::::", data);
-  const { globalFilter } = state;
+
   return (
     <>
       <div className="my-accountHeader">
         <div className="accountID">A/C No: {account}</div>
         <div>
-          <SearchTable
-            filter={globalFilter}
-            setFilter={setGlobalFilter}
-          />
+          <SearchTable filter={globalFilter} setFilter={setGlobalFilter} />
         </div>
       </div>
       <div className="fixedTable">
         <table
           className="table table-striped table-section"
-          {...getTableProps()}
+    {...getTableProps()}
         >
           <thead>
             {headerGroups.map((headerGroup) => (

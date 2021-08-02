@@ -1,23 +1,22 @@
 .SearchBar input {
-    width: 50%;
-    /* border-radius: 10px */;
+    width: 90%;
+    border-radius: 10px;
     height: 35px;
-    border: 2px solid grey;
+    border: 2px dotted;
     border: 2px;
     margin-top: 3px;
 }
 
 .SearchBar input::-webkit-input-placeholder {
     font-weight: 700;
-    padding-left: 10px;
+    padding-left: 20px;
 }
 
 .SearchBar input,
 textarea:focus {
     /* color: $darkBlue; */
-    /* box-shadow: inset 3.5px 3.5px 6px rgba(7, 30, 84, 0.4), inset -3.5px -3.5px 6px #fff; */
+    box-shadow: inset 3.5px 3.5px 6px rgba(7, 30, 84, 0.4), inset -3.5px -3.5px 6px #fff;
     background: white;
-    border: 2px solid rgb(180, 177, 177);
     outline: none;
-    width: 70%;
+    width: 90%;
 }

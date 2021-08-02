@@ -10,6 +10,9 @@ import SearchTable from "./SearchTable";
 import { useDispatch, useSelector } from "react-redux";
 import * as actions from "../../redux/actions/rootReducerAction";
 import Searchable from "react-searchable/lib/Searchable";
+import Navbar from "../Nav/Navbar";
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+
 const Dashboard = () => {
   // const [new_data, setNewData] = useState([]);
   const pnlData = useSelector((state) => state.pnlData);
@@ -30,12 +33,18 @@ const Dashboard = () => {
     //   setData({ ...pnlData });
     // }
     setData({ ...pnlData });
-  }, [pnlData]);     //componentDidUpdate
+  }, [pnlData]); //componentDidUpdate
 
   // const predicate = (data, query) =>
   //   Object.keys(data).includes(query) || Object.values(data).includes(query);
 
-
+  // const saveFilterPropertiesHandler = (globalFilte, setGlobalFilte) => {
+  //   const globalFilter = globalFilte;
+  //   const setGlobalFilter = setGlobalFilte;
+  //   return [globalFilter, setGlobalFilter];
+  // };
+  // const globalFilter = saveFilterPropertiesHandler[0];
+  // const setGlobalFilter = saveFilterPropertiesHandler[1];
   const getPNL = async (timeStamp = null) => {
     try {
       const token = localStorage.getItem("token");
@@ -82,6 +91,12 @@ const Dashboard = () => {
   return (
     <>
       <div className="container-fluid">
+        <Router>
+          <Navbar />
+          <Switch>
+            <Route exact path="/" exact component={Dashboard} />
+          </Switch>
+        </Router>
         <div className="dashcard align-top">
           <div className="row">
             <div className="col-7">
@@ -97,9 +112,21 @@ const Dashboard = () => {
               />
             </div>
             <div className="col-2">
-              <h3 onClick={logout} className="float-end cursor-">
-                Logout
-              </h3>
+              {/* <DropdownLogout /> */}
+
+              <h2>
+                <button type="button" className="button float-end cursor-">
+                  Logout
+                </button>
+              </h2>
+              {/* <div className="dropdownn">
+    <ul>
+      <li onClick={logout}>Logout</li>
+      <li>Option 2</li>
+      <li>Option 3</li>
+      <li>Option 4</li>
+    </ul>
+  </div> */}
             </div>
           </div>
         </div>
@@ -127,18 +154,21 @@ const Dashboard = () => {
                 // })
                 .map((account) => {
                   // console.log("data[account]?.data", data[account]?.data);
-                  console.log("data2", data);
                   return (
                     <div>
                       <div className="dashcard">
-                       
                         <div className="">
                           {/* {console.log(
                             "data[account]?.data",
                             data[account]?.data
                           )} */}
                           {data[account]?.data?.length ? (
-                            <Table data={data[account]} account={account} key={account} />
+                            <Table
+                              data={data[account]}
+                              account={account}
+                              key={account}
+                              // OnSavefilterProperties = {saveFilterPropertiesHandler}
+                            />
                           ) : (
                             "No Data to show"
                           )}
@@ -149,7 +179,7 @@ const Dashboard = () => {
                 })}
           </div>
         </div>
-      </div>  
+      </div>
     </>
   );
 };

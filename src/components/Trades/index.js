@@ -981,26 +981,23 @@ const Trades = () => {
       {
         BuyAvgPrice: "280700000.78",
         BuyQty: "1",
-        GrossPNL: 143375,
-        LastFillPrice: 85,
-        LastTimeStamp: "1304176443004645797",
-        NetPNL: 143231.625,
-        NetPosition: 0,
-        SellAvgPrice: "2996.09",
-        SellQty: "133500",
-        Token: 35010,
-        TotalBuy: "315225000",
-        TotalQty: 267000,
-        TotalSell: "315368375",
       },
       {
         BuyAvgPrice: "280700000.78",
         BuyQty: "1",
-        GrossPNL: 143375,
-        LastFillPrice: 85,
-        LastTimeStamp: "1304176443004645797",
       },
     ],
+    account4: [
+      {
+        BuyAvgPrice: "280700000.78",
+        BuyQty: "1",
+      },
+      {
+        BuyAvgPrice: "280700000.78",
+        BuyQty: "1",
+      },
+      
+    ]
   };
 
   const accounts = Object.keys(data);
@@ -1025,7 +1022,7 @@ const Trades = () => {
     <>
       <div className="tradesBody">
         <div className="container my-con tradesHeading">
-          <div classname="middle">Trades</div>
+          <div className="middle">Trades</div>
         </div>
         <div className="container my-con">
           <div className="row select">

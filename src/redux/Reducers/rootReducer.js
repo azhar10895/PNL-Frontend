@@ -25,7 +25,7 @@ const mergeData = (state, payload) => {
         data: [...sortedArr],
       };
     });
-    // console.log("final:::",finalObj);
+    console.log("final:::",finalObj);
     return finalObj;
   } catch (err) {
     console.log("Error in mergeData", err);
@@ -49,13 +49,16 @@ const rootReducer = (state = initialState, { type, payload }) => {
   switch (type) {
     case types.FETCH_API: {
       const updatedState = payload;
+      console.log("fetch executed");
       return { ...updatedState };
     }
     case types.MERGE_API: {
       const mergeState = mergeData(state, payload);
+      console.log("merge executed");
       return { ...mergeState };
     }
     default:
+      console.log("default executed");
       return state;
   }
 };

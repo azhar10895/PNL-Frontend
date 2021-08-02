@@ -14,6 +14,30 @@
     display: grid;
     grid-template-columns: 1.5fr 0.5fr;
 }
+.dropdownn {
+    /* position: absolute;
+    top: 100%;
+    left: 0; */
+    width: 300px;
+    z-index: 2;
+    border: 1px solid rgba(0, 0, 0, 0.04);
+    box-shadow: 0 16px 24px 2px rgba(0, 0, 0, 0.14);
+}
+
+ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+li {
+    padding: 8px 12px;
+}
+
+li:hover {
+    background-color: rgba(0, 0, 0, 0.14);
+    cursor: pointer;
+}
 
 .accountID {
     margin-top: 12px;
@@ -53,6 +77,7 @@ th {
     /* padding: 10px; */
 }
 
+
 /* tr:nth-child(even) {
     background-color: white;
 } */
@@ -65,19 +90,14 @@ td {
 }
 
 
-tbody {
-    overflow-y: scroll;
-    overflow-x: hidden;
-    /* display: block;
-    max-height: calc(45vh); */
-    
-}
+/* tbody {
+    overflow-y: scroll !important;
+} */
 
 
 /* .table-Header{
     position: sticky;
 } */
-
 
 
 /* .DashboardContainer {
