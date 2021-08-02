@@ -10,6 +10,10 @@
     margin-bottom: 30px;
 }
 
+.collogout {
+    display: inline-flex;
+}
+
 .Logout {
     color: #4a5f94;
 }
@@ -27,8 +31,17 @@
     display: inline-block;
     z-index: 2;
     border: 1px solid rgba(0, 0, 0, 0.04);
-    box-shadow: 0 16px 24px 2px rgba(0, 0, 0, 0.14);
+    box-shadow: 1 16px 24px 2px rgba(0, 0, 0, 0.14);
+    border-radius: 30%;
 }
+
+
+/* .dropdown_elements {
+    margin-top: 2px;
+    padding: 5px;
+    display: block;
+    text-decoration: none;
+}(this will shift the dropdown elements of the logout to the right side) */
 
 ul {
     list-style: none;
@@ -40,13 +53,14 @@ li {
     padding: 4px 8px;
     font-weight: 400;
     color: #4a5f94;
-    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
 li:hover {
     background-color: rgba(0, 0, 0, 0.14);
     cursor: pointer;
 }
+
 
 /* .dropdown {
     position: relative;
@@ -75,8 +89,9 @@ li:hover {
 .table-section::-webkit-scrollbar {
     width: 10px;
     height: 8px;
-    background-color: rgb(201, 194, 194); /* or add it to the track */
-  }
+    background-color: rgb(201, 194, 194);
+    /* or add it to the track */
+}
 
 .table-section::-webkit-scrollbar-thumb {
     background: rgb(131, 128, 128);

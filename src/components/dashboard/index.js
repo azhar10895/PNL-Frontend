@@ -111,18 +111,21 @@ const Dashboard = () => {
                 }}
               />
             </div>
+            
             <div className="col-2">
-              {/* <DropdownLogout /> */}
+            
+              
 
 <div class="dropdown">
   <h2><span className="Logout">Logout</span></h2>
+{/* <h2><span className="glyphicon glyphicon-menu-down"><img src="https://static.vecteezy.com/system/resources/previews/002/318/271/non_2x/user-profile-icon-free-vector.jpg" className="rounded float-left img-fluid img-thumbnail" alt="userimage" width="40" height="40"/> Logout<img src="https://www.pngitem.com/pimgs/m/29-297801_bottom-down-arrow-vector-svg-png-icon-free.png" className="rounded float-left img-fluid img-thumbnail" alt="down"width="20" height="20" /></span></h2> */}
   <div className="dropdown-content float-end cursor-pointer">
   <ul>
      
       <li>Admin name</li>
       <li>User profile</li>
       <li>User history</li>
-      <li onClick={logout} className="cursor-pointer">Logout</li>
+      <li onClick={logout} className="dropdown_elements">Logout</li>
     </ul>
   </div>
 </div>
