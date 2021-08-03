@@ -11,10 +11,11 @@ import * as actions from "../../redux/actions/rootReducerAction";
 
 const Trades = () => {
   const [data, setData] = useState([]);
-
   const [accounts, setAccounts] = useState([]);
   const [columns, setColumns] = useState([]);
-
+  const [account, setAccount] = useState();
+  const [limit, setLimit] = useState(10);
+  const [pageNO, setPageNo] = useState(0);
   useEffect(() => {
     getAccounts();
   }, []);
@@ -31,15 +32,15 @@ const Trades = () => {
           })
         : [];
       setAccounts([...data]);
+      console.log("datasetAccounts", data);
     } catch (err) {}
   };
-
-  const getTrades = async (account) => {
+  const getTrades = async (account, limit = 10, offset = 0) => {
     try {
       const res = await postApiCall(
         API_URLS.getTrades,
         {},
-        { limit: 10, offset: 0, accountNo: account }
+        { limit: limit, offset: offset, accountNo: account }
       );
       const resData = res?.data?.res?.data;
       console.log("Res data", resData);
@@ -69,10 +70,24 @@ const Trades = () => {
     }
   };
 
-  const [resultValue, setResultValue] = useState();
   const selectHandler = (event) => {
-    setResultValue(event.value);
+    setAccount(event.value);
     getTrades(event.value);
+  };
+
+  console.log("account::::::::::::", account);
+
+  const limitHandler = (event) => {
+    setLimit(event.target.value !== "" ? Number(event.target.value) : 10);
+    getTrades(
+      account,
+      event.target.value !== "" ? Number(event.target.value) : 10,
+      pageNO
+    );
+  };
+  const pageHandler = (event) => {
+    setPageNo(Number(event.target.value - 1));
+    getTrades(account, limit, Number(event.target.value - 1));
   };
   return (
     <>
@@ -82,7 +97,7 @@ const Trades = () => {
         </div>
         <div className="my-con dashcard">
           <div className="row tradesContent">
-            <div className="col-12 my-col">
+            <div className="col-6 my-col">
               <Select
                 options={accounts}
                 onChange={selectHandler}
@@ -90,6 +105,21 @@ const Trades = () => {
                 // value={}
               />
             </div>
+            <div className="col-2">
+              <input
+                type="text"
+                onChange={pageHandler}
+                placeholder="Page No."
+              />
+            </div>
+            <div className="col-3">
+              <input
+                type="text"
+                onChange={limitHandler}
+                placeholder="No. of Trades"
+              />
+            </div>
+
             {/* <div className="col-12 my-col">{resultValue}</div> */}
           </div>
           <div className="row tradesContent">
