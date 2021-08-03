@@ -1,12 +1,13 @@
 import React, { useState } from "react";
 import { useTable } from "react-table";
 // import "bootstrap/dist/css/bootstrap.min.css";
+import "../styles/Trades.css";
 
 const Tables = (props) => {
   const data = props.data;
   const columns = props.columns;
-  console.log(data);
-  console.log("columns", columns);
+  console.log("data props::::::::::",data);
+  console.log("columns propssssssss", columns);
 
   const { getTableProps, getTableBodyProps, headerGroups, rows, prepareRow } =
     useTable({
@@ -16,8 +17,8 @@ const Tables = (props) => {
 
   return (
     <>
-      <div className="my-table">
-        <table {...getTableProps()}>
+      <div className="tradesTable">
+        <table {...getTableProps()} className="">
           <thead>
             {headerGroups.map((headerGroup) => (
               <tr {...headerGroup.getHeaderGroupProps()}>
@@ -36,7 +37,7 @@ const Tables = (props) => {
                 <tr {...row.getRowProps()}>
                   {row.cells.map((cell) => {
                     return (
-                      <td {...cell.getCellProps()} className="p-2">
+                      <td {...cell.getCellProps()} className="p-1">
                         {cell.render("Cell")}
                       </td>
                     );

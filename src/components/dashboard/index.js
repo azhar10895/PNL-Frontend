@@ -84,93 +84,83 @@ const Dashboard = () => {
   };
   return (
     <>
-      <div className="container-fluid">
-        <Router>
-          <Navbar />
-          <Switch>
-            <Route exact path="/" exact component={Dashboard} />
-          </Switch>
-        </Router>
-        <div className="dashcard align-top">
-          <div className="row">
-            <div className="col-7">
-              <h2 className="color-forHeadings text-left">Dashboard</h2>
-            </div>
-            <div className="col-3 SearchBar">
-              <input
-                className=""
-                placeholder="Search"
-                onChange={(e) => {
-                  setSearchTerm(e.target.value);
-                }}
-              />
-            </div>
-            <div className="col-2">
-              {/* <DropdownLogout /> */}
+      <div className="dashboardBody">
+        <div className="container-fluid">
+          <Router>
+            <Navbar />
+            <Switch>
+              <Route exact path="/" component={Dashboard} />
+            </Switch>
+          </Router>
+          <div className="dashcard align-top">
+            <div className="row">
+              <div className="col-7">
+                <h2 className="color-forHeadings text-left">Dashboard</h2>
+              </div>
+              <div className="col-3 SearchBar">
+                <input
+                  className=""
+                  placeholder="Search"
+                  onChange={(e) => {
+                    setSearchTerm(e.target.value);
+                  }}
+                />
+              </div>
+              <div className="col-2">
+                {/* <DropdownLogout /> */}
 
-              <h2>
-                <button type="button" className="button float-end cursor-">
-                  Logout
-                </button>
-              </h2>
-              {/* <div className="dropdownn">
-    <ul>
-      <li onClick={logout}>Logout</li>
-      <li>Option 2</li>
-      <li>Option 3</li>
-      <li>Option 4</li>
-    </ul>
-  </div> */}
+                <div class="dropdown">
+                  <h2>
+                    <span className="Logout">Logout</span>
+                  </h2>
+                  <div className="dropdown-content float-end cursor-pointer">
+                    <ul>
+                      <li>Admin name</li>
+                      <li>User profile</li>
+                      <li>User history</li>
+                      <li onClick={logout} className="cursor-pointer">
+                        Logout
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+
+              </div>
             </div>
           </div>
-        </div>
-        {/* <div>
-          <Searchable items={data} predicate={predicate}>
-            {({ items, query, handleChange }) => (
-              <>
-                <input type="text" onChange={handleChange} value={query} />
-
-           
-              </>
-            )}
-          </Searchable>
-        </div> */}
-        <div>
           <div>
-            {data &&
-              Object.keys(data)
-                // .filter((val) => {
-                //   if (searchTerm === "") {
-                //     return val;
-                //   } else if (val === searchTerm) {
-                //     return val;
-                //   }
-                // })
-                .map((account) => {
-                  // console.log("data[account]?.data", data[account]?.data);
-                  return (
-                    <div>
-                      <div className="dashcard">
-                        <div className="">
-                          {/* {console.log(
-                            "data[account]?.data",
-                            data[account]?.data
-                          )} */}
-                          {data[account]?.data?.length ? (
-                            <Table
-                              data={data[account]}
-                              account={account}
-                              key={account}
-                              // OnSavefilterProperties = {saveFilterPropertiesHandler}
-                            />
-                          ) : (
-                            "No Data to show"
-                          )}
+            <div>
+              {data &&
+                Object.keys(data)
+                  // .filter((val) => {
+                  //   if (searchTerm === "") {
+                  //     return val;
+                  //   } else if (val === searchTerm) {
+                  //     return val;
+                  //   }
+                  // })
+                  .map((account) => {
+                    // console.log("data[account]?.data", data[account]?.data);
+                    return (
+                      <div>
+                        <div className="dashcard">
+                          <div className="">
+                            {data[account]?.data?.length ? (
+                              <Table
+                                data={data[account]}
+                                account={account}
+                                key={account}
+                                // OnSavefilterProperties = {saveFilterPropertiesHandler}
+                              />
+                            ) : (
+                              "No Data to show"
+                            )}
+                          </div>
                         </div>
                       </div>
-                    </div>
-                  );
-                })}
+                    );
+                  })}
+            </div>
           </div>
         </div>
       </div>

@@ -1,5 +1,9 @@
-.select {
+.tradesContent {
   width: 100%;
+}
+
+.select{
+  width: 20%;
 }
 
 .my-col {
@@ -8,11 +12,20 @@
 
 
 
-.my-table table{
+/* .my-table table{
   width: 100%;
   background-color: #FFFFFF;
+} */
+.tradesTable{
+  /* max-height: calc(50vh); */
+  width: auto;
+  display: block;
+  /* overflow-y: scroll; */
+  overflow-x:auto;
+  margin-top: 20px;
+  margin-bottom: 30px;
+  background-color: #FFFFFF;
 }
-
 .tradesBody{
   width: 100%;
   background-color: white;
@@ -20,15 +33,21 @@
   height: 100%;
 }
 
+
+
 .my-con{
   margin-top: 30px;
   background-color: #F5F7FB;
   padding: 20px;
   border-radius: 15px;
 }
+.value{
+  width: 100%;
+}
 
 .tradesHeading{
-  font-size: 30px;
+  font-size: 20px;
   font-weight: 700;
-  text-align: center;
+  color: #264a9f;
+  padding-left: 30px;
 }

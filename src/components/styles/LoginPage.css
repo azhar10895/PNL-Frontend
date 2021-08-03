@@ -8,7 +8,7 @@ body {
     /* background: transparent
     linear-gradient(276deg, rgba(13, 53, 148, 0.898039), #35d3e1) 0 0 no-repeat
     padding-box; */
-    background: #f5f5f5;
+    /* background: #f5f5f5; */
     /* color: #fff; */
 }
 
@@ -57,8 +57,7 @@ input[type="password"],
 textarea:focus {
     /* color: $darkBlue; */
     padding-left: 15px;
-    box-shadow: inset 3.5px 3.5px 6px rgba(7, 30, 84, 0.4),
-  inset -3.5px -3.5px 6px #fff;
+    box-shadow: inset 3.5px 3.5px 6px rgba(7, 30, 84, 0.4), inset -3.5px -3.5px 6px #fff;
     background: transparent;
     outline: none;
 }
