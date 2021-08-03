@@ -3,4 +3,5 @@ export const API_URLS = {
   getPNL: "trades/get-pnl",
   getTrades: "trades/get-trades",
   login: "authentication/login",
+  getAccounts: "trades/get-accounts"
 };

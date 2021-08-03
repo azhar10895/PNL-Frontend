@@ -4,27 +4,36 @@ import Tables from "./Tables.js";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "../styles/Trades.css";
 import axios from "axios";
-import { postApiCall } from "../../utils/axios";
+import { getApiCall, postApiCall } from "../../utils/axios";
 import { API_URLS } from "../../config";
 import { useDispatch, useSelector } from "react-redux";
 import * as actions from "../../redux/actions/rootReducerAction";
 
 const Trades = () => {
-  const url = "http://3.108.174.21:3000/trades/get-accounts";
+  const [data, setData] = useState([]);
+
   const [accounts, setAccounts] = useState([]);
+  const [columns, setColumns] = useState([]);
+
   useEffect(() => {
-    axios.get(url).then((response) => {
-      setAccounts(response.data.res);
-    });
-  }, [url]);
-  const [data, setData] = useState({});
-  // useEffect(()=>{
-  //   accounts.forEach((account)=>{
-  //     console.log("account:::::::::::::::::",account);
-  //     getTrades(account);
-  //   })
-  // },[]);
-  console.log(accounts);
+    getAccounts();
+  }, []);
+
+  const getAccounts = async () => {
+    try {
+      const res = await getApiCall(API_URLS.getAccounts, {});
+      const data = res?.res
+        ? res?.res?.map((data) => {
+            return {
+              label: data,
+              value: data,
+            };
+          })
+        : [];
+      setAccounts([...data]);
+    } catch (err) {}
+  };
+
   const getTrades = async (account) => {
     try {
       const res = await postApiCall(
@@ -32,41 +41,38 @@ const Trades = () => {
         {},
         { limit: 10, offset: 0, accountNo: account }
       );
-      const resData = res?.data?.res;
-      // console.log("res::::::::::",resData);
-      data[account] = resData;
-      
+      const resData = res?.data?.res?.data;
+      console.log("Res data", resData);
+      if (resData?.length) {
+        const columns = getColumns(resData[0]);
+        console.log("Res data", resData);
+        setData([...resData]);
+        setColumns([...columns]);
+      }
     } catch (err) {
       console.log("Error in getTrades", err);
     }
   };
 
-  const accountsData = [];
-  accounts.forEach((account) => {
-    getTrades(account) //async;
-  });  
-  
-  accounts.forEach((account)=>{
-    const columns = [];
-    console.log("data",data);
-    // console.log("account Data::::", data[10942]);
-    if(data[account]!==undefined){
-      Object.keys(data[account].data[0]).forEach((item) => {
-        columns.push({ Header: item, accessor: item });
+  const getColumns = (row) => {
+    try {
+      const columns = Object.keys(row).map((item) => {
+        return {
+          Header: item,
+          accessor: item,
+        };
       });
+      return columns;
+    } catch (err) {
+      console.log("Error in getColumns", err);
+      return [];
     }
-      console.log("collll:::::", columns);
-      accountsData.push({
-        label: account,
-        value: <Tables data={(data[account]!==undefined)?data[account].data: []} columns={columns} />,
-      });
-  })
-  
+  };
 
-  console.log("accountsData", accountsData);
-  const [resultValue, handlerValue] = useState();
+  const [resultValue, setResultValue] = useState();
   const selectHandler = (event) => {
-    handlerValue(event.value);
+    setResultValue(event.value);
+    getTrades(event.value);
   };
   return (
     <>
@@ -78,12 +84,22 @@ const Trades = () => {
           <div className="row tradesContent">
             <div className="col-12 my-col">
               <Select
-                options={accountsData}
+                options={accounts}
                 onChange={selectHandler}
-                placeholder="Search Account...."
+                placeholder="Select Account"
+                // value={}
               />
             </div>
-            <div className="col-12 my-col">{resultValue}</div>
+            {/* <div className="col-12 my-col">{resultValue}</div> */}
+          </div>
+          <div className="row tradesContent">
+            <div className="col-12 my-col">
+              {data?.length ? (
+                <Tables data={data || []} columns={columns} />
+              ) : (
+                "No data found"
+              )}
+            </div>
           </div>
         </div>
       </div>
