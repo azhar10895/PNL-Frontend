@@ -14,6 +14,7 @@ import Navbar from "../Nav/Navbar";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import * as Icon from "react-bootstrap-icons";
 import { icons } from "react-icons/lib";
+import Trades from "../Trades";
 
 const Dashboard = () => {
   // const [new_data, setNewData] = useState([]);
@@ -97,6 +98,7 @@ const Dashboard = () => {
           <Navbar />
           <Switch>
             <Route exact path="/" component={Dashboard} />
+            <Route exact path ="/trades" component = {Trades}/>
           </Switch>
         </Router>
         <div className="dashcard align-top">
