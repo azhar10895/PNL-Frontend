@@ -136,19 +136,7 @@ const Dashboard = () => {
   </div>
 </div>
 
-              {/* <h2>
-                <button type="button" className="button float-end cursor-">
-                  Logout
-                </button>
-              </h2>
-              <div className="dropdownn">
-    <ul>
-      <li onClick={logout}>Logout</li>
-      <li>Option 2</li>
-      <li>Option 3</li>
-      <li>Option 4</li>
-    </ul>
-  </div> */}
+              
             </div>
           </div>
         </div>
