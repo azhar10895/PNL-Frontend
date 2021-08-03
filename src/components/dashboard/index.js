@@ -12,6 +12,8 @@ import * as actions from "../../redux/actions/rootReducerAction";
 import Searchable from "react-searchable/lib/Searchable";
 import Navbar from "../Nav/Navbar";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+import * as Icon from "react-bootstrap-icons";
+import { icons } from "react-icons/lib";
 
 const Dashboard = () => {
   // const [new_data, setNewData] = useState([]);
@@ -29,6 +31,9 @@ const Dashboard = () => {
     history.push("/");
   };
   useEffect(() => {
+    // return () => {
+    //   setData({ ...pnlData });
+    // }
     setData({ ...pnlData });
   }, [pnlData]); //componentDidUpdate
 
@@ -45,6 +50,9 @@ const Dashboard = () => {
   const getPNL = async (timeStamp = null) => {
     try {
       const token = localStorage.getItem("token");
+      // console.log(
+      //   "----------------------------------------------------------------"
+      // );
       console.log("timestamp:", timeStamp);
 
       const header = {
@@ -84,83 +92,110 @@ const Dashboard = () => {
   };
   return (
     <>
-      <div className="dashboardBody">
-        <div className="container-fluid">
-          <Router>
-            <Navbar />
-            <Switch>
-              <Route exact path="/" component={Dashboard} />
-            </Switch>
-          </Router>
-          <div className="dashcard align-top">
-            <div className="row">
-              <div className="col-7">
-                <h2 className="color-forHeadings text-left">Dashboard</h2>
-              </div>
-              <div className="col-3 SearchBar">
-                <input
-                  className=""
-                  placeholder="Search"
-                  onChange={(e) => {
-                    setSearchTerm(e.target.value);
-                  }}
-                />
-              </div>
-              <div className="col-2">
-                {/* <DropdownLogout /> */}
+      <div className="container-fluid">
+        <Router>
+          <Navbar />
+          <Switch>
+            <Route exact path="/" component={Dashboard} />
+          </Switch>
+        </Router>
+        <div className="dashcard align-top">
+          <div className="row">
+            <div className="col-7">
+              <h2 className="color-forHeadings text-left">Dashboard</h2>
+            </div>
+            <div className="col-3 SearchBar">
+              <input
+                className=""
+                placeholder="Search"
+                onChange={(e) => {
+                  setSearchTerm(e.target.value);
+                }}
+              />
+            </div>
 
-                <div class="dropdown">
-                  <h2>
-                    <span className="Logout">Logout</span>
-                  </h2>
-                  <div className="dropdown-content float-end cursor-pointer">
-                    <ul>
-                      <li>Admin name</li>
-                      <li>User profile</li>
-                      <li>User history</li>
-                      <li onClick={logout} className="cursor-pointer">
-                        Logout
-                      </li>
-                    </ul>
-                  </div>
+            <div className="col-2">
+              <div class="dropdown">
+                <h2>
+                  <span className="Logout">
+                    <Icon.PersonCircle />
+                    &nbsp;
+                    {/* <img src="https://static.vecteezy.com/system/resources/previews/002/318/271/non_2x/user-profile-icon-free-vector.jpg" className="img-fluid img-thumbnail" alt="userimage" width="50" height="50"/>  */}
+                    <Icon.CaretDownFill color="#4a5f94" size={20} />
+                  </span>
+                </h2>
+
+                <div className="dropdown-content float-end cursor-pointer">
+                  <ul>
+                    <li>
+                      <Icon.PersonFill size={25} />
+                      &nbsp;Admin Profile
+                    </li>
+                    <li>
+                      <Icon.Gear />
+                      &nbsp;Settings
+                    </li>
+                    <li>
+                      <Icon.ClockHistory />
+                      &nbsp;User history
+                    </li>
+                    <li onClick={logout} className="dropdown_elements">
+                      <Icon.BoxArrowRight />
+                      &nbsp;Logout
+                    </li>
+                  </ul>
                 </div>
-
               </div>
             </div>
           </div>
+        </div>
+        {/* <div>
+          <Searchable items={data} predicate={predicate}>
+            {({ items, query, handleChange }) => (
+              <>
+                <input type="text" onChange={handleChange} value={query} />
+
+           
+              </>
+            )}
+          </Searchable>
+        </div> */}
+        <div>
           <div>
-            <div>
-              {data &&
-                Object.keys(data)
-                  // .filter((val) => {
-                  //   if (searchTerm === "") {
-                  //     return val;
-                  //   } else if (val === searchTerm) {
-                  //     return val;
-                  //   }
-                  // })
-                  .map((account) => {
-                    // console.log("data[account]?.data", data[account]?.data);
-                    return (
-                      <div>
-                        <div className="dashcard">
-                          <div className="">
-                            {data[account]?.data?.length ? (
-                              <Table
-                                data={data[account]}
-                                account={account}
-                                key={account}
-                                // OnSavefilterProperties = {saveFilterPropertiesHandler}
-                              />
-                            ) : (
-                              "No Data to show"
-                            )}
-                          </div>
+            {data &&
+              Object.keys(data)
+                // .filter((val) => {
+                //   if (searchTerm === "") {
+                //     return val;
+                //   } else if (val === searchTerm) {
+                //     return val;
+                //   }
+                // })
+                .map((account) => {
+                  // console.log("data[account]?.data", data[account]?.data);
+                  return (
+                    <div>
+                      <div className="dashcard">
+                        <div className="">
+                          {/* {console.log(
+                            "data[account]?.data",
+                            data[account]?.data
+                          )} */}
+                          {data[account]?.data?.length ? (
+                            <Table
+                              data={data[account]}
+                              account={account}
+                              key={account}
+                              // OnSavefilterProperties = {saveFilterPropertiesHandler}
+                            />
+                          ) : (
+                            "No Data to show"
+                          )}
                         </div>
                       </div>
-                    );
-                  })}
-            </div>
+                    </div>
+                  );
+                })}
           </div>
         </div>
       </div>

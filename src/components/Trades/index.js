@@ -18,7 +18,6 @@ const Trades = () => {
     });
   }, [url]);
   const [data, setData] = useState({});
-  const [dataDef, setDataDef] = useState(false);
   // useEffect(()=>{
   //   accounts.forEach((account)=>{
   //     console.log("account:::::::::::::::::",account);
@@ -44,11 +43,7 @@ const Trades = () => {
 
   const accountsData = [];
   accounts.forEach((account) => {
-    getTrades(account) //async
-      .then(function (res) {
-        // setData({...res});
-        // data[account] = res;
-      });
+    getTrades(account) //async;
   });  
   
   accounts.forEach((account)=>{
