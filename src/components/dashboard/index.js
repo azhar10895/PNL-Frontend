@@ -128,7 +128,7 @@ const Dashboard = () => {
   <div className="dropdown-content float-end cursor-pointer">
   <ul>
      
-      <li><Icon.PersonFill/>&nbsp;Admin Profile</li>
+      <li><Icon.PersonFill size={25}/>&nbsp;Admin Profile</li>
       <li><Icon.Gear/>&nbsp;Settings</li>
       <li><Icon.ClockHistory/>&nbsp;User history</li>
       <li onClick={logout} className="dropdown_elements"><Icon.BoxArrowRight/>&nbsp;Logout</li>
