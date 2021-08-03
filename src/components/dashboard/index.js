@@ -129,7 +129,7 @@ const Dashboard = () => {
   <ul>
      
       <li><Icon.PersonFill/>&nbsp;Admin Profile</li>
-      <li><Icon.Gear/>&nbsp;Dashboard Settings</li>
+      <li><Icon.Gear/>&nbsp;Settings</li>
       <li><Icon.ClockHistory/>&nbsp;User history</li>
       <li onClick={logout} className="dropdown_elements"><Icon.BoxArrowRight/>&nbsp;Logout</li>
     </ul>
