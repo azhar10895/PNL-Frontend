@@ -94,19 +94,23 @@ const Dashboard = () => {
   return (
     <>
       <div className="container-fluid">
-        <Router>
-          <Navbar />
-          <Switch>
-            <Route exact path="/" component={Dashboard} />
-            <Route exact path ="/trades" component = {Trades}/>
-          </Switch>
-        </Router>
         <div className="dashcard align-top">
           <div className="row">
-            <div className="col-7">
+            <div className="col-1">
+              <div className="color-forHeadings threeLines">
+                <Router>
+                  <Navbar />
+                  <Switch>
+                    <Route exact path="/" component={Dashboard} />
+                    <Route exact path="/trades" component={Trades} />
+                  </Switch>
+                </Router>
+              </div>
+            </div>
+            <div className="col-6">
               <h2 className="color-forHeadings text-left">Dashboard</h2>
             </div>
-            <div className="col-3 SearchBar">
+            {/* <div className="col-3 SearchBar">
               <input
                 className=""
                 placeholder="Search"
@@ -114,9 +118,9 @@ const Dashboard = () => {
                   setSearchTerm(e.target.value);
                 }}
               />
-            </div>
+            </div> */}
 
-            <div className="col-2">
+            <div className="col-5 navbar navbar-expand-sm bg-none">
               <div class="dropdown">
                 <h2>
                   <span className="Logout">
