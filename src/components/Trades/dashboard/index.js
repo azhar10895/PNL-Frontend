@@ -93,24 +93,29 @@ const Dashboard = () => {
   };
   return (
     <>
+      {/* <div className="d-flex align-items-center"> */}
       <div className="container-fluid">
-        <div className="dashcard align-top">
+        <div className="dashcard">
           <div className="row">
-            <div className="col-1">
-              <div className="color-forHeadings threeLines">
-                <Router>
-                  <Navbar />
-                  <Switch>
-                    <Route exact path="/" component={Dashboard} />
-                    <Route exact path="/trades" component={Trades} />
-                  </Switch>
-                </Router>
+            <div className="container d-flex justify-content-between align-items-center">
+              <div className="col-1 nav navbar-nav d-flex justify-content-between mx-xl-5 text-center">
+                <div className=" col-1 threeLines">
+                  <Router>
+                    <Navbar />
+                    <Switch>
+                      <Route exact path="/" component={Dashboard} />
+                      <Route exact path="/trades" component={Trades} />
+                    </Switch>
+                  </Router>
+                </div>
               </div>
-            </div>
-            <div className="col-6">
-              <h2 className="color-forHeadings text-left">Dashboard</h2>
-            </div>
-            {/* <div className="col-3 SearchBar">
+              <div className="col-1 my-col-1 ">
+                <h2 className="DashcardHeading">Dashboard</h2>
+              </div>
+              <div className="col-9">
+
+              </div>
+              {/* <div className="col-3 SearchBar">
               <input
                 className=""
                 placeholder="Search"
@@ -120,36 +125,38 @@ const Dashboard = () => {
               />
             </div> */}
 
-            <div className="col-5 navbar navbar-expand-sm bg-none">
-              <div class="dropdown">
-                <h2>
-                  <span className="Logout">
-                    <Icon.PersonCircle />
-                    &nbsp;
-                    {/* <img src="https://static.vecteezy.com/system/resources/previews/002/318/271/non_2x/user-profile-icon-free-vector.jpg" className="img-fluid img-thumbnail" alt="userimage" width="50" height="50"/>  */}
-                    <Icon.CaretDownFill color="#4a5f94" size={20} />
-                  </span>
-                </h2>
+              <div className="col-1 arrowDropdown container d-flex justify-content-between align-items-center ">
+                <div class="dropdown navbar-nav ml-auto">
+                  
+                    <span className="Logout  ">
+                      {/* <Icon.PersonCircle />
+                      &nbsp; */}
+                      {/* <img src="https://static.vecteezy.com/system/resources/previews/002/318/271/non_2x/user-profile-icon-free-vector.jpg" className="img-fluid img-thumbnail" alt="userimage" width="50" height="50"/>  */}
+                      <Icon.CaretDownFill color="#FFFFFF" size={30} 
+     />
+                    </span>
+                  
 
-                <div className="dropdown-content float-end cursor-pointer">
-                  <ul>
-                    <li>
-                      <Icon.PersonFill size={25} />
-                      &nbsp;Admin Profile
-                    </li>
-                    <li>
-                      <Icon.Gear />
-                      &nbsp;Settings
-                    </li>
-                    <li>
-                      <Icon.ClockHistory />
-                      &nbsp;User history
-                    </li>
-                    <li onClick={logout} className="dropdown_elements">
-                      <Icon.BoxArrowRight />
-                      &nbsp;Logout
-                    </li>
-                  </ul>
+                  <div className="dropdown-content">
+                    <ul>
+                      <li>
+                        <Icon.PersonFill size={25} />
+                        &nbsp;Admin Profile
+                      </li>
+                      <li>
+                        <Icon.Gear />
+                        &nbsp;Settings
+                      </li>
+                      <li>
+                        <Icon.ClockHistory />
+                        &nbsp;User history
+                      </li>
+                      <li onClick={logout} className="dropdown_elements">
+                        <Icon.BoxArrowRight />
+                        &nbsp;Logout
+                      </li>
+                    </ul>
+                  </div>
                 </div>
               </div>
             </div>
@@ -181,7 +188,7 @@ const Dashboard = () => {
                   // console.log("data[account]?.data", data[account]?.data);
                   return (
                     <div>
-                      <div className="dashcard">
+                      <div className="dashcard-table">
                         <div className="">
                           {/* {console.log(
                             "data[account]?.data",
@@ -205,6 +212,7 @@ const Dashboard = () => {
           </div>
         </div>
       </div>
+      {/* </div> (div end of line 96)*/}
     </>
   );
 };

@@ -1,4 +1,26 @@
 .dashcard {
+    display: flex;
+    align-items: center;
+    /* overflow-y: scroll; */
+    padding: 5pxpx;
+    /* border-radius: 15px; */
+    border: none !important;
+    /* background-color: #fafafa;(This colour is also good is very light almost like white but not grey) */
+    background-color: rgb(0, 102, 167);
+    /* box-shadow: 3px 3px 6px #bfc3cf, -3px -3px 6px #fff;
+    background-image: linear-gradient(to bottom right, #eff0f3, #e5e6eb); */
+    /* width: calc(90vw);
+    /* margin: auto; */
+    margin-bottom: 40px;
+    /* margin-left: 35px; */
+    z-index: 997;
+    /* position: fixed; */
+    top: 0;
+    right: 0;
+    left: 0;
+}
+
+.dashcard-table {
     /* overflow-y: scroll; */
     padding: 25px;
     border-radius: 15px;
@@ -11,13 +33,25 @@
     margin-left: 35px;
 }
 
+*,
+ ::after,
+ ::before {
+    box-sizing: border-box;
+}
+
+.threeLines {
+    display: flex;
+}
+
 
 /* .threeLines {
     padding-top: 50px;
 } */
 
 .Logout {
-    color: #4a5f94;
+    /* color: #4a5f94; */
+    color: white;
+    font-family: "Open Sans", sans-serif;
     /* float: inline-end !important; */
 }
 
@@ -39,42 +73,76 @@
     text-decoration: none;
 }(this will shift the dropdown elements of the logout to the right side) */
 
-.col-6 {
-    padding-top: 15px;
+.DashcardHeading {
+    font-size: 30px;
+    /* display: flex !important; */
+    margin: 0;
+    padding: 0;
+    line-height: 1;
+    font-weight: 500;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    /* color: #4a5f94; */
+    color: white;
+    /* margin-right: auto!important; */
 }
 
-.col-2 {
+.my-col-1 {
+    /* padding-top: 15px; */
+    padding-inline-start: 0px;
+    float: left;
+    color: #4a5f94;
+    display: flex !important;
+    float: inline-start !important;
+    /* left: -150px; */
+}
+
+.arrowDropdown {
     padding-top: 15px;
     display: inline-flex !important;
     flex-wrap: end !important;
+    padding: 0rem 1.5rem;
 }
 
-ul {
+.dropdown-content ul {
     list-style: none;
     padding: 0;
     margin: 0;
 }
 
-li {
-    padding: 4px 8px;
-    font-weight: 400;
-    color: #4a5f94;
-    font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+.dropdown ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
 }
 
-li:hover {
+.dropdown-content li {
+    padding: 2px 5px;
+    font-weight: 400;
+    color: #4a5f94;
+    font-family: "Open Sans", sans-serif;
+}
+
+.dropdown li {
+    padding: 2px 5px;
+}
+
+.dropdown-content li:hover>ul {
     background-color: rgba(0, 0, 0, 0.14);
     cursor: pointer;
     list-style: none;
     margin: 0;
     padding: 2px 5px;
+    display: block;
+    position: relative;
+    top: -7px;
 }
 
 .dropdown-content li {
     padding: 10px;
     font-weight: 400;
     color: #4a5f94;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-family: "Open Sans", sans-serif;
     text-decoration: none;
     display: block;
 }
