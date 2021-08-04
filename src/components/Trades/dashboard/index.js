@@ -1,20 +1,20 @@
 import React, { useEffect, useRef } from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "../styles/dashboard.css";
-import { getApiCall, postApiCallWithHeaders } from "../../utils/axios";
-import { API_URLS } from "../../config";
+import { getApiCall, postApiCallWithHeaders } from "../../../utils/axios";
+import { API_URLS } from "../../../config";
 import Table from "./Table";
 import { useState } from "react";
 import { useHistory } from "react-router-dom";
 import SearchTable from "./SearchTable";
 import { useDispatch, useSelector } from "react-redux";
-import * as actions from "../../redux/actions/rootReducerAction";
+import * as actions from "../../../redux/actions/rootReducerAction";
 import Searchable from "react-searchable/lib/Searchable";
-import Navbar from "../Nav/Navbar";
+import Navbar from "../../Nav/Navbar";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import * as Icon from "react-bootstrap-icons";
 import { icons } from "react-icons/lib";
-import Trades from "../Trades";
+import Trades from "../TradesLogs";
 
 const Dashboard = () => {
   // const [new_data, setNewData] = useState([]);

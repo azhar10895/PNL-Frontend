@@ -4,13 +4,13 @@
     margin-top: 30px;
 }
 
-label {
+.loginBody label {
     font-weight: bold;
     display: flex;
     margin-bottom: 5px;
 }
 
-input::-webkit-input-placeholder {
+.loginBody input::-webkit-input-placeholder {
     font-size: 20px;
     line-height: 3;
     /* padding-left: 15px; */
@@ -20,9 +20,9 @@ input::-webkit-input-placeholder {
     opacity: 0.5;
 }
 
-input[type="text"],
-input[type="password"],
-textarea {
+.loginBody input[type="text"],
+.loginBody input[type="password"],
+.loginBody textarea {
     border-radius: 20px;
     /* color: $darkBlue; */
     opacity: 0.8;
@@ -39,9 +39,9 @@ textarea {
     width: 100%;
 }
 
-input[type="text"],
-input[type="password"],
-textarea:focus {
+.loginBody input[type="text"],
+.loginBody input[type="password"],
+.loginBody textarea:focus {
     /* color: $darkBlue; */
     padding-left: 15px;
     box-shadow: inset 3.5px 3.5px 6px rgba(7, 30, 84, 0.4), inset -3.5px -3.5px 6px #fff;
@@ -49,9 +49,9 @@ textarea:focus {
     outline: none;
 }
 
-input[type="text"],
-input[type="password"],
-textarea :hover {
+.loginBody input[type="text"],
+.loginBody input[type="password"],
+.loginBody textarea :hover {
     background: transparent;
 }
 

@@ -21,7 +21,7 @@ const mergeData = (state, payload) => {
       finalObj[accountNo] = {
         prevTimeStamp: state[accountNo]?.lastTimeStamp,
         lastTimeStamp:
-          payload[accountNo]?.lastTimeStamp || state[accountNo]?.lastTimeStamp,
+          (payload[accountNo]?.lastTimeStamp)?(payload[accountNo]?.lastTimeStamp): (state[accountNo]?.lastTimeStamp),
         data: [...sortedArr],
       };
     });

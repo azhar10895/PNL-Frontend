@@ -4,10 +4,10 @@ import Tables from "./Tables.js";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "../styles/Trades.css";
 import axios from "axios";
-import { getApiCall, postApiCall } from "../../utils/axios";
-import { API_URLS } from "../../config";
+import { getApiCall, postApiCall } from "../../../utils/axios";
+import { API_URLS } from "../../../config";
 import { useDispatch, useSelector } from "react-redux";
-import * as actions from "../../redux/actions/rootReducerAction";
+import * as actions from "../../../redux/actions/rootReducerAction";
 
 const Trades = () => {
   const [data, setData] = useState([]);
@@ -86,37 +86,50 @@ const Trades = () => {
     );
   };
   const pageHandler = (event) => {
-    setPageNo(Number(event.target.value - 1));
-    getTrades(account, limit, Number(event.target.value - 1));
+    setPageNo(event.target.value !== "" ? Number(event.target.value - 1) : 0);
+    getTrades(
+      account,
+      limit,
+      event.target.value !== "" ? Number(event.target.value - 1) : 0
+    );
+  };
+
+  const leftButtonHandler = () => {
+    if (pageNO) {
+      setPageNo(pageNO - 1);
+      getTrades(account, limit, pageNO - 1);
+    }
+  };
+
+  const rightButtonHandler = () => {
+    setPageNo(pageNO+1);
+    getTrades(account,limit,pageNO+1);
   };
   return (
     <>
       <div className="tradesBody">
-        <div className="container my-con tradesHeading dashcard">
-          <div>Trades</div>
+        <div className="my-con tradesHeading">
+          <div className="">Trade Logs</div>
+          <hr />
         </div>
+        
         <div className="my-con dashcard">
           <div className="row tradesContent">
-            <div className="col-6 my-col">
+            <div className="col-10 my-col">
               <Select
                 options={accounts}
                 onChange={selectHandler}
                 placeholder="Select Account"
+                className="select"
                 // value={}
               />
             </div>
-            <div className="col-2">
-              <input
-                type="text"
-                onChange={pageHandler}
-                placeholder="Page No."
-              />
-            </div>
-            <div className="col-3">
+
+            <div className="col-1 recordPerPage">
               <input
                 type="text"
                 onChange={limitHandler}
-                placeholder="No. of Trades"
+                placeholder="No. of Trades per page"
               />
             </div>
 
@@ -127,9 +140,27 @@ const Trades = () => {
               {data?.length ? (
                 <Tables data={data || []} columns={columns} />
               ) : (
-                "No data found"
+                <div className="h4 color-forHeadings">No data found</div>
               )}
             </div>
+          </div>
+          <div className="my-pagination color-forHeadings">
+            <button
+              style={{
+                color: pageNO !== 0 ? "#264a9f" : "black",
+                opacity: pageNO !== 0 ? "1" : "0",
+              }}
+              onClick={leftButtonHandler}
+            >
+              &laquo;
+            </button>
+            Page: &nbsp;
+            <input
+              type="text"
+              onChange={pageHandler}
+              placeholder={pageNO + 1}
+            />
+            <button onClick={rightButtonHandler}>&raquo;</button>
           </div>
         </div>
       </div>

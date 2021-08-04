@@ -18,7 +18,7 @@ const Tables = (props) => {
   return (
     <>
       <div className="tradesTable">
-        <table {...getTableProps()} className="">
+        <table {...getTableProps()} className="table table-striped">
           <thead>
             {headerGroups.map((headerGroup) => (
               <tr {...headerGroup.getHeaderGroupProps()}>
@@ -37,7 +37,7 @@ const Tables = (props) => {
                 <tr {...row.getRowProps()}>
                   {row.cells.map((cell) => {
                     return (
-                      <td {...cell.getCellProps()} className="p-1">
+                      <td {...cell.getCellProps()} className="p-2">
                         {cell.render("Cell")}
                       </td>
                     );

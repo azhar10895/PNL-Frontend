@@ -2,7 +2,7 @@ import { render } from "@testing-library/react";
 import React, { useMemo, useState, useEffect } from "react";
 import SearchTable from "./SearchTable.js";
 import { useTable, useSortBy, useGlobalFilter } from "react-table";
-import { COLUMNS } from "../dashboard/coloumns.js";
+import { COLUMNS } from "./coloumns.js";
 import Sort from "./SortIcons.js";
 const Table = (props) => {
   const columns = useMemo(() => COLUMNS, []);
