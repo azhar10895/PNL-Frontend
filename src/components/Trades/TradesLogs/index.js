@@ -113,7 +113,7 @@ const Trades = () => {
           <hr />
         </div>
         
-        <div className="my-con dashcard">
+        <div className="my-con dashcard-table">
           <div className="row tradesContent">
             <div className="col-10 my-col">
               <Select
