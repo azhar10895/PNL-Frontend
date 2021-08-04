@@ -4,16 +4,26 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import "./Trades/styles/dashboard.css";
 // import SearchTable from "./SearchTable";
 import Navbar from "./Nav/Navbar";
-import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+import { BrowserRouter as Router, Switch, Route, Redirect } from "react-router-dom";
 import * as Icon from "react-bootstrap-icons";
 import { icons } from "react-icons/lib";
 import Trades from "./Trades/TradesLogs/index";
 import Dashboard from "./Trades/dashboard";
+import { useHistory } from "react-router-dom";
 
 const NavigationEveryPage = (props) => {
   const pageName = props.pageName;
+  const history = useHistory();
+  const logout = () => {
+    localStorage.removeItem("token");
+    history.push("/");
+  };
+  const settingsHandler = () =>{
+    history.push("/settings")
+  }
     return (
         <>
+        <div className="container-fluid">
         {/* <div className="d-flex align-items-center"> */}
         <div className="dashcard">
           <div className="row">
@@ -58,7 +68,7 @@ const NavigationEveryPage = (props) => {
                         <Icon.PersonFill size={25} />
                         &nbsp;Admin Profile
                       </li>
-                      <li>
+                      <li onClick={settingsHandler}>
                         <Icon.Gear />
                         &nbsp;Settings
                       </li>
@@ -66,7 +76,7 @@ const NavigationEveryPage = (props) => {
                         <Icon.ClockHistory />
                         &nbsp;User history
                       </li>
-                      <li className="dropdown_elements">   
+                      <li className="dropdown_elements" onClick={logout}>   
                         <Icon.BoxArrowRight />
                         &nbsp;Logout
                       </li>
@@ -76,6 +86,7 @@ const NavigationEveryPage = (props) => {
               </div>
             </div>
           </div>
+        </div>
         </div>
         </>
     )

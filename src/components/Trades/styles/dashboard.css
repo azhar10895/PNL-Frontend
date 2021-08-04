@@ -1,15 +1,17 @@
 .dashcard {
+    margin-left: 0;
+    margin-right: 0;
     display: flex;
     align-items: center;
     /* overflow-y: scroll; */
-    padding: 5pxpx;
+    padding: 5px;
     /* border-radius: 15px; */
     border: none !important;
-    background-color: #fafafa;
+    /* background-color: #fafafa; */
     /* (This colour is also good is very light almost like white but not grey) */
     background-color: transparent;
-    /* box-shadow: 3px 3px 6px #bfc3cf, -3px -3px 6px #fff;
-    background-image: linear-gradient(to bottom right, #eff0f3, #e5e6eb); */
+    box-shadow: 3px 3px 6px #bfc3cf, -3px -3px 6px #fff;
+    background-image: linear-gradient(to bottom right, #eff0f3, #e5e6eb);
     /* width: calc(90vw);
     /* margin: auto; */
     margin-bottom: 40px;
