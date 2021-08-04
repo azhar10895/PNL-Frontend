@@ -6,7 +6,7 @@
   margin: auto;
 }
 .select {
-  width: 40%;
+  width: 70%;
 }
 
 .my-col {
@@ -46,7 +46,7 @@
 }
 
 .tradesTable table{
-  background-color:#F5F5F5;
+  background-color: white;
 }
 
 .tradesBody input::placeholder {
@@ -84,16 +84,42 @@ hr{
 }
 
 .recordPerPage {
-  float: right;
-  margin-top: 18px;
+  padding-left: 70%;
+  margin-top: 33px;
+  font-size: 17px;
+  color: #264a9f;
 }
 
-.recordPerPage input {
-  width: 200%;
-  outline: none;
-  height: 40px;
+.tradesContentItem{
+  display: grid;
+  grid-template-columns: 1fr 1fr;
 }
 
-.recordPerPage input::placeholder {
-  font-size: 15px;
+.tradesDropdown {
+  position: relative;
+  display: inline-block;
+}
+
+.tradesDropdownContent{
+  display: none;
+  position: absolute;
+  background-color: #f9f9f9;
+  min-width: 10px;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  padding: 12px 16px;
+  z-index: 1;
+  text-align: center;
+  margin-left: 60px;
+}
+
+.tradesDropdown:hover .tradesDropdownContent {
+  display: block;
+  background-color: #F5F5F5;
+}
+.tradesDropdownContent button{
+ outline: none;
+ border: none;
+ color: #264a9f;
+ background-color: #F5F5F5;
+ font-weight: 400;
 }

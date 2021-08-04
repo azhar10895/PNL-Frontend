@@ -78,6 +78,7 @@ const Trades = () => {
   console.log("account::::::::::::", account);
 
   const limitHandler = (event) => {
+    console.log(event.target.value)
     setLimit(event.target.value !== "" ? Number(event.target.value) : 10);
     getTrades(
       account,
@@ -85,6 +86,7 @@ const Trades = () => {
       pageNO
     );
   };
+
   const pageHandler = (event) => {
     setPageNo(event.target.value !== "" ? Number(event.target.value - 1) : 0);
     getTrades(
@@ -102,8 +104,8 @@ const Trades = () => {
   };
 
   const rightButtonHandler = () => {
-    setPageNo(pageNO+1);
-    getTrades(account,limit,pageNO+1);
+    setPageNo(pageNO + 1);
+    getTrades(account, limit, pageNO + 1);
   };
   return (
     <>
@@ -112,10 +114,10 @@ const Trades = () => {
           <div className="">Trade Logs</div>
           <hr />
         </div>
-        
+
         <div className="my-con dashcard-table">
-          <div className="row tradesContent">
-            <div className="col-10 my-col">
+          <div className="tradesContent tradesContentItem ">
+            <div className="select my-col">
               <Select
                 options={accounts}
                 onChange={selectHandler}
@@ -124,13 +126,32 @@ const Trades = () => {
                 // value={}
               />
             </div>
-
-            <div className="col-1 recordPerPage">
-              <input
-                type="text"
-                onChange={limitHandler}
-                placeholder="No. of Trades per page"
-              />
+            <div className="recordPerPage">
+              {account ? (
+                <div className="tradesDropdown">
+                  <p>
+                    Trades per Page{" "}
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="16"
+                      height="16"
+                      fill="currentColor"
+                      class="bi bi-caret-down-fill"
+                      viewBox="0 0 16 16"
+                    >
+                      <path d="M7.247 11.14 2.451 5.658C1.885 5.013 2.345 4 3.204 4h9.592a1 1 0 0 1 .753 1.659l-4.796 5.48a1 1 0 0 1-1.506 0z" />
+                    </svg>
+                  </p>
+                  <div className="tradesDropdownContent">
+                    <button value="10" onClick={limitHandler}>10</button><hr />
+                    <button value="15" onClick={limitHandler}>15</button><hr />
+                    <button value="20" onClick={limitHandler}>20</button><hr />
+                    <button value="25" onClick={limitHandler}>25</button>
+                  </div>
+                </div>
+              ) : (
+                ""
+              )}
             </div>
 
             {/* <div className="col-12 my-col">{resultValue}</div> */}
@@ -139,29 +160,35 @@ const Trades = () => {
             <div className="col-12 my-col">
               {data?.length ? (
                 <Tables data={data || []} columns={columns} />
-              ) : (
+              ) : account ? (
                 <div className="h4 color-forHeadings">No data found</div>
+              ) : (
+                ""
               )}
             </div>
           </div>
-          <div className="my-pagination color-forHeadings">
-            <button
-              style={{
-                color: pageNO !== 0 ? "#264a9f" : "black",
-                opacity: pageNO !== 0 ? "1" : "0",
-              }}
-              onClick={leftButtonHandler}
-            >
-              &laquo;
-            </button>
-            Page: &nbsp;
-            <input
-              type="text"
-              onChange={pageHandler}
-              placeholder={pageNO + 1}
-            />
-            <button onClick={rightButtonHandler}>&raquo;</button>
-          </div>
+          {account ? (
+            <div className="my-pagination color-forHeadings">
+              <button
+                style={{
+                  color: pageNO !== 0 ? "#264a9f" : "black",
+                  opacity: pageNO !== 0 ? "1" : "0",
+                }}
+                onClick={leftButtonHandler}
+              >
+                &laquo;
+              </button>
+              Page:&nbsp;
+              <input
+                type="text"
+                onChange={pageHandler}
+                placeholder={pageNO + 1}
+              />
+              <button onClick={rightButtonHandler}>&raquo;</button>
+            </div>
+          ) : (
+            ""
+          )}
         </div>
       </div>
     </>
