@@ -15,6 +15,7 @@ import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import * as Icon from "react-bootstrap-icons";
 import { icons } from "react-icons/lib";
 import Trades from "../TradesLogs";
+import NavigationEveryPage from "../../NavigationEveryPage";
 
 const Dashboard = () => {
   // const [new_data, setNewData] = useState([]);
@@ -93,9 +94,11 @@ const Dashboard = () => {
   };
   return (
     <>
-      {/* <div className="d-flex align-items-center"> */}
+      <div>
+      <NavigationEveryPage pageName="Dashboard" />
+      <div>
       <div className="container-fluid">
-        <div className="dashcard">
+        {/* <div className="dashcard">
           <div className="row">
             <div className="container d-flex justify-content-between align-items-center">
               <div className="col-1 nav navbar-nav d-flex justify-content-between mx-xl-5 text-center">
@@ -115,23 +118,13 @@ const Dashboard = () => {
               <div className="col-9">
 
               </div>
-              {/* <div className="col-3 SearchBar">
-              <input
-                className=""
-                placeholder="Search"
-                onChange={(e) => {
-                  setSearchTerm(e.target.value);
-                }}
-              />
-            </div> */}
+              
 
               <div className="col-1 arrowDropdown container d-flex justify-content-between align-items-center ">
                 <div class="dropdown navbar-nav ml-auto">
                   
                     <span className="Logout  ">
-                      {/* <Icon.PersonCircle />
-                      &nbsp; */}
-                      {/* <img src="https://static.vecteezy.com/system/resources/previews/002/318/271/non_2x/user-profile-icon-free-vector.jpg" className="img-fluid img-thumbnail" alt="userimage" width="50" height="50"/>  */}
+                      
                       <Icon.CaretDownFill color="#FFFFFF" size={30} 
      />
                     </span>
@@ -162,19 +155,9 @@ const Dashboard = () => {
             </div>
           </div>
         </div>
-        {/* <div>
-          <Searchable items={data} predicate={predicate}>
-            {({ items, query, handleChange }) => (
-              <>
-                <input type="text" onChange={handleChange} value={query} />
-
-           
-              </>
-            )}
-          </Searchable>
-        </div> */}
+       
         <div>
-          <div>
+          <div> */}
             {data &&
               Object.keys(data)
                 // .filter((val) => {
