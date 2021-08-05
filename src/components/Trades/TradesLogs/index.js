@@ -6,8 +6,7 @@ import "../styles/Trades.css";
 import axios from "axios";
 import { getApiCall, postApiCall } from "../../../utils/axios";
 import { API_URLS } from "../../../config";
-import { useDispatch, useSelector } from "react-redux";
-import * as actions from "../../../redux/actions/rootReducerAction";
+import NavigationEveryPage from "../../Nav/NavigationEveryPage";
 
 const Trades = () => {
   const [data, setData] = useState([]);
@@ -78,7 +77,7 @@ const Trades = () => {
   console.log("account::::::::::::", account);
 
   const limitHandler = (event) => {
-    console.log(event.target.value)
+    console.log(event.target.value);
     setLimit(event.target.value !== "" ? Number(event.target.value) : 10);
     getTrades(
       account,
@@ -110,9 +109,8 @@ const Trades = () => {
   return (
     <>
       <div className="tradesBody">
-        <div className="my-con tradesHeading">
-          <div className="">Trade Logs</div>
-          <hr />
+        <div className="">
+          <NavigationEveryPage pageName="Trade Logs" />
         </div>
 
         <div className="my-con dashcard-table">
@@ -143,10 +141,21 @@ const Trades = () => {
                     </svg>
                   </p>
                   <div className="tradesDropdownContent">
-                    <button value="10" onClick={limitHandler}>10</button><hr />
-                    <button value="15" onClick={limitHandler}>15</button><hr />
-                    <button value="20" onClick={limitHandler}>20</button><hr />
-                    <button value="25" onClick={limitHandler}>25</button>
+                    <button value="10" onClick={limitHandler}>
+                      10
+                    </button>
+                    <hr />
+                    <button value="15" onClick={limitHandler}>
+                      15
+                    </button>
+                    <hr />
+                    <button value="20" onClick={limitHandler}>
+                      20
+                    </button>
+                    <hr />
+                    <button value="25" onClick={limitHandler}>
+                      25
+                    </button>
                   </div>
                 </div>
               ) : (

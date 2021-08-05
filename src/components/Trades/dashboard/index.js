@@ -15,7 +15,7 @@ import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import * as Icon from "react-bootstrap-icons";
 import { icons } from "react-icons/lib";
 import Trades from "../TradesLogs";
-import NavigationEveryPage from "../../NavigationEveryPage";
+import NavigationEveryPage from "../../Nav/NavigationEveryPage";
 
 const Dashboard = () => {
   // const [new_data, setNewData] = useState([]);
@@ -33,28 +33,13 @@ const Dashboard = () => {
     history.push("/");
   };
   useEffect(() => {
-    // return () => {
-    //   setData({ ...pnlData });
-    // }
     setData({ ...pnlData });
   }, [pnlData]); //componentDidUpdate
 
-  // const predicate = (data, query) =>
-  //   Object.keys(data).includes(query) || Object.values(data).includes(query);
-
-  // const saveFilterPropertiesHandler = (globalFilte, setGlobalFilte) => {
-  //   const globalFilter = globalFilte;
-  //   const setGlobalFilter = setGlobalFilte;
-  //   return [globalFilter, setGlobalFilter];
-  // };
-  // const globalFilter = saveFilterPropertiesHandler[0];
-  // const setGlobalFilter = saveFilterPropertiesHandler[1];
   const getPNL = async (timeStamp = null) => {
     try {
       const token = localStorage.getItem("token");
-      // console.log(
-      //   "----------------------------------------------------------------"
-      // );
+
       console.log("timestamp:", timeStamp);
 
       const header = {
@@ -67,7 +52,7 @@ const Dashboard = () => {
         req,
         header
       );
-      //  setData({...pnlData});
+
       const resData = res?.data?.res;
       const accountId = Object.keys(resData)[0];
       const time = resData[accountId].lastTimeStamp;
@@ -75,14 +60,11 @@ const Dashboard = () => {
         console.log("No TimeStamp:::::");
         dispatch(actions.fetchApi(resData));
       } else {
-        // setData({ ...pnlData });
         console.log("TimeStamp:::::");
-        // console.log("mergeapiconsole", resData);
         dispatch(actions.mergeApi(resData));
       }
 
       sessionStorage.setItem("TimeStamp", time);
-      // console.log("time::::", time);
       if (timerId.current === null) {
         console.log("timerid ", timerId.current);
         timerId.current = setInterval(() => getPNL(time), 5000);
@@ -94,108 +76,45 @@ const Dashboard = () => {
   };
   return (
     <>
-      <div>
-      <NavigationEveryPage pageName="Dashboard" />
-      <div>
-      <div className="container-fluid">
-        {/* <div className="dashcard">
-          <div className="row">
-            <div className="container d-flex justify-content-between align-items-center">
-              <div className="col-1 nav navbar-nav d-flex justify-content-between mx-xl-5 text-center">
-                <div className=" col-1 threeLines">
-                  <Router>
-                    <Navbar />
-                    <Switch>
-                      <Route exact path="/" component={Dashboard} />
-                      <Route exact path="/trades" component={Trades} />
-                    </Switch>
-                  </Router>
-                </div>
-              </div>
-              <div className="col-1 my-col-1 ">
-                <h2 className="DashcardHeading">Dashboard</h2>
-              </div>
-              <div className="col-9">
-
-              </div>
-              
-
-              <div className="col-1 arrowDropdown container d-flex justify-content-between align-items-center ">
-                <div class="dropdown navbar-nav ml-auto">
-                  
-                    <span className="Logout  ">
-                      
-                      <Icon.CaretDownFill color="#FFFFFF" size={30} 
-     />
-                    </span>
-                  
-
-                  <div className="dropdown-content">
-                    <ul>
-                      <li>
-                        <Icon.PersonFill size={25} />
-                        &nbsp;Admin Profile
-                      </li>
-                      <li>
-                        <Icon.Gear />
-                        &nbsp;Settings
-                      </li>
-                      <li>
-                        <Icon.ClockHistory />
-                        &nbsp;User history
-                      </li>
-                      <li onClick={logout} className="dropdown_elements">
-                        <Icon.BoxArrowRight />
-                        &nbsp;Logout
-                      </li>
-                    </ul>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-       
+      <div className="dashboardPage">
         <div>
-          <div> */}
-            {data &&
-              Object.keys(data)
-                // .filter((val) => {
-                //   if (searchTerm === "") {
-                //     return val;
-                //   } else if (val === searchTerm) {
-                //     return val;
-                //   }
-                // })
-                .map((account) => {
-                  // console.log("data[account]?.data", data[account]?.data);
-                  return (
-                    <div>
-                      <div className="dashcard-table">
-                        <div className="">
-                          {/* {console.log(
+          <NavigationEveryPage pageName="Dashboard" />
+        </div>
+        <div className="container-fluid">
+          {data &&
+            Object.keys(data)
+              // .filter((val) => {
+              //   if (searchTerm === "") {
+              //     return val;
+              //   } else if (val === searchTerm) {
+              //     return val;
+              //   }
+              // })
+              .map((account) => {
+                return (
+                  <div>
+                    <div className="dashcard-table">
+                      <div className="">
+                        {/* {console.log(
                             "data[account]?.data",
                             data[account]?.data
                           )} */}
-                          {data[account]?.data?.length ? (
-                            <Table
-                              data={data[account]}
-                              account={account}
-                              key={account}
-                              // OnSavefilterProperties = {saveFilterPropertiesHandler}
-                            />
-                          ) : (
-                            "No Data to show"
-                          )}
-                        </div>
+                        {data[account]?.data?.length ? (
+                          <Table
+                            data={data[account]}
+                            account={account}
+                            key={account}
+                          />
+                        ) : (
+                          "No Data to show"
+                        )}
                       </div>
                     </div>
-                  );
-                })}
-          </div>
+                  </div>
+                );
+              })}
         </div>
       </div>
-      {/* </div> (div end of line 96)*/}
     </>
   );
 };

@@ -1,21 +1,25 @@
 import React, { useState } from 'react';
 import * as FaIcons from 'react-icons/fa';
 import * as AiIcons from 'react-icons/ai';
-import { Link } from 'react-router-dom';
+import { Link, Redirect, Route } from 'react-router-dom';
 import { SidebarData } from './SidebarData';
 import './Navbar.css';
 import { IconContext } from 'react-icons';
+import { useHistory } from "react-router-dom";
 
 
 function Navbar() {
+  const history = useHistory();
   const [sidebar, setSidebar] = useState(false);
-
+  const clickHandler = () =>{
+    history.push("/");
+  }
   const showSidebar = () => setSidebar(!sidebar);
 
   return (
     <>
       <IconContext.Provider value={{ color: '#4a5f94' }}>
-        <div className='navbar'>
+        <div className=''>
             
           <Link to='#' className='menu-bars'>
             <FaIcons.FaBars onClick={showSidebar} />
@@ -32,8 +36,9 @@ function Navbar() {
             </li>
             {SidebarData.map((item, index) => {
               return (
-                <li key={index} className={item.cName}>
+                <li key={index} className={item.cName}> 
                   <Link to={item.path}>
+                    {/* <Redirect to={item.path} /> */}
                     {item.icon}
                     <span>{item.title}</span>
                   </Link>

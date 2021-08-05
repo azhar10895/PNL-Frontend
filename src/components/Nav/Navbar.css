@@ -77,3 +77,26 @@
 span {
     margin-left: 16px;
 }
+
+.navigationPage{
+    display: grid;
+    grid-template-columns: 0.3fr 1fr 1fr;
+    width: 93%;
+}
+
+.navigationPageItem{
+    color: #4A5F94;
+    font-size: 29px;
+    font-weight: 500;
+    /* padding: 10px; */
+    vertical-align: middle;
+}
+
+.item-2{
+    margin-top: 7px;
+}
+
+.item-3{
+    padding-left: 90%;
+    margin-top: 7px;
+}
