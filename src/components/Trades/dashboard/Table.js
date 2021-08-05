@@ -36,7 +36,7 @@ const Table = (props) => {
   const { globalFilter } = state;
   // props.OnSavefilterProperties(globalFilter, setGlobalFilter);
 
-  console.log("data::::::::::::::::::", data);
+  // console.log("data::::::::::::::::::", data);
 
   return (
     <>

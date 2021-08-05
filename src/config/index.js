@@ -3,5 +3,7 @@ export const API_URLS = {
   getPNL: "trades/get-pnl",
   getTrades: "trades/get-trades",
   login: "authentication/login",
-  getAccounts: "trades/get-accounts"
+  getAccounts: "trades/get-accounts",
+  getBrokerage: "trades/get-brokerage",
+  setBrokerage: "trades/set-brokerage"
 };

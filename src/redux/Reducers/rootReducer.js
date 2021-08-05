@@ -12,12 +12,15 @@ const mergeData = (state, payload) => {
       const dataNew =
         payload && payload[accountNo]?.data ? payload[accountNo] : null;
       const newDataObj = dataNew ? convertToObject(dataNew, "Token") : {};
-      const updated = { ...oldDataObj, ...newDataObj };
+      const updated = {...oldDataObj};
+      Object.keys(newDataObj).forEach((token)=>{
+          updated[token] = newDataObj[token];
+      })
       const sortedArr = Object.values(updated).sort((a, b) => {
         //   console.log("a",a);
         return b?.LastTimeStamp - a?.LastTimeStamp;
       });
-      console.log("SortedArr", sortedArr);
+      // console.log("SortedArr", sortedArr);
       finalObj[accountNo] = {
         prevTimeStamp: state[accountNo]?.lastTimeStamp,
         lastTimeStamp:
@@ -25,7 +28,7 @@ const mergeData = (state, payload) => {
         data: [...sortedArr],
       };
     });
-    console.log("final:::",finalObj);
+    // console.log("final:::",finalObj);
     return finalObj;
   } catch (err) {
     console.log("Error in mergeData", err);
