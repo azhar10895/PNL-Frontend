@@ -105,29 +105,36 @@ return (
       <div className="container-fluid">
 
       <form onSubmit={formik.handleSubmit}>
-    <div className="AccountSelectofSetPage">
-      <Select
+    <div>
+      
+      <Select className="AccountSelectofSetPage"
         options={data}
         onChange={selectHandler}
         placeholder="Select Account"
       />
       
+      
     </div>
     <div className="SetBrokerageofSetPage">
-        <input placeholder="Set Brokerage value" 
+      <div className="EnterRatefield">
+        Enter the Current Brokerage Value
+      </div>
+      <div>
+        <input className="enterbrokerageinputbox" placeholder="Set Brokerage value" 
         onChange={formik.handleChange}
       onBlur={formik.handleBlur}
       value={formik.values.setBrokerageRate}
         name ="setBrokerageRate"
         />
+        </div>
         <div className="col-12">
             {formik.touched.setBrokerageRate && formik.errors.setBrokerageRate ? (
             <div className="error">{formik.errors.setBrokerageRate}</div>
             ): null}
         </div>
     </div>
-    <div className="button">
-        <button onClick={submitHandler}> Set </button>
+    <div className="">
+        <button className = "BrokerageSubmitButton" onClick={submitHandler}> Set Rate</button>
     </div>
     </form>
     </div>
