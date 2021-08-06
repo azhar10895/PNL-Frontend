@@ -29,7 +29,7 @@ const NavigationEveryPage = (props) => {
   };
   return (
     <>
-      <div className="container">
+      <div className="container-fluid">
         <div className="navigationPage">
           <div className="navigationPageItem">
             <div className="item-1">

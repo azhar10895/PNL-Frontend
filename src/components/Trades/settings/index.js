@@ -4,6 +4,8 @@ import { getApiCall, postApiCall } from "../../../utils/axios";
 import { API_URLS } from "../../../config/index";
 import Select from "react-select";
 import { ChevronCompactLeft } from "react-bootstrap-icons";
+import "../styles/settings.css";
+import NavigationEveryPage from "../../Nav/NavigationEveryPage";
 
 const Settings = () => {
   const [data, setData] = useState([]);
@@ -67,19 +69,26 @@ const Settings = () => {
 
   return (
     <>
-      <div className="select">
+    <div className="SettingsPage">
+     <div>
+          <NavigationEveryPage pageName="Settings" />
+        </div>
+        <div className="container-fluid">
+      <div className="AccountSelectofSetPage">
         <Select
           options={data}
           onChange={selectHandler}
           placeholder="Select Account"
         />
-        {value}
+        
       </div>
-      <div>
+      <div className="SetBrokerageofSetPage">
           <input placeholder="Set Brokerage value" onChange={brokerageRateHandler}/>
       </div>
-      <div>
-          <button onClick={submitHandler}> SetBrokerage </button>
+      <div className="button">
+          <button onClick={submitHandler}> Set </button>
+      </div>
+      </div>
       </div>
     </>
   );
