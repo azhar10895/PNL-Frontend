@@ -6,6 +6,7 @@ import Select from "react-select";
 import { ChevronCompactLeft } from "react-bootstrap-icons";
 import "../styles/settings.css";
 import NavigationEveryPage from "../../Nav/NavigationEveryPage";
+import { useFormik } from "formik";
 
 const Settings = () => {
   const [data, setData] = useState([]);
@@ -67,31 +68,72 @@ const Settings = () => {
     setBrokerage(account,Number(value));
   }
 
-  return (
-    <>
-    <div className="SettingsPage">
-     <div>
-          <NavigationEveryPage pageName="Settings" />
-        </div>
-        <div className="container-fluid">
-      <div className="AccountSelectofSetPage">
-        <Select
-          options={data}
-          onChange={selectHandler}
-          placeholder="Select Account"
+  const initialValues ={
+    select:" ",
+    setBrokerageRate :" ",
+};
+const onSubmit =(values) => {
+  
+  if(values?.select && values?.setBrokerageRate)
+  setBrokerage(account,Number(value))
+}
+const validate = (values) => {
+   let errors ={};
+   if(!values.select){
+       errors.select="Account is required";
+   }
+   if(!values.setBrokerageRate){
+       errors.setBrokerageRate="Brokerage rate is required";
+   }
+   return errors;
+};
+const formik =useFormik(
+   {
+       initialValues,
+       onSubmit,
+       validate,
+   }
+);
+
+
+return (
+  <>
+  <div className="SettingsPage">
+   <div>
+        <NavigationEveryPage pageName="Settings" />
+      </div>
+      <div className="container-fluid">
+
+      <form onSubmit={formik.handleSubmit}>
+    <div className="AccountSelectofSetPage">
+      <Select
+        options={data}
+        onChange={selectHandler}
+        placeholder="Select Account"
+      />
+      
+    </div>
+    <div className="SetBrokerageofSetPage">
+        <input placeholder="Set Brokerage value" 
+        onChange={formik.handleChange}
+      onBlur={formik.handleBlur}
+      value={formik.values.setBrokerageRate}
+        name ="setBrokerageRate"
         />
-        
-      </div>
-      <div className="SetBrokerageofSetPage">
-          <input placeholder="Set Brokerage value" onChange={brokerageRateHandler}/>
-      </div>
-      <div className="button">
-          <button onClick={submitHandler}> Set </button>
-      </div>
-      </div>
-      </div>
-    </>
-  );
+        <div className="col-12">
+            {formik.touched.setBrokerageRate && formik.errors.setBrokerageRate ? (
+            <div className="error">{formik.errors.setBrokerageRate}</div>
+            ): null}
+        </div>
+    </div>
+    <div className="button">
+        <button onClick={submitHandler}> Set </button>
+    </div>
+    </form>
+    </div>
+    </div>
+  </>
+);
 };
 
 export default Settings;
