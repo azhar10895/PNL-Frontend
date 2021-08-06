@@ -14,6 +14,13 @@ export const SidebarData = [{
         path: '/trades',
         icon: < AiIcons.AiFillSignal / > ,
         cName: 'nav-text'
+    },
+    
+    {
+        title: 'Settings',
+        path: '/settings',
+        icon: < AiIcons.AiTwotoneTool / > ,
+        cName: 'nav-text'
     }
 
 ];
