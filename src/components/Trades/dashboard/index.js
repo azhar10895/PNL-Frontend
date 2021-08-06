@@ -22,6 +22,10 @@ const Dashboard = () => {
   const pnlData = useSelector((state) => state.pnlData);
   useEffect(() => {
     getPNL();
+
+    return ()=>{
+      clearInterval(timerId.current);
+    };
   }, []); //component only mounting
   const timerId = useRef(null);
   const history = useHistory();

@@ -15,6 +15,7 @@ const Trades = () => {
   const [account, setAccount] = useState();
   const [limit, setLimit] = useState(10);
   const [pageNO, setPageNo] = useState(0);
+  // const [click, setClick] = useState(null)
   useEffect(() => {
     getAccounts();
   }, []);
@@ -34,12 +35,12 @@ const Trades = () => {
       console.log("datasetAccounts", data);
     } catch (err) {}
   };
-  const getTrades = async (account, limit = 10, offset = 0) => {
+  const getTrades = async (account, limit = 10, offset = 0,order=null) => {
     try {
       const res = await postApiCall(
         API_URLS.getTrades,
         {},
-        { limit: limit, offset: offset, accountNo: account }
+        { limit: limit, offset: offset, accountNo: account,order: order}
       );
       const resData = res?.data?.res?.data;
       console.log("Res data", resData);
@@ -69,6 +70,9 @@ const Trades = () => {
     }
   };
 
+  const sortHandler = (sort) =>{
+    getTrades(account,limit,pageNO, sort);
+  }
   const selectHandler = (event) => {
     setAccount(event.value);
     getTrades(event.value);
@@ -168,7 +172,7 @@ const Trades = () => {
           <div className="row tradesContent">
             <div className="col-12 my-col">
               {data?.length ? (
-                <Tables data={data || []} columns={columns} />
+                <Tables data={data || []} columns={columns} tradesSort={sortHandler}/>
               ) : account ? (
                 <div className="h4 color-forHeadings">No data found</div>
               ) : (

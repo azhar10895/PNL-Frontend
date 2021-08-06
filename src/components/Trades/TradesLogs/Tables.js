@@ -6,7 +6,7 @@ import "../styles/Trades.css";
 const Tables = (props) => {
   const data = props.data;
   const columns = props.columns;
-  console.log("data props::::::::::",data);
+  console.log("data props::::::::::", data);
   console.log("columns propssssssss", columns);
 
   const { getTableProps, getTableBodyProps, headerGroups, rows, prepareRow } =
@@ -14,6 +14,9 @@ const Tables = (props) => {
       columns,
       data,
     });
+  const sortHandler = () => {
+    props.tradesSort(-1);
+  };
 
   return (
     <>
@@ -21,10 +24,12 @@ const Tables = (props) => {
         <table {...getTableProps()} className="table table-striped">
           <thead>
             {headerGroups.map((headerGroup) => (
-              <tr {...headerGroup.getHeaderGroupProps()}>
+              <tr {...headerGroup.getHeaderGroupProps()} className="outer">
                 {headerGroup.headers.map((column) => (
                   <th className="p-2" {...column.getHeaderProps()}>
-                    {column.render("Header")}
+                    <button onClick={sortHandler} className="inner">
+                      {column.render("Header")}
+                    </button>
                   </th>
                 ))}
               </tr>
