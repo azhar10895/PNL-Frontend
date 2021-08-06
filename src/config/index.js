@@ -5,5 +5,5 @@ export const API_URLS = {
     login: "authentication/login",
     getAccounts: "trades/get-accounts",
     getBrokerage: "trades/get-brokerage",
-    setBrokerage: "trades/set-brokerage"
-};
+    setBrokerage: "trades/set-brokerage",
+}

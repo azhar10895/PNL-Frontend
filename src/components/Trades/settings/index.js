@@ -3,7 +3,7 @@ import axios from "axios";
 import { getApiCall, postApiCall } from "../../../utils/axios";
 import { API_URLS } from "../../../config/index";
 import Select from "react-select";
-import "../styles/select.css";
+import { ChevronCompactLeft } from "react-bootstrap-icons";
 
 const Settings = () => {
   const [data, setData] = useState([]);
@@ -51,12 +51,18 @@ const Settings = () => {
     // console.log(event.label);
     setAccount(event.label);
     setValue(event.value);
+    console.log("value" , value)
   };
 
   const brokerageRateHandler =(event) =>{
       console.log("account:::",account);
-      setBrokerage(account,Number(event.target.value));
+      setValue(event.target.value);
+    //   setBrokerag ChevronCompactLefte(account,Number(event.target.value));
     //   setValue(Number(event.target.value));
+  }
+  const submitHandler=()=>{
+      console.log("palak" , value);
+    setBrokerage(account,Number(value));
   }
 
   return (
@@ -71,6 +77,9 @@ const Settings = () => {
       </div>
       <div>
           <input placeholder="Set Brokerage value" onChange={brokerageRateHandler}/>
+      </div>
+      <div>
+          <button onClick={submitHandler}> SetBrokerage </button>
       </div>
     </>
   );
