@@ -37,6 +37,11 @@
 .tradesTable {
   display: block;
   overflow-x: auto;
+  overflow-y:auto;
+  border-top-left-radius: 10px !important;
+  border-top-right-radius: 10px !important;
+  border-bottom-left-radius: 10px !important;
+  border-bottom-right-radius: 10px !important;
 }
 .tradesBody {
   width: 100%;
