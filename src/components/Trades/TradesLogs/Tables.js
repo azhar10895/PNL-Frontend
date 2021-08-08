@@ -4,6 +4,7 @@ import { useTable } from "react-table";
 import "../styles/Trades.css";
 
 const Tables = (props) => {
+  const [click, setClick] = useState(0);
   const data = props.data;
   const columns = props.columns;
   console.log("data props::::::::::", data);
@@ -14,8 +15,22 @@ const Tables = (props) => {
       columns,
       data,
     });
-  const sortHandler = () => {
-    props.tradesSort(-1);
+  const sortHandler = (event) => {
+    if (click === 0) {
+      console.log("click:::::::::", click);
+
+      props.tradesSort(event.target.value, 1);
+      setClick(1);
+    } else if (click === 1) {
+      console.log("click:::::::::", click);
+      props.tradesSort(event.target.value, -1);
+      setClick(2);
+    } else {
+      console.log("click:::::::::", click);
+
+      props.tradesSort(event.target.value, null);
+      setClick(0);
+    }
   };
 
   return (
@@ -27,7 +42,11 @@ const Tables = (props) => {
               <tr {...headerGroup.getHeaderGroupProps()} className="outer">
                 {headerGroup.headers.map((column) => (
                   <th className="p-2" {...column.getHeaderProps()}>
-                    <button onClick={sortHandler} className="inner">
+                    <button
+                      onClick={sortHandler}
+                      className="inner"
+                      value={column.render("Header")}
+                    >
                       {column.render("Header")}
                     </button>
                   </th>

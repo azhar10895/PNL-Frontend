@@ -35,12 +35,12 @@ const Trades = () => {
       console.log("datasetAccounts", data);
     } catch (err) {}
   };
-  const getTrades = async (account, limit = 10, offset = 0,order=null) => {
+  const getTrades = async (account, limit = 10, offset = 0,orderBy= "",order=null) => {
     try {
       const res = await postApiCall(
         API_URLS.getTrades,
         {},
-        { limit: limit, offset: offset, accountNo: account,order: order}
+        { limit: limit, offset: offset, accountNo: account,orderBy: orderBy,order: order}
       );
       const resData = res?.data?.res?.data;
       console.log("Res data", resData);
@@ -70,8 +70,8 @@ const Trades = () => {
     }
   };
 
-  const sortHandler = (sort) =>{
-    getTrades(account,limit,pageNO, sort);
+  const sortHandler = (orderby, sort) =>{
+    getTrades(account,limit,pageNO,orderby, sort);
   }
   const selectHandler = (event) => {
     setAccount(event.value);

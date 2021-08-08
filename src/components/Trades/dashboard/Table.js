@@ -9,9 +9,10 @@ const Table = (props) => {
   const propData = props.data;
   const data = propData?.data;
   const account = props.account;
-  // useEffect(()=>{
-  //   setData({...new_data})
-  // },[new_data]); 
+  // const [newData, setNewData] = useState([]);
+  // useEffect(() => {
+  //   setNewData({ ...data });
+  // }, [data]);
   const {
     getTableProps,
     getTableBodyProps,
@@ -49,7 +50,7 @@ const Table = (props) => {
       <div className="fixedTable">
         <table
           className="table table-striped table-section"
-    {...getTableProps()}
+          {...getTableProps()}
         >
           <thead>
             {headerGroups.map((headerGroup) => (
