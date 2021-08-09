@@ -1,17 +1,40 @@
-    .AccountSelectofSetPage {
-        color: #4a5f94;
-        width: 50%;
-        padding: 2px;
-        border-radius: 5px;
-        margin-top: 30px;
-        margin-bottom: 30px;
-        border: 1px solid #c6cddf;
-        text-align: left;
-        border-radius: 0 5px 5px 0;
-        cursor: pointer;
-        font-size: 20px;
-    }
-    /* .AccountSelectofSetpage {
+.AccountSelectofSetPage {
+    color: #4a5f94;
+    width: 50%;
+    /* padding: 2px; */
+    border-radius: 5px;
+    /* margin-top: 30px; */
+    margin-bottom: 10px;
+    border: 1px solid #c6cddf;
+    text-align: left;
+    border-radius: 0 5px 5px 0;
+    cursor: pointer;
+    /* font-size: 20px; */
+}
+
+.setCard {
+    padding: 25px;
+    border-radius: 15px;
+    border: none !important;
+    box-shadow: 3px 3px 6px #bfc3cf, -3px -3px 6px #fff;
+    background-image: linear-gradient(to bottom right, #eff0f3, #e5e6eb);
+    width: calc(90vw);
+    margin: auto;
+    margin-bottom: 30px;
+    /* margin-left: 35px; */
+}
+
+.SelecttAccount {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+}
+
+.setContainer {
+    margin: 30px, 40px, 30px;
+}
+
+
+/* .AccountSelectofSetpage {
         display: flex;
         align-items: center;
         justify-content: center;
@@ -34,80 +57,119 @@
         letter-spacing: 2px;
         text-transform: uppercase;
     } */
-    
-    .SettingsPage {
-        width: 100vw;
-        display: flex;
-        display: block;
-        margin-top: 30px;
-        margin-bottom: 30px;
-    }
-    
-    .enterbrokerageinputbox {
-        width: 50%;
-        border-radius: 15px;
-        border: none !important;
-        box-shadow: 3px 3px 6px #bfc3cf, -3px -3px 6px #fff;
-        background-image: linear-gradient(to bottom right, #eff0f3, #e5e6eb);
-        font: inherit;
-        box-shadow: 0 6px 10px 0 rgba(0, 0, 0, .1);
-        border: 0;
-        outline: 0;
-        padding: 18px 15px;
-    }
-    
-    .SetBrokerageofSetPage {
-        text-align: left;
-        letter-spacing: 3px;
-        margin-top: 30px;
-        margin-bottom: 30px;
-    }
-    
-    .BrokerageSubmitButton {
+
+.SettingsPage {
+    width: 100vw;
+    display: flex;
+    display: block;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+.enterbrokerageinputbox {
+    /* width: 50%; */
+    border-radius: 15px;
+    border: none !important;
+    box-shadow: 3px 3px 6px #bfc3cf, -3px -3px 6px #fff;
+    /* background-image: linear-gradient(to bottom right, #eff0f3, #e5e6eb); */
+    font: inherit;
+    box-shadow: 0 6px 10px 0 rgba(0, 0, 0, .1);
+    border: 0;
+    outline: 0;
+    padding: 10px 8px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    /* margin: 10px, 10px, 10px; */
+}
+
+.SetBrokerageofSetPage {
+    text-align: left;
+    letter-spacing: 1px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.submittButton {
+    margin: 0;
+    padding: 1px;
+}
+
+
+/* .BrokerageSubmitButton {
         color: #444444;
         background: #F3F3F3;
         border: 1px #DADADA solid;
-        padding: 12px 18px;
+        padding: 8px 12px;
         border-radius: 2px;
         font-weight: bold;
-        font-size: 15pt;
+        font-size: 12pt;
         outline: none;
         color: white;
         background: #4C8FFB;
         border: 1px #3079ED solid;
         box-shadow: inset 0 1px 0 #80B0FB;
-    }
+    } */
+
+.BrokerageSubmitButton {
+    font-family: inherit;
+    display: inline-flex;
+    text-align: center;
+    border: 0;
+    border-bottom: 2px solid rgb(155, 172, 197);
+    outline: 0;
+    font-size: 1.3rem;
+    color: #4a5f94;
+    padding: 10px 10px 10 px;
+    background: transparent;
+    transition: border-color 0.2s;
+    border-radius: 15px;
+    border: none !important;
+    margin-bottom: 10px;
+    box-shadow: 3px 3px 6px #bfc3cf, -3px -3px 6px #fff;
+    background-image: linear-gradient(to bottom right, #eff0f3, #e5e6eb);
+}
+
+
+/* .EnterRatefield {
+    font-family: inherit;
+    display: inline-flex;
+    text-align: center;
+    border: 0;
+    border-bottom: 2px solid gray;
+    outline: 0;
+    font-size: 1.3rem;
+    color: #4a5f94;
+    padding: 10px 0;
+    background: transparent;
     
-    .EnterRatefield {
-        font-family: inherit;
-        display: inline-flex;
-        text-align: center;
-        border: 0;
-        border-bottom: 2px solid gray;
-        outline: 0;
-        font-size: 1.3rem;
-        color: #4a5f94;
-        padding: 10px 0;
-        background: transparent;
-        transition: border-color 0.2s;
-        border-radius: 15px;
-        border: none !important;
-        margin-bottom: 40px;
-        box-shadow: 3px 3px 6px #bfc3cf, -3px -3px 6px #fff;
-        background-image: linear-gradient(to bottom right, #eff0f3, #e5e6eb);
-    }
-    
-    .BrokerageSubmitButton:hover {
-        border: 1px #C6C6C6 solid;
-        box-shadow: 1px 1px 1px #EAEAEA;
-        color: #333333;
-        background: #F7F7F7;
-        border: 1px #2F5BB7 solid;
-        box-shadow: 0 1px 1px #EAEAEA, inset 0 1px 0 #5A94F1;
-        background: #3F83F1;
-    }
-    
-    .BrokerageSubmitButton :active {
-        box-shadow: inset 1px 1px 1px #DFDFDF;
-        box-shadow: inset 0 2px 5px #2370FE;
-    }
+    border-radius: 15px;
+    border: none !important;
+    margin-bottom: 20px;
+    box-shadow: 3px 3px 6px #bfc3cf, -3px -3px 6px #fff;
+    background-image: linear-gradient(to bottom right, #eff0f3, #e5e6eb);
+} */
+
+.EnterRatefield {
+    padding: 3px;
+    margin: 0 auto;
+    position: relative;
+    top: 50%;
+    font-size: 15px;
+    line-height: 1.5;
+    perspective: 400px;
+}
+
+.BrokerageSubmitButton:hover {
+    border: 1px #C6C6C6 solid;
+    box-shadow: 1px 1px 1px #EAEAEA;
+    color: #333333;
+    background: #F7F7F7;
+    border: 1px #2F5BB7 solid;
+    box-shadow: 0 1px 1px #EAEAEA, inset 0 1px 0 #5A94F1;
+    background: #3F83F1;
+}
+
+.BrokerageSubmitButton :active {
+    box-shadow: inset 1px 1px 1px #DFDFDF;
+    box-shadow: inset 0 2px 5px #2370FE;
+}

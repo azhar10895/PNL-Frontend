@@ -67,83 +67,85 @@ const Settings = () => {
     setBrokerage(account, Number(value));
   };
 
+  const initialValues = {
+    select: " ",
+    setBrokerageRate: " ",
+  };
+  const onSubmit = (values) => {
+    if (values?.select && values?.setBrokerageRate) {
+      setBrokerage(account, Number(value));
+    }
+  };
+  const validate = (values) => {
+    let errors = {};
+    if (!values.select) {
+      errors.select = "Account is required";
+    }
+    if (!values.setBrokerageRate) {
+      errors.setBrokerageRate = "Brokerage rate is required";
+    }
+    return errors;
+  };
+  const formik = useFormik({
+    initialValues,
+    onSubmit,
+    validate,
+  });
 
-
-  const initialValues ={
-    select:" ",
-    setBrokerageRate :" ",
-};
-const onSubmit =(values) => {
-  
-  if(values?.select && values?.setBrokerageRate)
-  {
-  setBrokerage(account,Number(value));
-  }
-}
-const validate = (values) => {
-   let errors ={};
-   if(!values.select){
-       errors.select="Account is required";
-   }
-   if(!values.setBrokerageRate){
-       errors.setBrokerageRate="Brokerage rate is required";
-   }
-   return errors;
-};
-const formik =useFormik(
-   {
-       initialValues,
-       onSubmit,
-       validate,
-   }
-);
-
-
-return (
-  <>
-  <div className="SettingsPage">
-   <div>
-        <NavigationEveryPage pageName="Settings" />
-      </div>
-      <div className="container-fluid">
-
-      <form onSubmit={formik.handleSubmit}>
-    <div>
-      
-      <Select className="AccountSelectofSetPage"
-        options={data}
-        onChange={selectHandler}
-        placeholder="Select Account"
-      />
-      
-      {value}
-    </div>
-    <div className="SetBrokerageofSetPage">
-      <div className="EnterRatefield">
-        Enter the Current Brokerage Value
-      </div>
-      <div>
-        <input className="enterbrokerageinputbox" placeholder="Set Brokerage value" 
-        onChange={formik.handleChange}
-      onBlur={formik.handleBlur}
-      value={formik.values.setBrokerageRate}
-        name ="setBrokerageRate"
-        />
+  return (
+    <>
+      <div className="SettingsPage">
+        <div>
+          <NavigationEveryPage pageName="Settings" />
         </div>
-        <div className="col-12">
-            {formik.touched.setBrokerageRate && formik.errors.setBrokerageRate ? (
-            <div className="error">{formik.errors.setBrokerageRate}</div>
-            ): null}
+
+        <div className="container-fluid ">
+          <div className="setCard">
+            <form onSubmit={formik.handleSubmit}>
+              <div className="SelecttAccount">
+                <Select
+                  className="AccountSelectofSetPage"
+                  options={data}
+                  onChange={selectHandler}
+                  placeholder="Select Account"
+                />
+              </div>
+
+              <div>
+                <input
+                  className="enterbrokerageinputbox"
+                  placeholder="Set Brokerage value"
+                  onChange={formik.handleChange}
+                  onBlur={formik.handleBlur}
+                  value={formik.values.setBrokerageRate}
+                  name="setBrokerageRate"
+                />
+              </div>
+              <div className="SetBrokerageofSetPage">
+                <div className="EnterRatefield">
+                  Current Brokerage Value : {value}
+                </div>
+                <div className="col-12">
+                  {formik.touched.setBrokerageRate &&
+                  formik.errors.setBrokerageRate ? (
+                    <div className="error">
+                      {formik.errors.setBrokerageRate}
+                    </div>
+                  ) : null}
+                </div>
+              </div>
+              <div className=" submittButton">
+                {/* <button className = "BrokerageSubmitButton" onClick={submitHandler}> Set Rate</button> */}
+                <button className="BrokerageSubmitButton" onClick={onsubmit}>
+                  Set Rate
+                </button>
+              </div>
+            </form>
+          </div>
         </div>
-    </div>
-    <div className="">
-        <button className = "BrokerageSubmitButton" onClick={submitHandler}> Set Rate</button>
-    </div>
-    </form>
-    </div>
-    </div>
-  </>
-);
+      </div>
+    </>
+  );
 };
 
 export default Settings;
