@@ -74,6 +74,7 @@ const Settings = () => {
   const onSubmit = (values) => {
     if (values?.select && values?.setBrokerageRate) {
       setBrokerage(account, Number(value));
+      
     }
   };
   const validate = (values) => {
@@ -112,6 +113,9 @@ const Settings = () => {
                   placeholder="Select Account"
                 />
               </div>
+              
+              {account ? (
+                <div>
               <div>
                 <input
                   className="enterbrokerageinputbox"
@@ -141,6 +145,9 @@ const Settings = () => {
                   Set Rate
                 </button>
               </div>
+              </div>
+              ) : " "}
+              
             </form>
           </div>
         </div>
