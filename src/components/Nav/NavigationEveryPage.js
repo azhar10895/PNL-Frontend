@@ -40,8 +40,22 @@ const NavigationEveryPage = (props) => {
           </div>
           <div className="navigationPageItem">
             <div className="item-3">
-            <div className="item-3-icon"><Icon.CalendarFill color="white" size={20}/></div>
-              {pageName==="History"?<div><DatePicker onChange={onDateChange} selected={date} dateFormat="dd-MM-yyyy"/></div>:''}
+              {pageName === "History" ? (
+                <>
+                  <div className="item-3-icon">
+                    <Icon.CalendarFill color="white" size={20} />
+                  </div>
+                  <div>
+                    <DatePicker
+                      onChange={onDateChange}
+                      selected={date}
+                      dateFormat="dd-MM-yyyy"
+                    />
+                  </div>
+                </>
+              ) : (
+                ""
+              )}
             </div>
           </div>
           <div className="navigationPageItem">
