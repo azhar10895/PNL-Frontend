@@ -25,10 +25,7 @@ const Dashboard = () => {
   const dispatch = useDispatch();
   const [searchTerm, setSearchTerm] = useState("");
   const [data, setData] = useState({});
-  const logout = () => {
-    localStorage.removeItem("token");
-    history.push("/");
-  };
+
 
   useEffect(() => {
     getPNL();

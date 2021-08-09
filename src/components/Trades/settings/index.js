@@ -91,7 +91,7 @@ const Settings = () => {
     onSubmit,
     validate,
   });
-
+  console.log("formik account value::::",formik.values.select)
   return (
     <>
       <div className="SettingsPage">
@@ -106,11 +106,12 @@ const Settings = () => {
                 <Select
                   className="AccountSelectofSetPage"
                   options={data}
-                  onChange={selectHandler}
+                  name="select"
+                  value={formik.values.select}
+                  onChange={formik.handleChange}
                   placeholder="Select Account"
                 />
               </div>
-
               <div>
                 <input
                   className="enterbrokerageinputbox"
@@ -136,7 +137,7 @@ const Settings = () => {
               </div>
               <div className=" submittButton">
                 {/* <button className = "BrokerageSubmitButton" onClick={submitHandler}> Set Rate</button> */}
-                <button className="BrokerageSubmitButton" onClick={onsubmit}>
+                <button type="submit" className="BrokerageSubmitButton">
                   Set Rate
                 </button>
               </div>

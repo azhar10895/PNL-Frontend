@@ -6,4 +6,5 @@ export const API_URLS = {
     getAccounts: "trades/get-accounts",
     getBrokerage: "trades/get-brokerage",
     setBrokerage: "trades/set-brokerage",
+    getHistoricData: "trades/get-historic-data"
 }

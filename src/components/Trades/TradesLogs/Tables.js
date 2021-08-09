@@ -17,17 +17,12 @@ const Tables = (props) => {
     });
   const sortHandler = (event) => {
     if (click === 0) {
-      console.log("click:::::::::", click);
-
       props.tradesSort(event.target.value, 1);
       setClick(1);
     } else if (click === 1) {
-      console.log("click:::::::::", click);
       props.tradesSort(event.target.value, -1);
       setClick(2);
     } else {
-      console.log("click:::::::::", click);
-
       props.tradesSort(event.target.value, null);
       setClick(0);
     }
