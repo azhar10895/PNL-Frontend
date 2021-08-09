@@ -5,6 +5,7 @@ import LoginPage from "./components/authentication/Login/LoginPage";
 import Trades from "./components/Trades/TradesLogs";
 //import SignupForm from './components/SignupForm';
 import Settings from "./components/Trades/settings";
+import HistoryDashboard from "./components/Trades/historyDashboard"
 function App() {
   return (
     <Router>
@@ -14,6 +15,7 @@ function App() {
           <Route exact path="/dashboard" component={Dashboard} />
           <Route exact path ="/trades" component = {Trades}/>
           <Route exact path ="/settings" component = {Settings}/>
+          <Route exact path="/history" component={HistoryDashboard} />
         </Switch>
       </div>
     </Router>

@@ -6,7 +6,7 @@ import { COLUMNS } from "./coloumns.js";
 import Sort from "./SortIcons.js";
 const Table = (props) => {
   const columns = useMemo(() => COLUMNS, []);
-  const propData = props.data;
+  const propData = props.accountData;
   const data = propData?.data;
   const account = props.account;
   // const [newData, setNewData] = useState([]);

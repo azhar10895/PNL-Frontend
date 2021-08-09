@@ -3,9 +3,9 @@ import axios from "axios";
 import { getApiCall, postApiCall } from "../../../utils/axios";
 import { API_URLS } from "../../../config/index";
 import Select from "react-select";
-import { useFormik } from "formik";
 import "../styles/settings.css";
 import NavigationEveryPage from "../../Nav/NavigationEveryPage";
+import { useFormik } from "formik";
 
 const Settings = () => {
   const [data, setData] = useState([]);
@@ -67,78 +67,83 @@ const Settings = () => {
     setBrokerage(account, Number(value));
   };
 
-  const initialValues = {
-    select: "",
-    setBrokerageRate: "",
-  };
-
-  const onSubmit = (values) => {
-    // if (values?.setBrokerageRate)
-    console.log("values::::::",values)
-     setBrokerage(account, values.setBrokerageRate);
-  };
-
-  const validate = (values) => {
-    let errors = {};
-    if (!values.select) {
-      errors.select = "Account is required";
-    }
-    if (!values.setBrokerageRate) {
-      errors.setBrokerageRate = "Brokerage rate is required";
-    }
-    return errors;
-  };
-  const formik = useFormik({
-    initialValues,
-    onSubmit,
-    validate,
-  });
 
 
-  return (
-    <>
-      <div className="SettingsPage">
-        <div>
-          <NavigationEveryPage pageName="Settings" />
-        </div>
-        <div className="container-fluid">
-          <form onSubmit={formik.handleSubmit}>
-            <div className="AccountSelectofSetPage">
-              <Select
-                options={data}
-                // name="select"
-                // type="select"
-                onChange={selectHandler}
-                placeholder="Select Account"
-                // onBlur={formik.handleBlur}
-                // value={formik.values.select}
-              />
-            </div>
-            {value}
-            <div className="SetBrokerageofSetPage">
-              <input
-                placeholder="Set Brokerage value"
-                type="text"
-                name="setBrokerageRate"
-                id="setBrokerageValue"
-                onChange={formik.handleChange}
-                onBlur={formik.handleBlur}
-                value={formik.values.setBrokerageRate}
-              />
-              <div className="col-12">
-                {formik.touched.setBrokerageRate && formik.errors.setBrokerageRate ? (
-                  <div className="error">{formik.errors.setBrokerageRate}</div>
-                ) : null}
-              </div>
-            </div>
-            <div className="button">
-              <button type="submit"> Set </button>
-            </div>
-          </form>
-        </div>
+  const initialValues ={
+    select:" ",
+    setBrokerageRate :" ",
+};
+const onSubmit =(values) => {
+  
+  if(values?.select && values?.setBrokerageRate)
+  {
+  setBrokerage(account,Number(value));
+  }
+}
+const validate = (values) => {
+   let errors ={};
+   if(!values.select){
+       errors.select="Account is required";
+   }
+   if(!values.setBrokerageRate){
+       errors.setBrokerageRate="Brokerage rate is required";
+   }
+   return errors;
+};
+const formik =useFormik(
+   {
+       initialValues,
+       onSubmit,
+       validate,
+   }
+);
+
+
+return (
+  <>
+  <div className="SettingsPage">
+   <div>
+        <NavigationEveryPage pageName="Settings" />
       </div>
-    </>
-  );
+      <div className="container-fluid">
+
+      <form onSubmit={formik.handleSubmit}>
+    <div>
+      
+      <Select className="AccountSelectofSetPage"
+        options={data}
+        onChange={selectHandler}
+        placeholder="Select Account"
+      />
+      
+      {value}
+    </div>
+    <div className="SetBrokerageofSetPage">
+      <div className="EnterRatefield">
+        Enter the Current Brokerage Value
+      </div>
+      <div>
+        <input className="enterbrokerageinputbox" placeholder="Set Brokerage value" 
+        onChange={formik.handleChange}
+      onBlur={formik.handleBlur}
+      value={formik.values.setBrokerageRate}
+        name ="setBrokerageRate"
+        />
+        </div>
+        <div className="col-12">
+            {formik.touched.setBrokerageRate && formik.errors.setBrokerageRate ? (
+            <div className="error">{formik.errors.setBrokerageRate}</div>
+            ): null}
+        </div>
+    </div>
+    <div className="">
+        <button className = "BrokerageSubmitButton" onClick={submitHandler}> Set Rate</button>
+    </div>
+    </form>
+    </div>
+    </div>
+  </>
+);
 };
 
 export default Settings;

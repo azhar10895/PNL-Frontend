@@ -1,23 +1,22 @@
-import React from "react";
+import React, { useState } from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "../Trades/styles/dashboard.css";
 import "./Navbar.css";
 // import SearchTable from "./SearchTable";
 import Navbar from "./Navbar";
-import {
-  BrowserRouter as Router,
-  Switch,
-  Route,
-  Redirect,
-} from "react-router-dom";
 import * as Icon from "react-bootstrap-icons";
-import { icons } from "react-icons/lib";
-import Trades from "../Trades/TradesLogs/index";
-import Dashboard from "../Trades/dashboard";
 import { useHistory } from "react-router-dom";
-import LoginPage from "../authentication/Login/LoginPage";
+import DatePicker from "react-datepicker";
+import "react-datepicker/dist/react-datepicker.css";
 
 const NavigationEveryPage = (props) => {
+  const [date, setDate] = useState(new Date());
+  const onDateChange = (date) => {
+    // console.log(date);
+    setDate(date);
+    props.onDateChangeFunc(date);
+  };
+
   const pageName = props.pageName;
   const history = useHistory();
   const logout = () => {
@@ -41,8 +40,16 @@ const NavigationEveryPage = (props) => {
           </div>
           <div className="navigationPageItem">
             <div className="item-3">
+              {/* <button>
+              <Icon.CalendarFill color="#4a5f94" size={25}/>
+              </button> */}
+              {pageName==="History"?<DatePicker onChange={onDateChange} selected={date} />:''}
+            </div>
+          </div>
+          <div className="navigationPageItem">
+            <div className="item-4">
               <div className="arrowDropdown container d-flex justify-content-between align-items-center my-dropdown">
-                <div class="dropdown">
+                <div className="dropdown">
                   <span className="Logout">
                     <Icon.CaretDownFill color="#4a5f94" size={30} />
                   </span>

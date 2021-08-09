@@ -20,13 +20,6 @@ import NavigationEveryPage from "../../Nav/NavigationEveryPage";
 const Dashboard = () => {
   // const [new_data, setNewData] = useState([]);
   const pnlData = useSelector((state) => state.pnlData);
-  useEffect(() => {
-    getPNL();
-
-    return ()=>{
-      clearInterval(timerId.current);
-    };
-  }, []); //component only mounting
   const timerId = useRef(null);
   const history = useHistory();
   const dispatch = useDispatch();
@@ -36,10 +29,17 @@ const Dashboard = () => {
     localStorage.removeItem("token");
     history.push("/");
   };
+
+  useEffect(() => {
+    getPNL();
+    return () => {
+      clearInterval(timerId.current);
+    };
+  }, []);
+
   useEffect(() => {
     setData({ ...pnlData });
-  }, [pnlData]); //componentDidUpdate
-
+  }, [pnlData]);
   const getPNL = async (timeStamp = null) => {
     try {
       const token = localStorage.getItem("token");
@@ -72,7 +72,6 @@ const Dashboard = () => {
       if (timerId.current === null) {
         console.log("timerid ", timerId.current);
         timerId.current = setInterval(() => getPNL(time), 5000);
-        // setInterval(()=> window.location.reload(false),5000);
       }
     } catch (err) {
       console.log("Error in GetPNL", err);
@@ -81,42 +80,33 @@ const Dashboard = () => {
   return (
     <>
       <div className="dashboardPage">
-        <div>
+        <div className="navigation">
           <NavigationEveryPage pageName="Dashboard" />
         </div>
         <div className="container-fluid">
           {data &&
-            Object.keys(data)
-              // .filter((val) => {
-              //   if (searchTerm === "") {
-              //     return val;
-              //   } else if (val === searchTerm) {
-              //     return val;
-              //   }
-              // })
-              .map((account) => {
-                return (
-                  <div>
-                    <div className="dashcard-table">
-                      <div className="">
-                        {/* {console.log(
-                            "data[account]?.data",
-                            data[account]?.data
-                          )} */}
-                        {data[account]?.data?.length ? (
-                          <Table
-                            data={data[account]}
-                            account={account}
-                            key={account}
-                          />
-                        ) : (
-                          "No Data to show"
-                        )}
-                      </div>
+            Object.keys(data).map((account) => {
+              // console.log("data:::::::::s",data)
+              console.log("account:::", account);
+              console.log("::::",Object.keys(data))
+              return (
+                <div>
+                  <div className="dashcard-table">
+                    <div className="">
+                      {data[account]?.data?.length ? (
+                        <Table
+                          accountData={data[account]}
+                          account={account}
+                          key={account}
+                        />
+                      ) : (
+                        "No Data to show"
+                      )}
                     </div>
                   </div>
-                );
-              })}
+                </div>
+              );
+            })}
         </div>
       </div>
     </>
