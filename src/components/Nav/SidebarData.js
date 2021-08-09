@@ -15,12 +15,18 @@ export const SidebarData = [{
         icon: < AiIcons.AiFillSignal / > ,
         cName: 'nav-text'
     },
-    
+
     {
         title: 'Settings',
         path: '/settings',
         icon: < AiIcons.AiTwotoneTool / > ,
-        cName: 'nav-text'
+        cName: 'nav-text',
+    },
+    {
+        title: 'history',
+        path: '/history',
+        icon: < AiIcons.AiOutlineAlignRight / > ,
+        cName: 'nav-text',
     }
 
 ];
