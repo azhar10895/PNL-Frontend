@@ -3,7 +3,7 @@ import axios from "axios";
 import { getApiCall, postApiCall } from "../../../utils/axios";
 import { API_URLS } from "../../../config/index";
 import Select from "react-select";
-import { ChevronCompactLeft } from "react-bootstrap-icons";
+
 import "../styles/settings.css";
 import NavigationEveryPage from "../../Nav/NavigationEveryPage";
 import { useFormik } from "formik";
@@ -18,7 +18,7 @@ const Settings = () => {
   const getBrokerage = async () => {
     try {
       const res = await getApiCall(API_URLS.getBrokerage, {});
-      const data = res?.res.map((item) => {
+      const data = res?.res?.map((item) => {
         return {
           label: item.AccountNo,
           value: item.Brokerage,
@@ -38,7 +38,7 @@ const Settings = () => {
         {},
         { accountNo: account, brokerage: inputBrokerage }
       );
-      const data = res?.res.map((item) => {
+      const data = res?.res?.map((item) => {
         return {
           label: item.AccountNo,
           value: item.Brokerage,
@@ -102,10 +102,12 @@ return (
    <div>
         <NavigationEveryPage pageName="Settings" />
       </div>
-      <div className="container-fluid">
-
+     
+      <div className="container-fluid ">
+      
+      <div className="setCard">
       <form onSubmit={formik.handleSubmit}>
-    <div>
+    <div className="SelecttAccount">
       
       <Select className="AccountSelectofSetPage"
         options={data}
@@ -115,10 +117,7 @@ return (
       
       
     </div>
-    <div className="SetBrokerageofSetPage">
-      <div className="EnterRatefield">
-        Enter the Current Brokerage Value
-      </div>
+    
       <div>
         <input className="enterbrokerageinputbox" placeholder="Set Brokerage value" 
         onChange={formik.handleChange}
@@ -127,18 +126,25 @@ return (
         name ="setBrokerageRate"
         />
         </div>
+        <div className="SetBrokerageofSetPage">
+      <div className="EnterRatefield">
+        Current Brokerage Value : {value}
+      </div>
         <div className="col-12">
             {formik.touched.setBrokerageRate && formik.errors.setBrokerageRate ? (
             <div className="error">{formik.errors.setBrokerageRate}</div>
             ): null}
         </div>
     </div>
-    <div className="">
-        <button className = "BrokerageSubmitButton" onClick={submitHandler}> Set Rate</button>
+    <div className=" submittButton">
+        {/* <button className = "BrokerageSubmitButton" onClick={submitHandler}> Set Rate</button> */}
+        <button className ="BrokerageSubmitButton" onClick={onsubmit}>Set Rate</button>
     </div>
     </form>
     </div>
     </div>
+    </div>
+    
   </>
 );
 };
