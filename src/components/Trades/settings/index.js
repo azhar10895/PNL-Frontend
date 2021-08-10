@@ -10,6 +10,7 @@ import { useFormik } from "formik";
 const Settings = () => {
   const [data, setData] = useState([]);
   const [value, setValue] = useState();
+  const [newValue,setNewValu]=useState();
   const [account, setAccount] = useState();
   useEffect(() => {
     getBrokerage();
@@ -56,32 +57,33 @@ const Settings = () => {
     console.log("value", value);
   };
 
-  const brokerageRateHandler = (event) => {
-    console.log("account:::", account);
-    setValue(event.target.value);
-    //   setBrokerag ChevronCompactLefte(account,Number(event.target.value));
-    //   setValue(Number(event.target.value));
-  };
-  const submitHandler = () => {
-    console.log("value:::::", value);
-    setBrokerage(account, Number(value));
-  };
+  // const brokerageRateHandler = (event) => {
+  //   console.log("account:::", account);
+  //   setValue(event.target.value);
+  //   //   setBrokerag ChevronCompactLefte(account,Number(event.target.value));
+  //   //   setValue(Number(event.target.value));
+  // };
+  // const submitHandler = () => {
+  //   console.log("value:::::", value);
+  //   setBrokerage(account, Number(value));
+  // };
 
   const initialValues = {
-    select: " ",
-    setBrokerageRate: " ",
+    setBrokerageRate: "",
   };
-  const onSubmit = (values) => {
-    if (values?.select && values?.setBrokerageRate) {
-      setBrokerage(account, Number(value));
-      
+  // const clearInput = () =>{
+    
+  // }
+  const onSubmit = (values,{resetForm}) => {
+    if (values?.setBrokerageRate) {
+      setBrokerage(account, values?.setBrokerageRate);
+      setValue(values?.setBrokerageRate);
+      values.setBrokerageRate = "";
+      resetForm({values:""})
     }
   };
   const validate = (values) => {
     let errors = {};
-    if (!values.select) {
-      errors.select = "Account is required";
-    }
     if (!values.setBrokerageRate) {
       errors.setBrokerageRate = "Brokerage rate is required";
     }
@@ -92,7 +94,7 @@ const Settings = () => {
     onSubmit,
     validate,
   });
-  console.log("formik account value::::",formik.values.select)
+
   return (
     <>
       <div className="SettingsPage">
@@ -107,47 +109,44 @@ const Settings = () => {
                 <Select
                   className="AccountSelectofSetPage"
                   options={data}
-                  name="select"
-                  // value={formik.values.select}
                   onChange={selectHandler}
                   placeholder="Select Account"
                 />
               </div>
-              
               {account ? (
                 <div>
-              <div>
-                <input
-                  className="enterbrokerageinputbox"
-                  placeholder="Set Brokerage value"
-                  onChange={formik.handleChange}
-                  onBlur={formik.handleBlur}
-                  value={formik.values.setBrokerageRate}
-                  name="setBrokerageRate"
-                />
-              </div>
-              <div className="SetBrokerageofSetPage">
-                <div className="EnterRatefield">
-                  Current Brokerage Value : {value}
-                </div>
-                <div className="col-12">
-                  {formik.touched.setBrokerageRate &&
-                  formik.errors.setBrokerageRate ? (
-                    <div className="error">
-                      {formik.errors.setBrokerageRate}
+                  <div className="setBrokerageValue">
+                    <div>
+                      <input
+                        className="enterbrokerageinputbox"
+                        placeholder="Set Brokerage value"
+                        onChange={formik.handleChange}
+                        onBlur={formik.handleBlur}
+                        value={formik.values.setBrokerageRate}
+                        name="setBrokerageRate"
+                      />
                     </div>
-                  ) : null}
+                    <div className="col-12">
+                      {formik.touched.setBrokerageRate && formik.errors.setBrokerageRate ? (
+                        <div className="error">{formik.errors.setBrokerageRate}</div>
+                      ) : null}
+                    </div>
+                  </div>
+                  <div className="SetBrokerageofSetPage">
+                    <div className="EnterRatefield">
+                      Current Brokerage Value : {value}
+                    </div>
+                  </div>
+                  <div className=" submittButton">
+                    {/* <button className = "BrokerageSubmitButton" onClick={submitHandler}> Set Rate</button> */}
+                    <button type="submit" className="BrokerageSubmitButton">
+                      Set Rate
+                    </button>
+                  </div>
                 </div>
-              </div>
-              <div className=" submittButton">
-                {/* <button className = "BrokerageSubmitButton" onClick={submitHandler}> Set Rate</button> */}
-                <button type="submit" className="BrokerageSubmitButton">
-                  Set Rate
-                </button>
-              </div>
-              </div>
-              ) : " "}
-              
+              ) : (
+                " "
+              )}
             </form>
           </div>
         </div>
