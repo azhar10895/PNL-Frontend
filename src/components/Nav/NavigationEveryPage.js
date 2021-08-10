@@ -18,6 +18,7 @@ const NavigationEveryPage = (props) => {
   };
 
   const pageName = props.pageName;
+  
   const history = useHistory();
   const logout = () => {
     localStorage.removeItem("token");
@@ -26,6 +27,9 @@ const NavigationEveryPage = (props) => {
   const settingsHandler = () => {
     history.push("/settings");
   };
+  const historyHandler=() =>{
+    history.push("/history");
+  }
   return (
     <>
       <div className="container-fluid">
@@ -75,7 +79,7 @@ const NavigationEveryPage = (props) => {
                         <Icon.Gear />
                         &nbsp;Settings
                       </li>
-                      <li>
+                      <li onClick={historyHandler}>
                         <Icon.ClockHistory />
                         &nbsp;User history
                       </li>
