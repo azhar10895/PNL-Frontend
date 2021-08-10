@@ -115,11 +115,16 @@ const Settings = () => {
               </div>
               {account ? (
                 <div>
+                  <div className="SetBrokerageofSetPage">
+                    <div className="EnterRatefield">
+                      Current Brokerage Value : {value}
+                    </div>
+                  </div>
                   <div className="setBrokerageValue">
                     <div>
                       <input
                         className="enterbrokerageinputbox"
-                        placeholder="Set Brokerage value"
+                        placeholder="Set Brokerage value in %"
                         onChange={formik.handleChange}
                         onBlur={formik.handleBlur}
                         value={formik.values.setBrokerageRate}
@@ -132,11 +137,7 @@ const Settings = () => {
                       ) : null}
                     </div>
                   </div>
-                  <div className="SetBrokerageofSetPage">
-                    <div className="EnterRatefield">
-                      Current Brokerage Value : {value}
-                    </div>
-                  </div>
+                  
                   <div className=" submittButton">
                     {/* <button className = "BrokerageSubmitButton" onClick={submitHandler}> Set Rate</button> */}
                     <button type="submit" className="BrokerageSubmitButton">
