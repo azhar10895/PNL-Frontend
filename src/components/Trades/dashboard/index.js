@@ -87,7 +87,7 @@ const Dashboard = () => {
               console.log("account:::", account);
               console.log("::::",Object.keys(data))
               return (
-                <div>
+                <>
                   <div className="dashcard-table">
                     <div className="">
                       {data[account]?.data?.length ? (
@@ -101,7 +101,7 @@ const Dashboard = () => {
                       )}
                     </div>
                   </div>
-                </div>
+                </>
               );
             })}
         </div>

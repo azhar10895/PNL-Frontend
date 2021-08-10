@@ -76,7 +76,7 @@ const Table = (props) => {
             {rows.map((row, i) => {
               // console.log("Row", row);
               prepareRow(row);
-              // console.log("Row", row);
+              // console.log("Row", row?.original?.Token);
               return (
                 <tr
                   style={{
