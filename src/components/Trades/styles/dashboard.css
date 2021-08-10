@@ -1,5 +1,5 @@
-.dashboardPage{
-    width:100%
+.dashboardPage {
+    width: 100%
 }
 
 .dashcard {
@@ -67,10 +67,11 @@
     grid-template-columns: 1.5fr 0.5fr;
 }
 
-.dropdown {
+
+/* .dropdown {
     position: relative;
     display: inline-block;
-}
+} */
 
 
 /* .dropdown_elements {
@@ -114,7 +115,7 @@
 .dropdown-content ul {
     list-style: none;
     padding: 0;
-    margin: 0;
+    margin-right: 100px;
 }
 
 .dropdown ul {
@@ -176,12 +177,13 @@
     max-width: 150px;
     min-width: 200px;
     width: 150px !important;
-    
+    margin-right: 500px;
 }
 
 .dropdown:hover .dropdown-content {
     display: block;
     font-size: 18px;
+    margin-right: 500px;
 }
 
 .accountID {
@@ -251,7 +253,6 @@ td {
     /* border: 1px solid #b2b4b6; */
 }
 
-
 .Search input {
     width: 90%;
     border-radius: 10px;
@@ -284,4 +285,5 @@ td {
 
 .my-dropdown {
     float: right;
+    margin-right: 80px;
 }
