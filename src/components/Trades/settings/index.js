@@ -108,8 +108,8 @@ const Settings = () => {
                   className="AccountSelectofSetPage"
                   options={data}
                   name="select"
-                  value={formik.values.select}
-                  onChange={formik.handleChange}
+                  // value={formik.values.select}
+                  onChange={selectHandler}
                   placeholder="Select Account"
                 />
               </div>
