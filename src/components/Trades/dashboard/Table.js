@@ -28,7 +28,7 @@ const Table = (props) => {
       // disableSortBy: false,
       initialState: {
         // sortBy: [{ id: "LastTimeStamp", desc: true }],
-        hiddenColumns: ["LastTimeStamp"],
+        // hiddenColumns: ["LastTimeStamp"],
       },
     },
     useGlobalFilter,
@@ -87,6 +87,7 @@ const Table = (props) => {
                         : "inherit",
                   }}
                   {...row.getRowProps()}
+                  key={row?.original?.Token}
                 >
                   {row.cells.map((cell) => {
                     return (

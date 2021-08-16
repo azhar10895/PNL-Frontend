@@ -78,7 +78,6 @@ const Trades = () => {
     getTrades(event.value);
   };
 
-  console.log("account::::::::::::", account);
 
   const limitHandler = (event) => {
     console.log(event.target.value);

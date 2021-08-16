@@ -6,7 +6,7 @@ import Table from "../dashboard/Table";
 import uuid from "node-uuid";
 const HistoryDashboard = () => {
   const [data, setData] = useState([]);
-  const [date,setDate] = useState();
+  const [date, setDate] = useState();
   const onDateChangeFunc = (date) => {
     const d = date;
     const newDate =
@@ -15,7 +15,7 @@ const HistoryDashboard = () => {
       (d.getMonth() + 1 < 10 ? "0" + (d.getMonth() + 1) : d.getMonth() + 1) +
       "-" +
       (d.getDate() < 10 ? "0" + d.getDate() : d.getDate());
-      setDate(newDate);
+    setDate(newDate);
     console.log(newDate);
     getHistoricData(newDate);
   };
@@ -35,31 +35,40 @@ const HistoryDashboard = () => {
           />
         </div>
         <div className="container-fluid">
-          {date?
-          <>
-          {console.log("data::::",data)}
-            {data &&
-              Object.keys(data).map((account) => {
-                console.log("account:::", account);
-                return (
-                  <>
-                    <div className="dashcard-table">
-                      <div className="">
-                        {data[account]?.data?.length ? (
-                          <Table
-                            key = {account}
-                            accountData={data[account]}
-                            account={account}
-                          />
-                        ) : (
-                          "No Data to show"
-                        )}
+          { console.log("data length:::",data.length)}
+          {date ? (
+            <>
+            {/* {(data.length===undefined) && <h5 className="color-forHeadings">No data on this date</h5>} */}
+              {data &&
+                Object.keys(data).map((account, index) => {
+                  console.log("account:::", account);
+                  console.log("index", index);
+                  return (
+                    <>
+                      <div className="dashcard-table">
+                        <div className="">
+                          {console.log(
+                            "data length::::",
+                            data[account]?.data?.length
+                          )}
+                          {data[account]?.data?.length ? (
+                            <Table
+                              key={index}
+                              accountData={data[account]}
+                              account={account}
+                            />
+                          ) : (
+                            "No Data to show"
+                          )}
+                        </div>
                       </div>
-                    </div>
-                  </>
-                );
-              })}
-          </>:"Please Select Date"}
+                    </>
+                  );
+                })}
+            </>
+          ) : (
+            <h5 className="color-forHeadings ">Select Date</h5>
+          )}
         </div>
       </div>
     </>

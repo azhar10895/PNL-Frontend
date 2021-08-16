@@ -17,7 +17,7 @@ const mergeData = (state, payload) => {
           updated[token] = newDataObj[token];
       })
       const sortedArr = Object.values(updated).sort((a, b) => {
-        //   console.log("a",a);
+          console.log("a",a.LastTimeStamp);
         return b?.LastTimeStamp - a?.LastTimeStamp;
       });
       // console.log("SortedArr", sortedArr);
@@ -56,9 +56,10 @@ const rootReducer = (state = initialState, { type, payload }) => {
       return { ...updatedState };
     }
     case types.MERGE_API: {
-      const mergeState = mergeData(state, payload);
+      const oldState = {...state};
+      const newState = mergeData(oldState, payload);
       console.log("merge executed");
-      return { ...mergeState };
+      return { ...newState };
     }
     default:
       console.log("default executed");
