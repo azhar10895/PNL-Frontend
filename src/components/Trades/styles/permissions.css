@@ -1,7 +1,12 @@
 .PermissionsPage {
     width: 100vw;
-    display: flex;
-    display: block;
-    /* margin-top: 20px; */
+    /* display: flex;
+    display: block; */
     margin-bottom: 20px;
+    margin-left: 0;
+    margin-top: 0;
+    margin-right: 0;
+    margin-bottom: 30px;
 }
+
+.PermissionsBar {}
