@@ -55,6 +55,7 @@ const Dashboard = () => {
       );
 
       const resData = res?.data?.res;
+      console.log("resData",resData);
       const accountId = Object.keys(resData)[0];
       const time = resData[accountId].lastTimeStamp;
       if (timeStamp === null) {
@@ -88,8 +89,8 @@ const Dashboard = () => {
               {data &&
                 Object.keys(data).map((account) => {
                   // console.log("data:::::::::s",data)
-                  console.log("account:::", account);
-                  console.log("::::", Object.keys(data));
+                  // console.log("account:::", account);
+                  // console.log("::::", Object.keys(data));
                   return (
                     <>
                       <div className="dashcard-table">

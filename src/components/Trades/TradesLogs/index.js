@@ -7,6 +7,7 @@ import axios from "axios";
 import { getApiCall, postApiCall } from "../../../utils/axios";
 import { API_URLS } from "../../../config";
 import NavigationEveryPage from "../../Nav/NavigationEveryPage";
+import { Redirect } from "react-router";
 
 const Trades = () => {
   const [data, setData] = useState([]);
@@ -111,6 +112,9 @@ const Trades = () => {
   };
   return (
     <>
+    {!localStorage.getItem("token") ? (
+        <Redirect to="/" />
+      ) :
       <div className="tradesBody">
         <div className="">
           <NavigationEveryPage pageName="Trade Logs" />
@@ -202,7 +206,7 @@ const Trades = () => {
             ""
           )}
         </div>
-      </div>
+      </div>}
     </>
   );
 };

@@ -1,3 +1,5 @@
+import { ConeStriped } from "react-bootstrap-icons";
+import { connectAdvanced } from "react-redux";
 import * as types from "../types/rootReducerType";
 
 const initialState = null;
@@ -10,21 +12,15 @@ const mergeData = (state, payload) => {
         state && state[accountNo]?.data ? state[accountNo]?.data : null;
       const oldDataObj = dataOld ? convertToObject(dataOld, "Token") : {};
       const dataNew =
-        payload && payload[accountNo]?.data ? payload[accountNo] : null;
+        payload && payload[accountNo]?.data ? payload[accountNo]?.data : null;
       const newDataObj = dataNew ? convertToObject(dataNew, "Token") : {};
-      const updated = {...oldDataObj};
-      Object.keys(newDataObj).forEach((token)=>{
-          updated[token] = newDataObj[token];
-      })
-      const sortedArr = Object.values(updated).sort((a, b) => {
-          console.log("a",a.LastTimeStamp);
-        return b?.LastTimeStamp - a?.LastTimeStamp;
-      });
-      // console.log("SortedArr", sortedArr);
+      const updated = { ...oldDataObj, ...newDataObj };
+      const sortedArr = sortByTimestamp(updated);
       finalObj[accountNo] = {
         prevTimeStamp: state[accountNo]?.lastTimeStamp,
-        lastTimeStamp:
-          (payload[accountNo]?.lastTimeStamp)?(payload[accountNo]?.lastTimeStamp): (state[accountNo]?.lastTimeStamp),
+        lastTimeStamp: payload[accountNo]?.lastTimeStamp
+          ? payload[accountNo]?.lastTimeStamp
+          : state[accountNo]?.lastTimeStamp,
         data: [...sortedArr],
       };
     });
@@ -34,6 +30,13 @@ const mergeData = (state, payload) => {
     console.log("Error in mergeData", err);
     return {};
   }
+};
+
+const sortByTimestamp = (array) => {
+  const sortedArr = Object.values(array).sort((a, b) => {
+    return Number(b?.LastTimeStamp) - Number(a?.LastTimeStamp);
+  });
+  return sortedArr;
 };
 
 const convertToObject = (list, key) => {
@@ -47,16 +50,35 @@ const convertToObject = (list, key) => {
     console.log("Error in convertToObject", err);
   }
 };
+const fetchData = (payload) => {
+  try {
+    const accounts_new = Object.keys(payload);
+    const finalObj = {};
+    accounts_new.forEach((accountNo) => {
+      const dataNew =
+        payload && payload[accountNo]?.data ? payload[accountNo]?.data : null;
+      const newDataObj = dataNew ? convertToObject(dataNew, "Token") : {};
+      const sortedArr = sortByTimestamp(newDataObj);
+      finalObj[accountNo] = {
+        lastTimeStamp: payload[accountNo]?.lastTimeStamp,
+        data: [...sortedArr],
+      };
+    });
+    return finalObj;
+  } catch (err) {
+    console.log("Error in fetchData ", err);
+  }
+};
 
 const rootReducer = (state = initialState, { type, payload }) => {
   switch (type) {
     case types.FETCH_API: {
-      const updatedState = payload;
+      const updatedState = fetchData(payload);
       console.log("fetch executed");
       return { ...updatedState };
     }
     case types.MERGE_API: {
-      const oldState = {...state};
+      const oldState = { ...state };
       const newState = mergeData(oldState, payload);
       console.log("merge executed");
       return { ...newState };
