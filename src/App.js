@@ -5,6 +5,7 @@ import LoginPage from "./components/authentication/Login/LoginPage";
 import Trades from "./components/Trades/TradesLogs";
 //import SignupForm from './components/SignupForm';
 import Settings from "./components/Trades/settings";
+import Permissions from "./components/Trades/permissions";
 import HistoryDashboard from "./components/Trades/historyDashboard"
 function App() {
   return (
@@ -16,6 +17,7 @@ function App() {
           <Route exact path ="/trades" component = {Trades}/>
           <Route exact path ="/settings" component = {Settings}/>
           <Route exact path="/history" component={HistoryDashboard} />
+          <Route exact path ="/permissions" component = {Permissions}/>
         </Switch>
       </div>
     </Router>

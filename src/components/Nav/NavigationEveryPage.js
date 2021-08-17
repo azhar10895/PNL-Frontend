@@ -30,6 +30,9 @@ const NavigationEveryPage = (props) => {
   const historyHandler=() =>{
     history.push("/history");
   }
+  const permissionsHandler= () => {
+    history.push("/permissions");
+  }
   return (
     <>
       <div className="container-fluid">
@@ -75,6 +78,9 @@ const NavigationEveryPage = (props) => {
                         <Icon.PersonFill size={25} />
                         &nbsp;Admin Profile
                       </li>
+                      <li onClick={permissionsHandler}>
+                        <Icon.CheckCircle />
+                        &nbsp;Permissions</li>
                       <li onClick={settingsHandler}>
                         <Icon.Gear />
                         &nbsp;Settings

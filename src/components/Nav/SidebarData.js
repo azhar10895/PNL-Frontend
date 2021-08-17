@@ -27,6 +27,13 @@ export const SidebarData = [{
         path: '/history',
         icon: < AiIcons.AiOutlineAlignRight / > ,
         cName: 'nav-text',
-    }
+    },
+    {
+        title: 'permissions',
+        path: '/permissions',
+        icon: < AiIcons.AiFillSafetyCertificate / > ,
+        cName: 'nav-text',
+
+    },
 
 ];
