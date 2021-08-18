@@ -1,12 +1,9 @@
-import React, { useEffect, useState } from "react";
-import { API_URLS } from "../../../config/index";
-import Select from "react-select";
-import "../styles/permissions.css";
+import React, { useEffect, useState } from 'react';
 import NavigationEveryPage from "../../Nav/NavigationEveryPage";
-import { Redirect } from "react-router";
 
-const Permissions = () => {
-  const [newUser, setNewUser] = useState(null);
+
+const AddNewUser = () => {
+    const [newUser, setNewUser] = useState(null);
   //   const [data,setNewData] =useState({});
   const pages = [
     "dashboard",
@@ -28,11 +25,14 @@ const Permissions = () => {
   //   const addNewUserHandler = () => {
   //     data[newUser] = "hello";
   //   };
-  const addNewUser = () => {
+  const addNewUser = (event) => {
+    event.preventDefault();
     const newUserObject = {};
-    const permissions  = [];
-    const values = Array.from(document.querySelectorAll('input[type=checkbox]:checked')).map(item => {
-        permissions.push(item.value);
+    const permissions = [];
+    Array.from(
+      document.querySelectorAll("input[type=checkbox]:checked")
+    ).forEach((item) => {
+      permissions.push(item.value);
     });
     // console.log(permissions)
     newUserObject[newUser] = permissions;
@@ -42,24 +42,23 @@ const Permissions = () => {
 
   return (
     <>
-      <div className="PermissionsPage">
-        <div className="PermissionsBar">
-          <NavigationEveryPage pageName="Permissions" />
-        </div>
-        <div>
-          <input placeholder="Add new user" onChange={newUserInputHandler} />
+        <form>
           <div>
-            {pages.map((page) => {
-              return (
-                <div>
-                  <input type="checkbox" id={page} value={page}/>
-                  <label htmlFor={page}>{page}</label>
-                </div>
-              );
-            })}
+            <input placeholder="Add new user" onChange={newUserInputHandler} />
+            <div>
+              {pages.map((page) => {
+                return (
+                  <div>
+                    <input type="checkbox" id={page} value={page} />
+                    <label htmlFor={page}>{page}</label>
+                  </div>
+                );
+              })}
+            </div>
+            <button type='reset'>Reset</button>
+            <button onClick={addNewUser}>Add new user</button>
           </div>
-          <button onClick={addNewUser}>Add new user</button>
-        </div>
+        </form>
         {/* <div>
           {Object.keys(data).map((user) => {
             return (
@@ -82,8 +81,8 @@ const Permissions = () => {
             );
           })}
         </div> */}
-      </div>
     </>
   );
-};
-export default Permissions;
+}
+
+export default AddNewUser;
