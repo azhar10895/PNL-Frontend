@@ -31,7 +31,7 @@ const Permissions = () => {
   const addNewUser = () => {
     const newUserObject = {};
     const permissions  = [];
-    const values = Array.from(document.querySelectorAll('input[type=checkbox]:checked')).map(item => {
+    const values = Array.from(document.querySelectorAll('input[type=checkbox]:checked')).map((item) => {
         permissions.push(item.value);
     });
     // console.log(permissions)
