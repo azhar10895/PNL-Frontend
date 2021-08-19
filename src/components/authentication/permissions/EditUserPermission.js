@@ -3,6 +3,7 @@ import Select from "react-select";
 import { editIcon } from "../../../helpers/icons";
 import * as Icon from "react-bootstrap-icons";
 import ChangeUserInfo from "./ChangeUserInfo";
+
 export const EditUserPermission = (props) => {
   const [toggle, setToggle] = useState(false);
   const [currentUser, setCurrentUser] = useState(null);
