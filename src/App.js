@@ -5,8 +5,9 @@ import LoginPage from "./components/authentication/Login/LoginPage";
 import Trades from "./components/Trades/TradesLogs";
 //import SignupForm from './components/SignupForm';
 import Settings from "./components/Trades/settings";
-import Permissions from "./components/Trades/permissions";
+import Permissions from "./components/authentication/permissions/index";
 import HistoryDashboard from "./components/Trades/historyDashboard"
+import { EditUserPermission } from "./components/authentication/permissions/EditUserPermission";
 function App() {
   return (
     <Router>

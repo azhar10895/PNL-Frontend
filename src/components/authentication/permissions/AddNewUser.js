@@ -28,22 +28,17 @@ const AddNewUser = () => {
   const addNewUser = (event) => {
     event.preventDefault();
     const newUserObject = {};
-<<<<<<< HEAD:src/components/Trades/permissions/index.js
-    const permissions  = [];
-    const values = Array.from(document.querySelectorAll('input[type=checkbox]:checked')).map((item) => {
-        permissions.push(item.value);
-=======
     const permissions = [];
     Array.from(
       document.querySelectorAll("input[type=checkbox]:checked")
     ).forEach((item) => {
       permissions.push(item.value);
->>>>>>> a7ea60a43c24e419e95edb62c385b8dce7ef000b:src/components/authentication/permissions/AddNewUser.js
     });
     // console.log(permissions)
     newUserObject[newUser] = permissions;
     console.log(newUserObject);
     //apiCall
+    
   };
 
   return (

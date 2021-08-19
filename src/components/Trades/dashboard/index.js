@@ -96,7 +96,7 @@ const Dashboard = () => {
                     <>
                       <div className="dashcard-table">
                         <div className="">
-                          data[account]?.data?.length?(
+                         { data[account]?.data?.length?(
                           <Table
                             accountData={data[account]}
                             account={account}
