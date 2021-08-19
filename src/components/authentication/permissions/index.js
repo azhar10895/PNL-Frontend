@@ -17,8 +17,6 @@ const Permissions = () => {
   };
   const editUserButtonHandler = () => {
     setEditUserBool(!editUserBool);
-    setAddNewUserBool(false);
-    document.getElementById("addUser").checked = false;
   };
   return (
     <>
@@ -35,15 +33,11 @@ const Permissions = () => {
             </label>
           </div>
           <div className="">
-          <label htmlFor="editUser">Edit User</label>
-            <label className="switch">
-            <input type="checkbox" id="editUser" onClick={editUserButtonHandler} />
-            <span class="slider round" style={{marginLeft:'0px'}}></span>
-            </label>
+          <button onClick={editUserButtonHandler}>Edit User</button>
           </div>
         </div>
-        <div>{addNewUserBool ? <AddNewUser /> : null}</div>
-        <div>{editUserBool ? <EditUserPermission /> : null}</div>
+        <div><AddNewUser /></div>
+        <div>{editUserBool && <EditUserPermission handleClose={editUserButtonHandler} />}</div>
       </div>
     </>
   );
