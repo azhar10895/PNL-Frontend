@@ -55,7 +55,7 @@ const Dashboard = () => {
       );
 
       const resData = res?.data?.res;
-      console.log("resData",resData);
+      console.log("resData", resData);
       const accountId = Object.keys(resData)[0];
       const time = resData[accountId].lastTimeStamp;
       if (timeStamp === null) {
@@ -86,6 +86,7 @@ const Dashboard = () => {
               <NavigationEveryPage pageName="Dashboard" />
             </div>
             <div className="container-fluid">
+              {" "}
               {data &&
                 Object.keys(data).map((account) => {
                   // console.log("data:::::::::s",data)
@@ -95,22 +96,19 @@ const Dashboard = () => {
                     <>
                       <div className="dashcard-table">
                         <div className="">
-                          {data[account]?.data?.length ? (
-                            <Table
-                              accountData={data[account]}
-                              account={account}
-                              // k={account}
-                            />
-                          ) : (
-                            "No Data to show"
-                          )}
+                          data[account]?.data?.length?(
+                          <Table
+                            accountData={data[account]}
+                            account={account}
+                          />
+                          ) : ("No Data to show")}
                         </div>
                       </div>
                     </>
                   );
-                })}
+                })}{" "}
             </div>
-          </div>
+          </div>{" "}
         </>
       )}
     </>
