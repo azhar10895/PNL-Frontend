@@ -1,9 +1,11 @@
-import React from 'react'
+import React from 'react';
+import Select from "react-select";
+
 
 export const EditUserPermission = () => {
     return (
         <>
-            Edit user permissions
+            <Select />
         </>
     )
 }

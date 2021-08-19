@@ -13,10 +13,12 @@ const Permissions = () => {
   const addNewUserButtonHandler = () => {
     setAddNewUserBool(!addNewUserBool);
     setEditUserBool(false);
+    document.getElementById("editUser").checked = false;
   };
   const editUserButtonHandler = () => {
     setEditUserBool(!editUserBool);
     setAddNewUserBool(false);
+    document.getElementById("addUser").checked = false;
   };
   return (
     <>
@@ -26,10 +28,18 @@ const Permissions = () => {
         </div>
         <div className="buttons">
           <div className="">
-            <button onClick={addNewUserButtonHandler}>Add New User</button>
+          <label htmlFor="addUser">Add New User</label>
+          <label className="switch">
+            <input type="checkbox" id="addUser" onClick={addNewUserButtonHandler} defaultChecked/>
+            <span class="slider round" style={{marginLeft:'0px'}}></span>
+            </label>
           </div>
           <div className="">
-            <button onClick={editUserButtonHandler}>Edit User</button>
+          <label htmlFor="editUser">Edit User</label>
+            <label className="switch">
+            <input type="checkbox" id="editUser" onClick={editUserButtonHandler} />
+            <span class="slider round" style={{marginLeft:'0px'}}></span>
+            </label>
           </div>
         </div>
         <div>{addNewUserBool ? <AddNewUser /> : null}</div>
