@@ -45,8 +45,11 @@ const AddNewUser = () => {
     <>
         <form>
           <div>
-            <input placeholder="Add new user" onChange={newUserInputHandler} />
+            <input placeholder="username" onChange={newUserInputHandler} />
             <div>
+              <div className="">
+                <input placeholder="password"  />
+                </div>
               {pages.map((page) => {
                 return (
                   <div>
