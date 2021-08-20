@@ -1,18 +1,20 @@
 import React, { useState } from "react";
 import { useFormik } from "formik";
-
+import { API_URLS } from "../../../config";
+import { postApiCall } from "../../../utils/axios";
 const ChangeUserInfo = (props) => {
   const addNewUser = props.addNewUser;
   const [currentUser, setCurrentUser] = useState(props.currentUser);
   const roles = ["Trader", "setter"];
   const initialValues = {
-    username: "",
-    accountNo: "",
-    email: "",
-    password: "",
-    role: "",
+    username: currentUser,
+    accountNo: "2", //needs change
+    email: "123", //needs change
+    password: "3", //needs change
+    role: "3", //needs change
   };
   const validate = (values) => {
+    //needs change
     let errors = {};
     if (!values.email) {
       errors.email = "Email is required";
@@ -37,16 +39,6 @@ const ChangeUserInfo = (props) => {
   });
   return (
     <>
-      {/* <div className="row">
-        <div className="col-8">
-          <div className="userNameHeading">{currentUser}</div>
-        </div>
-        <div className="col-4">
-          <div className="goBack">
-            <button onClick={props.goBackHandler}>Go Back</button>
-          </div>
-        </div>
-      </div> */}
       <form onSubmit={formik.handleSubmit}>
         <div className="editUserFormField">
           <input
@@ -54,8 +46,9 @@ const ChangeUserInfo = (props) => {
             id="Username"
             name="Username"
             placeholder="Username"
-            onChange={formik.handleChange}
-            onBlur={formik.handleBlur}
+            // onChange={formik.handleChange}
+            readOnly={true}
+            // onBlur={formik.handleBlur}
             value={currentUser}
           />
         </div>
@@ -77,7 +70,7 @@ const ChangeUserInfo = (props) => {
             name="email"
             placeholder="Email"
             onChange={formik.handleChange}
-            onBlur={formik.handleBlur}
+            // onBlur={formik.handleBlur}
             value={formik.values.email}
           />
           {/* <div className="col-12">

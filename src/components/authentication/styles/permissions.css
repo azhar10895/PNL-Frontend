@@ -146,3 +146,21 @@
   padding-bottom: 20px;
   width: 100%;
 }
+
+.userCreated{
+  padding:30px
+}
+
+.icon{
+  color: green;
+  text-align: center;
+  margin-top: 60px;
+}
+
+.successText{
+  font-size: 20px;
+  font-weight: 600;
+  text-align: center;
+  margin-top: 10px;
+  margin-bottom: 60px;
+}

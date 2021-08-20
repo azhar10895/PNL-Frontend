@@ -1,23 +1,23 @@
-import React, { useState } from "react";
-import Select from "react-select";
-import { editIcon } from "../../../helpers/icons";
-import * as Icon from "react-bootstrap-icons";
+import React, { useEffect, useState } from "react";
 import ChangeUserInfo from "./ChangeUserInfo";
 import AddNewUser from "./AddNewUser";
+import { getApiCall } from "../../../utils/axios";
+import { API_URLS } from "../../../config";
 
 const Users = () => {
   const [toggle, setToggle] = useState(false);
   const [currentUser, setCurrentUser] = useState(null);
   const [addNewUserBool, setAddNewUserBool] = useState(false);
-  const data = {
-    user1: { role: "trader", LastLogin: 0 },
-    user2: { role: "Setter", LastLogin: 0 },
-    user3: { role: "trader", LastLogin: 0 },
-    user4: { role: "trader", LastLogin: 0 },
-    user5: { role: "trader", LastLogin: 0 },
-    user6: { role: "trader", LastLogin: 0 },
-    user7: { role: "trader", LastLogin: 0 },
-  };
+  const [data,setData] = useState([]);
+  useEffect(()=>{
+    getUsers();
+  },[])
+  const getUsers = async()=>{
+    const res = await getApiCall(API_URLS.getUsers,{});
+    const data = res?.res?.users;
+    console.log("data::::",data);
+    setData({...data});
+  }
   const addNewUserHandler = () => {
     setAddNewUserBool(true);
     setToggle(!toggle);
@@ -46,18 +46,18 @@ const Users = () => {
           </div>
           {Object.keys(data).map((user) => {
             return (
-              <React.Fragment key={user}>
+              <React.Fragment key={data[user].userId}>
                 <div className="row permissionPage-row">
-                  <div className="col-4">{user}</div>
-                  <div className="col-3">{data[user]?.role}</div>
-                  <div className="col-3">{data[user]?.LastLogin}</div>
+                  <div className="col-4">{data[user]?.userName}</div>
+                  <div className="col-3">{data[user]?.RoleName}</div>
+                  <div className="col-3">{data[user]?.lastLogin?data[user]?.lastLogin:'-'}</div>
                   <div className="col-2">
                     <div className="float-end">
                       <button
                         type="button"
                         className="btn btn-success"
-                        value={user}
-                        name={user}
+                        value={data[user]?.userName}
+                        name={data[user]?.userName}
                         onClick={editHandler}
                       >
                         Edit
