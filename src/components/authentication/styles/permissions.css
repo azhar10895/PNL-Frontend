@@ -9,7 +9,18 @@
   margin-bottom: 30px;
 }
 
-.PermissionsBar {
+.ResetpermissionButton {
+  margin-top: 3px;
+  margin-bottom: 3px;
+  margin-left: 10px;
+  margin-right: 10px;
+}
+
+.AddNewUserButton {
+  margin-left: 10px;
+  margin-right: 10px;
+  margin-top: 3px;
+  margin-bottom: 3px;
 }
 
 .buttons {
@@ -114,68 +125,69 @@
   font-size: 20px;
 }
 
-.permissionPage-row{
+.permissionPage-row {
   padding: 10px;
   border: 1px solid rgba(38, 39, 39, 0.342);
-  font-size: 18px;
+  font-size: 17px;
   color: rgb(19, 15, 15);
   font-weight: 300;
-  font-family: 'Open Sans', 'Helvetica Neue', 'Segoe UI', 'Calibri', 'Arial', sans-serif;
-  
+  font-family: "Open Sans", "Helvetica Neue", "Segoe UI", "Calibri", "Arial",
+    sans-serif;
+    vertical-align: middle;
 }
 
-.edit-Btn button{
+.edit-Btn button {
   border: none;
   outline: none;
   background-color: transparent;
-
 }
 
-.userNameHeading{
+.userNameHeading {
   font-size: 25px;
   font-weight: 400;
   margin-bottom: 30px;
   margin-left: 10%;
 }
 
-.editUserFormField{
+.editUserFormField {
   width: 80%;
   margin: auto;
   margin-bottom: 15px;
 }
-.editUserFormField input{
+.editUserFormField input {
   width: 100%;
   height: 50px;
   padding: 7px;
 }
-.editUserFormField select{
+.editUserFormField select {
   height: 40px;
   width: 100%;
   margin: 0 auto;
-  font-family: 'Open Sans', 'Helvetica Neue', 'Segoe UI', 'Calibri', 'Arial', sans-serif;
+  font-family: "Open Sans", "Helvetica Neue", "Segoe UI", "Calibri", "Arial",
+    sans-serif;
   font-size: 18px;
 }
 
-.editUserFormField input::placeholder{
+.editUserFormField input::placeholder {
   font-size: 20px;
 }
-.editUserFormField input:focus{
+.editUserFormField input:focus {
   outline: #0f86e7;
-  border-color:#0f86e7;
+  border-color: #0f86e7;
 }
 
-.goBack{
+.goBack {
   margin-top: 7px;
   margin-left: 30px;
   font-size: 15px;
 }
-.goBack button{
+.goBack button {
   border: none;
   background-color: transparent;
-  color: #0A5ED7;
-  border-bottom:1px solid #0A5ED7;
+  color: #0a5ed7;
+  border-bottom: 1px solid #0a5ed7;
 }
 
-.headings{
+.headings {
   color: gray;
 }
