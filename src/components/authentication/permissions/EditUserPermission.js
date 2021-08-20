@@ -19,6 +19,9 @@ export const EditUserPermission = (props) => {
     setCurrentUser(event.target.value);
     setToggle(!toggle);
   };
+  const goBackHandler = ()=>{
+    setToggle(!toggle);
+  }
   return (
     <>
       <div className="popup-box">
@@ -28,7 +31,7 @@ export const EditUserPermission = (props) => {
           </span>
           {!toggle && (
             <div>
-              <div className="row">
+              <div className="row headings">
                 <div className="col-4">Username</div>
                 <div className="col-3">Role</div>
                 <div className="col-3">Last Login</div>
@@ -60,7 +63,7 @@ export const EditUserPermission = (props) => {
             </div>
           )}
 
-          {toggle && <ChangeUserInfo currentUser={currentUser} />}
+          {toggle && <ChangeUserInfo currentUser={currentUser} goBackHandler={goBackHandler}/>}
         </div>
       </div>
     </>

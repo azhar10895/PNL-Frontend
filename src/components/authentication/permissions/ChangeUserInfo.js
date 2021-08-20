@@ -1,11 +1,13 @@
-import React from "react";
+import React,{useState} from "react";
 import { useFormik } from "formik";
 
 const ChangeUserInfo = (props) => {
-  const currentUser = props.currentUser;
+  const [currentUser,setCurrentUser] = useState(props.currentUser);
+  const roles = ["Trader", "setter"];
   const initialValues = {
     username: "",
     password: "",
+    role: "",
   };
   const validate = (values) => {
     let errors = {};
@@ -15,10 +17,14 @@ const ChangeUserInfo = (props) => {
     if (!values.password) {
       errors.password = "Password is required";
     }
+    if (!values.role) {
+      errors.role = "Role is required";
+    }
     return errors;
   };
   const onSubmit = (values, { resetForm }) => {
     console.log("formData::", values);
+    setCurrentUser(values.username);
     resetForm({ values: "" });
   };
   const formik = useFormik({
@@ -28,9 +34,18 @@ const ChangeUserInfo = (props) => {
   });
   return (
     <>
-      <div className="userNameHeading">{currentUser}</div>
+      <div className="row">
+        <div className="col-8">
+          <div className="userNameHeading">{currentUser}</div>
+        </div>
+        <div className="col-4">
+          <div className="goBack">
+            <button onClick={props.goBackHandler}>Go Back</button>
+          </div>
+        </div>
+      </div>
       <form onSubmit={formik.handleSubmit}>
-        <div>
+        <div className="editUserFormField">
           <input
             type="text"
             id="username"
@@ -46,7 +61,7 @@ const ChangeUserInfo = (props) => {
             ) : null}
           </div>
         </div>
-        <div>
+        <div className="editUserFormField">
           <input
             type="password"
             id="password"
@@ -62,9 +77,27 @@ const ChangeUserInfo = (props) => {
             ) : null}
           </div>
         </div>
-        <div>
+        <div className="editUserFormField">
+          <select
+            name="role"
+            value={formik.values.role}
+            onChange={formik.handleChange}
+            onBlur={formik.handleBlur}
+          >
+            <option value="" label="Select role" />
+            {roles.map((role) => {
+              return <option value={role} label={role} key={role} />;
+            })}
+          </select>
+          <div className="col-12">
+            {formik.touched.role && formik.errors.role ? (
+              <div className="error">{formik.errors.role}</div>
+            ) : null}
+          </div>
+        </div>
+        <div className="editUserFormField">
           <button type="submit" className="btn btn-primary">
-            Tick
+            Change
           </button>
         </div>
       </form>

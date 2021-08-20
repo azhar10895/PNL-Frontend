@@ -86,12 +86,12 @@
 
 .box {
   position: relative;
-  width: 40%;
+  width: 30%;
   margin: auto;
   height: auto;
   min-height: 20vh;
   margin-top: calc(100vh - 85vh - 20px);
-  background: #fff;
+  background: #ffffff;
   border-radius: 4px;
   padding: 20px;
   border: 1px solid #999;
@@ -102,7 +102,7 @@
   content: "x";
   cursor: pointer;
   position: fixed;
-  right: calc(30% - 28px);
+  right: calc(35% - 27px);
   top: calc(100vh - 85vh - 33px);
   background: #ededed;
   width: 25px;
@@ -116,17 +116,66 @@
 
 .permissionPage-row{
   padding: 10px;
-  border: 1px solid black;
-  font-size: 20px;
+  border: 1px solid rgba(38, 39, 39, 0.342);
+  font-size: 18px;
+  color: rgb(19, 15, 15);
+  font-weight: 300;
+  font-family: 'Open Sans', 'Helvetica Neue', 'Segoe UI', 'Calibri', 'Arial', sans-serif;
+  
 }
 
 .edit-Btn button{
   border: none;
   outline: none;
   background-color: transparent;
+
 }
 
 .userNameHeading{
   font-size: 25px;
   font-weight: 400;
+  margin-bottom: 30px;
+  margin-left: 10%;
+}
+
+.editUserFormField{
+  width: 80%;
+  margin: auto;
+  margin-bottom: 15px;
+}
+.editUserFormField input{
+  width: 100%;
+  height: 50px;
+  padding: 7px;
+}
+.editUserFormField select{
+  height: 40px;
+  width: 100%;
+  margin: 0 auto;
+  font-family: 'Open Sans', 'Helvetica Neue', 'Segoe UI', 'Calibri', 'Arial', sans-serif;
+  font-size: 18px;
+}
+
+.editUserFormField input::placeholder{
+  font-size: 20px;
+}
+.editUserFormField input:focus{
+  outline: #0f86e7;
+  border-color:#0f86e7;
+}
+
+.goBack{
+  margin-top: 7px;
+  margin-left: 30px;
+  font-size: 15px;
+}
+.goBack button{
+  border: none;
+  background-color: transparent;
+  color: #0A5ED7;
+  border-bottom:1px solid #0A5ED7;
+}
+
+.headings{
+  color: gray;
 }
