@@ -4,7 +4,7 @@ import { editIcon } from "../../../helpers/icons";
 import * as Icon from "react-bootstrap-icons";
 import ChangeUserInfo from "./ChangeUserInfo";
 
-export const EditUserPermission = (props) => {
+const EditUserPermission = (props) => {
   const [toggle, setToggle] = useState(false);
   const [currentUser, setCurrentUser] = useState(null);
   const data = {
@@ -70,3 +70,4 @@ export const EditUserPermission = (props) => {
     </>
   );
 };
+export default EditUserPermission;

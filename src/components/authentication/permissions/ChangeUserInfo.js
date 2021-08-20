@@ -2,17 +2,21 @@ import React,{useState} from "react";
 import { useFormik } from "formik";
 
 const ChangeUserInfo = (props) => {
+  const addNewUser = props.addNewUser;
   const [currentUser,setCurrentUser] = useState(props.currentUser);
   const roles = ["Trader", "setter"];
   const initialValues = {
-    username: "",
+    username:"",
+    accountNo:"",
+    email: "",
     password: "",
     role: "",
+
   };
   const validate = (values) => {
     let errors = {};
-    if (!values.username) {
-      errors.username = "Username is required";
+    if (!values.email) {
+      errors.username = "Email is required";
     }
     if (!values.password) {
       errors.password = "Password is required";
@@ -34,7 +38,7 @@ const ChangeUserInfo = (props) => {
   });
   return (
     <>
-      <div className="row">
+      {/* <div className="row">
         <div className="col-8">
           <div className="userNameHeading">{currentUser}</div>
         </div>
@@ -43,17 +47,39 @@ const ChangeUserInfo = (props) => {
             <button onClick={props.goBackHandler}>Go Back</button>
           </div>
         </div>
-      </div>
+      </div> */}
       <form onSubmit={formik.handleSubmit}>
+      <div className="editUserFormField">
+          <input
+            type="text"
+            id="Username"
+            name="Username"
+            placeholder="Username"
+            onChange={formik.handleChange}
+            onBlur={formik.handleBlur}
+            value={currentUser}
+          />
+        </div>
+      <div className="editUserFormField">
+          <input
+            type="text"
+            id="accountNo"
+            name="accountNo"
+            placeholder="Account No"
+            onChange={formik.handleChange}
+            onBlur={formik.handleBlur}
+            value={formik.values.accountNo}
+          />
+        </div>
         <div className="editUserFormField">
           <input
             type="text"
-            id="username"
-            name="username"
-            placeholder="Change Username"
+            id="email"
+            name="email"
+            placeholder="Email"
             onChange={formik.handleChange}
             onBlur={formik.handleBlur}
-            value={formik.values.username}
+            value={formik.values.email}
           />
           <div className="col-12">
             {formik.touched.username && formik.errors.username ? (

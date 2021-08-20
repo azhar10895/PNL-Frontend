@@ -1,117 +1,135 @@
-import React, { useEffect, useState } from "react";
-import NavigationEveryPage from "../../Nav/NavigationEveryPage";
-import Select from "react-select";
-import { editIcon } from "../../../helpers/icons";
-import * as Icon from "react-bootstrap-icons";
-import ChangeUserInfo from "./ChangeUserInfo";
+import React, { useState } from "react";
+import { useFormik } from "formik";
 
-const AddNewUser = () => {
-  const [newUser, setNewUser] = useState(null);
-  //   const [data,setNewData] =useState({});
-  const pages = [
-    "dashboard",
-    "permissions",
-    "history",
-    "tradesLogs",
-    "settings",
-  ];
-  const data = {
-    admin: ["dashboard", "permissions", "history", "tradesLogs", "settings"],
-    User1: ["dashboard", "history"],
-    user2: ["settings", "history"],
+const AddNewUser = (props) => {
+  const roles = ["Trader", "setter"];
+  const initialValues = {
+    username: "",
+    accountNo: "",
+    email: "",
+    password: "",
+    role: "",
   };
-
-  const newUserInputHandler = (event) => {
-    setNewUser(event.target.value);
+  const validate = (values) => {
+    let errors = {};
+    if (!values.username) {
+      errors.username = "Email is required";
+    }
+    if (!values.accountNo) {
+      errors.username = "Email is required";
+    }
+    if (!values.email) {
+      errors.username = "Email is required";
+    }
+    if (!values.password) {
+      errors.password = "Password is required";
+    }
+    if (!values.role) {
+      errors.role = "Role is required";
+    }
+    return errors;
   };
-
-  //   const addNewUserHandler = () => {
-  //     data[newUser] = "hello";
-  //   };
-  const addNewUser = (event) => {
-    event.preventDefault();
-    const newUserObject = {};
-    const permissions = [];
-    Array.from(
-      document.querySelectorAll("input[type=checkbox]:checked")
-    ).forEach((item) => {
-      permissions.push(item.value);
-    });
-    // console.log(permissions)
-    newUserObject[newUser] = permissions;
-    console.log(newUserObject);
-    //apiCall
+  const onSubmit = (values, { resetForm }) => {
+    console.log("formData::", values);
+    resetForm({ values: "" });
   };
-
+  const formik = useFormik({
+    initialValues,
+    onSubmit,
+    validate,
+  });
   return (
     <>
-      <form>
-        <div>
+      <form onSubmit={formik.handleSubmit}>
+        <div className="editUserFormField">
           <input
             type="text"
-            id="username"
-            name="username"
-            placeholder="Change Username"
-            value="admin"
+            id="Username"
+            name="Username"
+            placeholder="Username"
+            onChange={formik.handleChange}
+            onBlur={formik.handleBlur}
+            value={formik.values.username}
           />
-
-          <div>
-            <div className="">
-              <input
-                type="password"
-                id="password"
-                name="password"
-                placeholder="Password"
-                value="Gemini@123"
-              />
-            </div>
-            {pages.map((page) => {
-              return (
-                <div>
-                  <input type="checkbox" id={page} value={page} />
-                  <label htmlFor={page}>{page}</label>
-                </div>
-              );
-            })}
+           <div className="col-12">
+            {formik.touched.username && formik.errors.username ? (
+              <div className="error">{formik.errors.username}</div>
+            ) : null}
           </div>
-          <button
-            className="btn btn-success ResetpermissionButton"
-            type="reset"
+        </div>
+        <div className="editUserFormField">
+          <input
+            type="text"
+            id="accountNo"
+            name="accountNo"
+            placeholder="Account No"
+            onChange={formik.handleChange}
+            onBlur={formik.handleBlur}
+            value={formik.values.accountNo}
+          />
+           <div className="col-12">
+            {formik.touched.accountNo && formik.errors.accountNo ? (
+              <div className="error">{formik.errors.accountNo}</div>
+            ) : null}
+          </div>
+        </div>
+        <div className="editUserFormField">
+          <input
+            type="text"
+            id="email"
+            name="email"
+            placeholder="Email"
+            onChange={formik.handleChange}
+            onBlur={formik.handleBlur}
+            value={formik.values.email}
+          />
+          <div className="col-12">
+            {formik.touched.email && formik.errors.email ? (
+              <div className="error">{formik.errors.email}</div>
+            ) : null}
+          </div>
+        </div>
+        <div className="editUserFormField">
+          <input
+            type="password"
+            id="password"
+            name="password"
+            placeholder="Password"
+            onChange={formik.handleChange}
+            onBlur={formik.handleBlur}
+            value={formik.values.password}
+          />
+          <div className="col-12">
+            {formik.touched.password && formik.errors.password ? (
+              <div className="error">{formik.errors.password}</div>
+            ) : null}
+          </div>
+        </div>
+        <div className="editUserFormField">
+          <select
+            name="role"
+            value={formik.values.role}
+            onChange={formik.handleChange}
+            onBlur={formik.handleBlur}
           >
-            Reset
-          </button>
-          <button
-            className="btn btn-success AddNewUserButton"
-            onClick={addNewUser}
-          >
-            Add new user
+            <option value="" label="Select role" />
+            {roles.map((role) => {
+              return <option value={role} label={role} key={role} />;
+            })}
+          </select>
+          <div className="col-12">
+            {formik.touched.role && formik.errors.role ? (
+              <div className="error">{formik.errors.role}</div>
+            ) : null}
+          </div>
+        </div>
+        <div className="editUserFormField">
+          <button type="submit" className="btn btn-primary">
+            Change
           </button>
         </div>
       </form>
-      {/* <div>
-          {Object.keys(data).map((user) => {
-            return (
-              <>
-                <div>{user}</div>
-                <div>
-                  {data[user].map((page) => {
-                    return (
-                      <>
-                        <li>
-                          <input type="checkbox" id={page} />
-                          <label htmlFor={page}>{page}</label>
-                        </li>
-                      </>
-                    );
-                  })}
-                </div>
-                <br />
-              </>
-            );
-          })}
-        </div> */}
     </>
   );
 };
-
 export default AddNewUser;
