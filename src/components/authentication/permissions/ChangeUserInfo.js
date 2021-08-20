@@ -1,17 +1,16 @@
-import React,{useState} from "react";
+import React, { useState } from "react";
 import { useFormik } from "formik";
 
 const ChangeUserInfo = (props) => {
   const addNewUser = props.addNewUser;
-  const [currentUser,setCurrentUser] = useState(props.currentUser);
+  const [currentUser, setCurrentUser] = useState(props.currentUser);
   const roles = ["Trader", "setter"];
   const initialValues = {
-    username:"",
-    accountNo:"",
+    username: "",
+    accountNo: "",
     email: "",
     password: "",
     role: "",
-
   };
   const validate = (values) => {
     let errors = {};
@@ -49,7 +48,7 @@ const ChangeUserInfo = (props) => {
         </div>
       </div> */}
       <form onSubmit={formik.handleSubmit}>
-      <div className="editUserFormField">
+        <div className="editUserFormField">
           <input
             type="text"
             id="Username"
@@ -60,7 +59,7 @@ const ChangeUserInfo = (props) => {
             value={currentUser}
           />
         </div>
-      <div className="editUserFormField">
+        <div className="editUserFormField">
           <input
             type="text"
             id="accountNo"
@@ -81,11 +80,11 @@ const ChangeUserInfo = (props) => {
             onBlur={formik.handleBlur}
             value={formik.values.email}
           />
-          <div className="col-12">
+          {/* <div className="col-12">
             {formik.touched.username && formik.errors.username ? (
               <div className="error">{formik.errors.username}</div>
             ) : null}
-          </div>
+          </div> */}
         </div>
         <div className="editUserFormField">
           <input
@@ -97,11 +96,11 @@ const ChangeUserInfo = (props) => {
             onBlur={formik.handleBlur}
             value={formik.values.password}
           />
-          <div className="col-12">
+          {/* <div className="col-12">
             {formik.touched.password && formik.errors.password ? (
               <div className="error">{formik.errors.password}</div>
             ) : null}
-          </div>
+          </div> */}
         </div>
         <div className="editUserFormField">
           <select
@@ -115,11 +114,11 @@ const ChangeUserInfo = (props) => {
               return <option value={role} label={role} key={role} />;
             })}
           </select>
-          <div className="col-12">
+          {/* <div className="col-12">
             {formik.touched.role && formik.errors.role ? (
               <div className="error">{formik.errors.role}</div>
             ) : null}
-          </div>
+          </div> */}
         </div>
         <div className="editUserFormField">
           <button type="submit" className="btn btn-primary">

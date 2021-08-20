@@ -51,7 +51,7 @@ const AddNewUser = (props) => {
             onBlur={formik.handleBlur}
             value={formik.values.username}
           />
-           <div className="col-12">
+          <div className="col-12">
             {formik.touched.username && formik.errors.username ? (
               <div className="error">{formik.errors.username}</div>
             ) : null}
@@ -67,7 +67,7 @@ const AddNewUser = (props) => {
             onBlur={formik.handleBlur}
             value={formik.values.accountNo}
           />
-           <div className="col-12">
+          <div className="col-12">
             {formik.touched.accountNo && formik.errors.accountNo ? (
               <div className="error">{formik.errors.accountNo}</div>
             ) : null}
@@ -100,9 +100,9 @@ const AddNewUser = (props) => {
             value={formik.values.password}
           />
           <div className="col-12">
-            {formik.touched.password && formik.errors.password ? (
+            {formik.touched.password && formik.errors.password?(
               <div className="error">{formik.errors.password}</div>
-            ) : null}
+            ):null}
           </div>
         </div>
         <div className="editUserFormField">
@@ -122,6 +122,7 @@ const AddNewUser = (props) => {
               <div className="error">{formik.errors.role}</div>
             ) : null}
           </div>
+          
         </div>
         <div className="editUserFormField">
           <button type="submit" className="btn btn-primary">
