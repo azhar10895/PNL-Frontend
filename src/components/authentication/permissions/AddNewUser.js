@@ -13,13 +13,13 @@ const AddNewUser = (props) => {
   const validate = (values) => {
     let errors = {};
     if (!values.username) {
-      errors.username = "Email is required";
+      errors.username = "Username is required";
     }
     if (!values.accountNo) {
-      errors.username = "Email is required";
+      errors.accountNo = "Account No is required";
     }
     if (!values.email) {
-      errors.username = "Email is required";
+      errors.email = "Email is required";
     }
     if (!values.password) {
       errors.password = "Password is required";
@@ -44,8 +44,8 @@ const AddNewUser = (props) => {
         <div className="editUserFormField">
           <input
             type="text"
-            id="Username"
-            name="Username"
+            id="username"
+            name="username"
             placeholder="Username"
             onChange={formik.handleChange}
             onBlur={formik.handleBlur}
@@ -126,7 +126,7 @@ const AddNewUser = (props) => {
         </div>
         <div className="editUserFormField">
           <button type="submit" className="btn btn-primary">
-            Change
+            Add
           </button>
         </div>
       </form>

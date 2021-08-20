@@ -15,7 +15,7 @@ const ChangeUserInfo = (props) => {
   const validate = (values) => {
     let errors = {};
     if (!values.email) {
-      errors.username = "Email is required";
+      errors.email = "Email is required";
     }
     if (!values.password) {
       errors.password = "Password is required";

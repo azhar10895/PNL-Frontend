@@ -16,6 +16,7 @@ import * as Icon from "react-bootstrap-icons";
 import { icons } from "react-icons/lib";
 import Trades from "../TradesLogs";
 import NavigationEveryPage from "../../Nav/NavigationEveryPage";
+import jwt_decode from "jwt-decode";
 
 const Dashboard = () => {
   // const [new_data, setNewData] = useState([]);
@@ -40,7 +41,8 @@ const Dashboard = () => {
   const getPNL = async (timeStamp = null) => {
     try {
       const token = localStorage.getItem("token");
-
+      const decoded = jwt_decode(token);
+      console.log("decoded:::::::::::::::",decoded);
       console.log("timestamp:", timeStamp);
 
       const header = {
