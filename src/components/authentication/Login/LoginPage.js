@@ -16,7 +16,6 @@ const LoginPage = () => {
 
   const onSubmit = async (values) => {
     try {
-      console.log("form data", values);
       if (values?.username && values?.password) {
         const res = await postApiCall(API_URLS.login, {}, values);
         if (res?.data?.res?.login === "success") {
@@ -25,7 +24,6 @@ const LoginPage = () => {
           }
           setredirectToDashboard(true);
         }
-        console.log("Res", res);
       }
     } catch (err) {
       console.log("Error", err);

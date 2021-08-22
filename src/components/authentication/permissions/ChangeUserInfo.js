@@ -6,12 +6,20 @@ const ChangeUserInfo = (props) => {
   const addNewUser = props.addNewUser;
   const [currentUser, setCurrentUser] = useState(props.currentUser);
   const roles = ["Trader", "setter"];
+  const editUserCall = async () =>{
+    try{
+      const res = await postApiCall(API_URLS.modifyUsers,{},{});
+      console.log("Res data",res);
+    }catch(err){
+      console.log("Err in edit user modifyAPi ",err);
+    }
+  }
   const initialValues = {
     username: currentUser,
-    accountNo: "2", //needs change
-    email: "123", //needs change
-    password: "3", //needs change
-    role: "3", //needs change
+    accountNo: "", //needs change
+    email: "", //needs change
+    password: "", //needs change
+    role: "", //needs change
   };
   const validate = (values) => {
     //needs change
