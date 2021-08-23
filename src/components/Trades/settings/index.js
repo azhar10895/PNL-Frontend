@@ -8,6 +8,7 @@ import NavigationEveryPage from "../../Nav/NavigationEveryPage";
 import { useFormik } from "formik";
 import { Redirect } from "react-router";
 
+
 const Settings = () => {
   const [data, setData] = useState([]);
   const [value, setValue] = useState();

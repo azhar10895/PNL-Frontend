@@ -9,6 +9,8 @@ const ChangeUserInfo = (props) => {
   const currentUser = props.currentUser;
   const [passBool, setPassBool] = useState(false);
   const [roles, setRoles] = useState([]);
+  const [value, setValue] = useState();
+  const [account, setAccount] = useState();
   useEffect(() => {
     getRoles();
   }, []);
@@ -55,7 +57,13 @@ const ChangeUserInfo = (props) => {
   const onSubmit = (values, { resetForm }) => {
     console.log("formData::", values);
     //apiCall
-    resetForm({ values: "" });
+    if (values?.editUserCall) {
+      editUserCall(account, values?.editUserCall);
+      setValue(values?.editUserCall);
+      values.editUserCall = "";
+
+      resetForm({ values: "" });
+    }
   };
   const formik = useFormik({
     initialValues,
@@ -147,7 +155,9 @@ const ChangeUserInfo = (props) => {
             id="passBool"
             onClick={() => setPassBool(true)}
           />
-          <label htmlFor="passBool" className="">Change Password</label>
+          <label htmlFor="passBool" className="">
+            Change Password
+          </label>
         </div>
         <div className="editUserFormField">
           <button type="submit" className="btn btn-primary">
