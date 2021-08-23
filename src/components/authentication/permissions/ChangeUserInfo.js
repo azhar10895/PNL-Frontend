@@ -3,17 +3,27 @@ import { useFormik } from "formik";
 import { API_URLS } from "../../../config";
 import { postApiCall } from "../../../utils/axios";
 const ChangeUserInfo = (props) => {
-  const addNewUser = props.addNewUser;
-  const [currentUser, setCurrentUser] = useState(props.currentUser);
+  const currentUser = props.currentUser;
   const roles = ["Trader", "setter"];
-  const editUserCall = async () =>{
-    try{
-      const res = await postApiCall(API_URLS.modifyUsers,{},{});
-      console.log("Res data",res);
-    }catch(err){
-      console.log("Err in edit user modifyAPi ",err);
+  const editUserCall = async (values) => {
+    try {
+      const res = await postApiCall(
+        API_URLS.modifyUsers,
+        {},
+        {
+          username: values.username,
+          password: values.password,
+          accountNo: values.accountNo,
+          emailId: values.email,
+          role: 1, //this needs change
+          userId: 1,
+        }
+      );
+      console.log("Res data", res);
+    } catch (err) {
+      console.log("Err in edit user modifyAPi ", err);
     }
-  }
+  };
   const initialValues = {
     username: currentUser,
     accountNo: "", //needs change
@@ -21,29 +31,15 @@ const ChangeUserInfo = (props) => {
     password: "", //needs change
     role: "", //needs change
   };
-  const validate = (values) => {
-    //needs change
-    let errors = {};
-    if (!values.email) {
-      errors.email = "Email is required";
-    }
-    if (!values.password) {
-      errors.password = "Password is required";
-    }
-    if (!values.role) {
-      errors.role = "Role is required";
-    }
-    return errors;
-  };
+
   const onSubmit = (values, { resetForm }) => {
     console.log("formData::", values);
-    setCurrentUser(values.username);
+    //apiCall
     resetForm({ values: "" });
   };
   const formik = useFormik({
     initialValues,
     onSubmit,
-    validate,
   });
   return (
     <>
