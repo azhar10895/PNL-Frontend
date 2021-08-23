@@ -8,6 +8,7 @@ export const permissionArr = () => {
   const token = localStorage.getItem("token");
   const decoded = jwt_decode(token);
   const permissions = decoded?.payload?.permissions;
+  console.log("decoded:::",decoded);
   const arr = permissions.slice(1, -1);
   const arr2 = arr.split(",");
   arr2.forEach((index) => {

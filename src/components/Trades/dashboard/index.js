@@ -9,10 +9,12 @@ import { Redirect} from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import * as actions from "../../../redux/actions/rootReducerAction";
 import NavigationEveryPage from "../../Nav/NavigationEveryPage";
-
+import jwt_decode from "jwt-decode";
 const Dashboard = () => {
   // const [new_data, setNewData] = useState([]);
-
+  const token = localStorage.getItem('token');
+  const decoded = jwt_decode(token);
+  const accountNo = decoded?.payload?.accountNo!=='admin' ? decoded?.payload?.accountNo : null;
   const pnlData = useSelector((state) => state.pnlData);
   const timerId = useRef(null);
   const dispatch = useDispatch();
@@ -37,7 +39,7 @@ const Dashboard = () => {
       const header = {
         authorization: `Bearer ${token}`,
       };
-      const req = timeStamp ? { timeStamp } : {};
+      const req = timeStamp ? { timeStamp:timeStamp, accountNo:accountNo } : {accountNo:accountNo};
       const res = await postApiCallWithHeaders(
         API_URLS.getPNL,
         {},
