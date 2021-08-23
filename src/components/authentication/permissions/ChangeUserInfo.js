@@ -2,11 +2,12 @@ import React, { useEffect, useState } from "react";
 import { useFormik } from "formik";
 import { API_URLS } from "../../../config";
 import { getApiCall, postApiCall } from "../../../utils/axios";
+import "../styles/permissions.css";
 
 //Changes needed
 const ChangeUserInfo = (props) => {
   const currentUser = props.currentUser;
-  const [passBool,setPassBool]=useState(false);
+  const [passBool, setPassBool] = useState(false);
   const [roles, setRoles] = useState([]);
   useEffect(() => {
     getRoles();
@@ -62,9 +63,8 @@ const ChangeUserInfo = (props) => {
   });
   return (
     <>
-    <div className="HeadingAddNewUser">Update User</div>
+      <div className="HeadingAddNewUser">Update User</div>
       <form onSubmit={formik.handleSubmit}>
-        
         <div className="editUserFormField">
           <input
             type="text"
@@ -104,22 +104,24 @@ const ChangeUserInfo = (props) => {
             ) : null}
           </div> */}
         </div>
-        {passBool && <div className="editUserFormField">
-          <input
-            type="password"
-            id="password"
-            name="password"
-            placeholder="Password"
-            onChange={formik.handleChange}
-            onBlur={formik.handleBlur}
-            value={formik.values.password}
-          />
-          {/* <div className="col-12">
+        {passBool && (
+          <div className="editUserFormField">
+            <input
+              type="password"
+              id="password"
+              name="password"
+              placeholder="Password"
+              onChange={formik.handleChange}
+              onBlur={formik.handleBlur}
+              value={formik.values.password}
+            />
+            {/* <div className="col-12">
             {formik.touched.password && formik.errors.password ? (
               <div className="error">{formik.errors.password}</div>
             ) : null}
           </div> */}
-        </div>}
+          </div>
+        )}
         <div className="editUserFormField">
           <select
             name="role"
@@ -138,10 +140,15 @@ const ChangeUserInfo = (props) => {
             ) : null}
           </div> */}
         </div>
-        <div className="editUserFormField">
-           <input type="checkbox" id="passBool" onClick ={()=> setPassBool(true)}/>
-           <label htmlFor="passBool"> changepassword</label>
-          </div>
+        <div className="overallCheckbox">
+          <input
+            type="checkbox"
+            // className="PassBoolcheckbox"
+            id="passBool"
+            onClick={() => setPassBool(true)}
+          />
+          <label htmlFor="passBool" className="">Change Password</label>
+        </div>
         <div className="editUserFormField">
           <button type="submit" className="btn btn-primary">
             Change
