@@ -6,6 +6,7 @@ import { getApiCall, postApiCall } from "../../../utils/axios";
 //Changes needed
 const ChangeUserInfo = (props) => {
   const currentUser = props.currentUser;
+  const [passBool,setPassBool]=useState(false);
   const [roles, setRoles] = useState([]);
   useEffect(() => {
     getRoles();
@@ -61,7 +62,9 @@ const ChangeUserInfo = (props) => {
   });
   return (
     <>
+    <div className="HeadingAddNewUser">Update User</div>
       <form onSubmit={formik.handleSubmit}>
+        
         <div className="editUserFormField">
           <input
             type="text"
@@ -101,7 +104,7 @@ const ChangeUserInfo = (props) => {
             ) : null}
           </div> */}
         </div>
-        <div className="editUserFormField">
+        {passBool && <div className="editUserFormField">
           <input
             type="password"
             id="password"
@@ -116,7 +119,7 @@ const ChangeUserInfo = (props) => {
               <div className="error">{formik.errors.password}</div>
             ) : null}
           </div> */}
-        </div>
+        </div>}
         <div className="editUserFormField">
           <select
             name="role"
@@ -135,6 +138,10 @@ const ChangeUserInfo = (props) => {
             ) : null}
           </div> */}
         </div>
+        <div className="editUserFormField">
+           <input type="checkbox" id="passBool" onClick ={()=> setPassBool(true)}/>
+           <label htmlFor="passBool"> changepassword</label>
+          </div>
         <div className="editUserFormField">
           <button type="submit" className="btn btn-primary">
             Change
