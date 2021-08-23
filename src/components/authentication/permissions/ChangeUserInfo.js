@@ -1,10 +1,28 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useFormik } from "formik";
 import { API_URLS } from "../../../config";
-import { postApiCall } from "../../../utils/axios";
+import { getApiCall, postApiCall } from "../../../utils/axios";
+
+//Changes needed
 const ChangeUserInfo = (props) => {
   const currentUser = props.currentUser;
-  const roles = ["Trader", "setter"];
+  const [roles, setRoles] = useState([]);
+  useEffect(() => {
+    getRoles();
+  }, []);
+  const getRoles = async () => {
+    try {
+      const res = await getApiCall(API_URLS.getRoles, {});
+      const roles = res?.res?.users
+        ? res?.res?.users.map((item) => {
+            return item.RoleName;
+          })
+        : [];
+      setRoles([...roles]);
+    } catch (err) {
+      console.log("Error in getRoles ", err);
+    }
+  };
   const editUserCall = async (values) => {
     try {
       const res = await postApiCall(

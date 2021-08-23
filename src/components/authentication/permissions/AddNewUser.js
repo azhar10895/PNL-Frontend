@@ -1,7 +1,7 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useFormik } from "formik";
 import { API_URLS } from "../../../config";
-import { postApiCall } from "../../../utils/axios";
+import { getApiCall, postApiCall } from "../../../utils/axios";
 import { userCreatedIcon } from "../../../helpers/icons";
 
 //validation needs change
@@ -9,7 +9,7 @@ import { userCreatedIcon } from "../../../helpers/icons";
 //roles api should be there to get roles
 
 const AddNewUser = (props) => {
-  const roles = ["Trader", "setter"];
+  const [roles, setRoles] = useState([]);
   const [userCreated, setUserCreated] = useState(false);
   const initialValues = {
     username: "",
@@ -17,6 +17,23 @@ const AddNewUser = (props) => {
     email: "",
     password: "",
     role: "",
+  };
+
+  useEffect(() => {
+    getRoles();
+  }, []);
+  const getRoles = async () => {
+    try {
+      const res = await getApiCall(API_URLS.getRoles, {});
+      const roles = res?.res?.users
+        ? res?.res?.users.map((item) => {
+            return item.RoleName;
+          })
+        : [];
+      setRoles([...roles]);
+    } catch (err) {
+      console.log("Error in getRoles ", err);
+    }
   };
   const newUser = async (values) => {
     try {

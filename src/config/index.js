@@ -9,4 +9,5 @@ export const API_URLS = {
     getHistoricData: "trades/get-historic-data",
     getUsers: "authentication/get-users",
     modifyUsers: "authentication/modify-user",
+    getRoles : "authentication/get-roles"
 }
