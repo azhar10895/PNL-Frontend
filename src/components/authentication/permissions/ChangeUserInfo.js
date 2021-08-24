@@ -7,10 +7,12 @@ import "../styles/permissions.css";
 //Changes needed
 const ChangeUserInfo = (props) => {
   const currentUser = props.currentUser;
+  const data=props.data;
+  const id=props.id;
   const [passBool, setPassBool] = useState(false);
   const [roles, setRoles] = useState([]);
-  const [value, setValue] = useState();
-  const [account, setAccount] = useState();
+  console.log("sikkim" , data);
+
   useEffect(() => {
     getRoles();
   }, []);
@@ -47,21 +49,23 @@ const ChangeUserInfo = (props) => {
     }
   };
   const initialValues = {
+    // username: currentUser,
+    // accountNo: data[currentUser].accountNo,
+    // email: data[currentUser].email,
+    // password:data[currentUser].password, 
+    // role: "",
     username: currentUser,
-    accountNo: "", //needs change
-    email: "", //needs change
-    password: "", //needs change
-    role: "", //needs change
+    accountNo: data[id].accountNo, //needs change
+    email: data[id].emailId, //needs change
+    password:"", //needs change
+    role: data[id].RoleName,
   };
 
   const onSubmit = (values, { resetForm }) => {
     console.log("formData::", values);
     //apiCall
-    if (values?.editUserCall) {
-      editUserCall(account, values?.editUserCall);
-      setValue(values?.editUserCall);
-      values.editUserCall = "";
-
+    if (values) {
+      editUserCall( values);
       resetForm({ values: "" });
     }
   };
@@ -105,6 +109,7 @@ const ChangeUserInfo = (props) => {
             onChange={formik.handleChange}
             // onBlur={formik.handleBlur}
             value={formik.values.email}
+            
           />
           {/* <div className="col-12">
             {formik.touched.username && formik.errors.username ? (
@@ -122,6 +127,8 @@ const ChangeUserInfo = (props) => {
               onChange={formik.handleChange}
               onBlur={formik.handleBlur}
               value={formik.values.password}
+              // value={data[0].password}
+              
             />
             {/* <div className="col-12">
             {formik.touched.password && formik.errors.password ? (

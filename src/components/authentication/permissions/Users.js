@@ -9,6 +9,7 @@ const Users = () => {
   const [currentUser, setCurrentUser] = useState(null);
   const [addNewUserBool, setAddNewUserBool] = useState(false);
   const [data,setData] = useState([]);
+  const [id,setId] = useState(null);
   useEffect(()=>{
     getUsers();
   },[])
@@ -22,10 +23,14 @@ const Users = () => {
     setAddNewUserBool(true);
     setToggle(!toggle);
   };
+  
   const editHandler = (event) => {
     setAddNewUserBool(false);
     setCurrentUser(event.target.value);
+    setId(event.target.id);
     setToggle(!toggle);
+    console.log(event.target.id , "arunachal");
+    
   };
   const goBackHandler = () => {
     setToggle(!toggle);
@@ -58,6 +63,7 @@ const Users = () => {
                         className="btn btn-success"
                         value={data[user]?.userName}
                         name={data[user]?.userName}
+                        id={user}
                         onClick={editHandler}
                       >
                         Edit
@@ -81,6 +87,9 @@ const Users = () => {
             ) : (
               <ChangeUserInfo
                 currentUser={currentUser}
+                data={data}
+                id={id}
+                
                 goBackHandler={goBackHandler}
               />
             )}
