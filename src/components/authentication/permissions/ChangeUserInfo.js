@@ -3,15 +3,16 @@ import { useFormik } from "formik";
 import { API_URLS } from "../../../config";
 import { getApiCall, postApiCall } from "../../../utils/axios";
 import "../styles/permissions.css";
+import { userCreatedIcon } from "../../../helpers/icons";
 
 //Changes needed
 const ChangeUserInfo = (props) => {
   const currentUser = props.currentUser;
-  const data=props.data;
-  const id=props.id;
+  const data = props.data;
+  const id = props.id;
   const [passBool, setPassBool] = useState(false);
   const [roles, setRoles] = useState([]);
-  console.log("sikkim" , data);
+  console.log("sikkim", data);
 
   useEffect(() => {
     getRoles();
@@ -52,12 +53,13 @@ const ChangeUserInfo = (props) => {
     // username: currentUser,
     // accountNo: data[currentUser].accountNo,
     // email: data[currentUser].email,
-    // password:data[currentUser].password, 
+    // password:data[currentUser].password,
     // role: "",
     username: currentUser,
-    accountNo: data[id].accountNo, //needs change
-    email: data[id].emailId, //needs change
-    password:"", //needs change
+    accountNo: data[id].accountNo,
+
+    email: data[id].emailId,
+    password: "",
     role: data[id].RoleName,
   };
 
@@ -65,7 +67,8 @@ const ChangeUserInfo = (props) => {
     console.log("formData::", values);
     //apiCall
     if (values) {
-      editUserCall( values);
+      editUserCall(values);
+
       resetForm({ values: "" });
     }
   };
@@ -98,6 +101,7 @@ const ChangeUserInfo = (props) => {
             onChange={formik.handleChange}
             onBlur={formik.handleBlur}
             value={formik.values.accountNo}
+            // value={data[id].accountNo}
           />
         </div>
         <div className="editUserFormField">
@@ -109,7 +113,6 @@ const ChangeUserInfo = (props) => {
             onChange={formik.handleChange}
             // onBlur={formik.handleBlur}
             value={formik.values.email}
-            
           />
           {/* <div className="col-12">
             {formik.touched.username && formik.errors.username ? (
@@ -128,7 +131,6 @@ const ChangeUserInfo = (props) => {
               onBlur={formik.handleBlur}
               value={formik.values.password}
               // value={data[0].password}
-              
             />
             {/* <div className="col-12">
             {formik.touched.password && formik.errors.password ? (
@@ -167,7 +169,7 @@ const ChangeUserInfo = (props) => {
           </label>
         </div>
         <div className="editUserFormField">
-          <button type="submit" className="btn btn-primary">
+          <button type="submit" className="BrokerageSubmitButton">
             Change
           </button>
         </div>

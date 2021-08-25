@@ -175,7 +175,7 @@ const AddNewUser = (props) => {
               </div>
             </div>
             <div className="editUserFormField">
-              <button type="submit" className="btn btn-primary">
+              <button type="submit" className="BrokerageSubmitButton">
                 Add
               </button>
             </div>
