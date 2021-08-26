@@ -9,6 +9,7 @@ const ChangeUserInfo = (props) => {
   const currentUser = props.currentUser;
   const data=props.data;
   const id=props.id;
+  const [roleId,setRoleId]=useState({});
   const [passBool, setPassBool] = useState(false);
   const [roles, setRoles] = useState([]);
   console.log("sikkim" , data);
@@ -24,6 +25,11 @@ const ChangeUserInfo = (props) => {
             return item.RoleName;
           })
         : [];
+      const roleId = {};
+      res?.res?.users.forEach(role => {
+        roleId[role.RoleName] = role.RoleId;
+      });
+      setRoleId({...roleId});
       setRoles([...roles]);
     } catch (err) {
       console.log("Error in getRoles ", err);
@@ -31,6 +37,7 @@ const ChangeUserInfo = (props) => {
   };
   const editUserCall = async (values) => {
     try {
+      console.log("roleID:::",roleId[values.role]);
       const res = await postApiCall(
         API_URLS.modifyUsers,
         {},
@@ -39,7 +46,7 @@ const ChangeUserInfo = (props) => {
           password: values.password,
           accountNo: values.accountNo,
           emailId: values.email,
-          role: 1, //this needs change
+          role: roleId[values.role], //this needs change
           userId: 1,
         }
       );

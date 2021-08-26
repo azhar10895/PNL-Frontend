@@ -10,6 +10,7 @@ import { userCreatedIcon } from "../../../helpers/icons";
 
 const AddNewUser = (props) => {
   const [roles, setRoles] = useState([]);
+  const [roleId, setRoleId] = useState({});
   const [userCreated, setUserCreated] = useState(false);
   const initialValues = {
     username: "",
@@ -30,6 +31,11 @@ const AddNewUser = (props) => {
             return item.RoleName;
           })
         : [];
+      const roleId = {};
+      res?.res?.users.forEach((role) => {
+        roleId[role.RoleName] = role.RoleId;
+      });
+      setRoleId({ ...roleId });
       setRoles([...roles]);
     } catch (err) {
       console.log("Error in getRoles ", err);
@@ -45,7 +51,7 @@ const AddNewUser = (props) => {
           password: values.password,
           accountNo: values.accountNo,
           emailId: values.email,
-          role: 1, //this needs change
+          role: roleId[values.role], //this needs change
         }
       );
       if (res?.request?.statusText === "Created") {
