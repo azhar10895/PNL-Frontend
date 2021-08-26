@@ -21,11 +21,13 @@
     width: 200px;
     height: auto;
     padding: 10px;
-    background-color: #009700;
+    /* background-color: #009700; */
+    background-image: linear-gradient(to bottom right, #577bbd, #4c8ffb);
     color: #fff;
     font-size: 20px;
-    margin-bottom: 20px;
-    margin-left: 53px;
+    margin-bottom: 10px;
+    /* margin-left: 53px; */
+    border-radius: 2%;
 }
 
 
@@ -103,6 +105,11 @@
     height: 100vh;
     top: 0;
     left: 0;
+    border-radius: 20px;
+    padding: 50px 25px 25px;
+    border-radius: 15px;
+    border: none !important;
+    box-shadow: 3px 3px 6px #bfc3cf, -3px -3px 6px #fff;
 }
 
 .box {
@@ -112,17 +119,30 @@
     height: auto;
     min-height: 20vh;
     margin-top: calc(100vh - 85vh - 20px);
-    background: #ffffff;
-    border-radius: 4px;
+    /* background: #ffffff; */
+    border-radius: 7%;
     padding: 20px;
     border: 1px solid #999;
+    background-image: linear-gradient(to bottom right, #eff0f3, #e5e6eb);
     /* overflow: auto; */
 }
 
 .close-icon {
     content: "x";
     cursor: pointer;
-    position: fixed;
+    cursor: pointer;
+    height: 40px;
+    width: 40px;
+    border-radius: 50%;
+    box-shadow: 3px 3px 3px #cecece, -3px -3px 3px #fff!important;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    float: right;
+    border: none;
+    background: -webkit-linear-gradient(top left, #eff0f3, #e5e6eb)!important;
+    background: linear-gradient(to bottom right, #eff0f3, #e5e6eb)!important;
+    /* position: fixed;
     right: calc(35% - 27px);
     top: calc(100vh - 85vh - 33px);
     background: #ededed;
@@ -132,7 +152,7 @@
     line-height: 20px;
     text-align: center;
     border: 1px solid #999;
-    font-size: 20px;
+    font-size: 20px; */
 }
 
 .permissionPage-row {
@@ -159,8 +179,8 @@
 }
 
 .editUserFormField {
-    width: 80%;
-    margin: auto;
+    /* width: 80%;
+    margin: auto; */
     margin-bottom: 15px;
 }
 
@@ -178,8 +198,55 @@
     font-size: 18px;
 }
 
+.AddNewUserRoles select {
+    /* height: 60px; */
+    /* width: 80%; */
+    margin-bottom: 15px;
+    /* margin-left: 50px; */
+    /* width: 100%; */
+    font-family: "Open Sans", "Helvetica Neue", "Segoe UI", "Calibri", "Arial", sans-serif;
+    font-size: 18px;
+}
+
 .editUserFormField input::placeholder {
     font-size: 20px;
+}
+
+.PermissionsSubmitButton {
+    color: #444444;
+    background: #f3f3f3;
+    border: 1px #dadada solid;
+    padding: 8px 12px;
+    border-radius: 2px;
+    font-weight: bold;
+    font-size: 12pt;
+    outline: none;
+    color: white;
+    background: #4c8ffb;
+    border: 1px #3079ed solid;
+    box-shadow: inset 0 1px 0 #80b0fb;
+    margin-top: 40px;
+}
+
+.InputclassofAdduser {
+    padding: 13.3px 19.5px 14px 31.1px!important;
+    border-radius: 50px!important;
+    background: transparent;
+    width: 100%;
+    border: none;
+    outline: none;
+    font-size: 18px!important;
+    font-weight: 500!important;
+    line-height: 1.5!important;
+    color: #071e54!important;
+    -webkit-appearance: none;
+    box-shadow: inset 3px 3px 6px #bfc3cf, inset -3px -3px 6px #fff;
+    height: 49px;
+}
+
+.EditUserPopup {
+    border-radius: 20px;
+    padding: 50px 25px 25px;
 }
 
 .editUserFormField input:focus {
@@ -212,9 +279,9 @@
 }
 
 .Permissions-body {
-    margin-top: 30px;
-    margin-left: 20%;
-    margin-right: 20%;
+    margin-top: 10px;
+    margin-left: 7%;
+    margin-right: 5%;
 }
 
 .contentBox {
@@ -236,7 +303,7 @@
     background-image: linear-gradient(to bottom right, #eff0f3, #e5e6eb);
     /* width: calc(90vw); */
     /* margin: auto; */
-    margin-left: 35px;
+    /* margin-left: 35px; */
 }
 
 .userCreated {

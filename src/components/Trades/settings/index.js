@@ -12,7 +12,7 @@ import { Redirect } from "react-router";
 const Settings = () => {
   const [data, setData] = useState([]);
   const [value, setValue] = useState();
-  const [newValue, setNewValu] = useState();
+  const [newValue, setNewValue] = useState();
   const [account, setAccount] = useState();
   useEffect(() => {
     getBrokerage();
@@ -62,7 +62,7 @@ const Settings = () => {
   // const brokerageRateHandler = (event) => {
   //   console.log("account:::", account);
   //   setValue(event.target.value);
-  //   //   setBrokerag ChevronCompactLefte(account,Number(event.target.value));
+  //   //   setBrokerage ChevronCompactLeft(account,Number(event.target.value));
   //   //   setValue(Number(event.target.value));
   // };
   // const submitHandler = () => {

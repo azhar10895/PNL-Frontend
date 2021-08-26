@@ -86,11 +86,14 @@ const ChangeUserInfo = (props) => {
   return (
     <>
       <div className="HeadingAddNewUser">Update User</div>
+      <div className="EditUserPopup">
       <form onSubmit={formik.handleSubmit}>
+      
         <div className="editUserFormField">
           <input
             type="text"
             id="Username"
+            className="InputclassofAdduser"
             name="Username"
             placeholder="Username"
             // onChange={formik.handleChange}
@@ -103,6 +106,7 @@ const ChangeUserInfo = (props) => {
           <input
             type="text"
             id="accountNo"
+            className="InputclassofAdduser"
             name="accountNo"
             placeholder="Account No"
             onChange={formik.handleChange}
@@ -115,6 +119,7 @@ const ChangeUserInfo = (props) => {
           <input
             type="text"
             id="email"
+            className="InputclassofAdduser"
             name="email"
             placeholder="Email"
             onChange={formik.handleChange}
@@ -133,6 +138,7 @@ const ChangeUserInfo = (props) => {
               type="password"
               id="password"
               name="password"
+              className="InputclassofAdduser"
               placeholder="Password"
               onChange={formik.handleChange}
               onBlur={formik.handleBlur}
@@ -146,9 +152,10 @@ const ChangeUserInfo = (props) => {
           </div> */}
           </div>
         )}
-        <div className="editUserFormField">
+        <div className="AddNewUserRoles">
           <select
             name="role"
+            className="InputclassofAdduser"
             value={formik.values.role}
             onChange={formik.handleChange}
             onBlur={formik.handleBlur}
@@ -167,6 +174,7 @@ const ChangeUserInfo = (props) => {
         <div className="overallCheckbox">
           <input
             type="checkbox"
+            
             // className="PassBoolcheckbox"
             id="passBool"
             onClick={() => setPassBool(true)}
@@ -181,6 +189,8 @@ const ChangeUserInfo = (props) => {
           </button>
         </div>
       </form>
+      </div>
+      
     </>
   );
 };
