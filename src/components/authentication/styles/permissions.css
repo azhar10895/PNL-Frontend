@@ -201,6 +201,12 @@
     border-bottom: 1px solid #0a5ed7;
 }
 
+.permissionHeading {
+    font-size: 16px;
+    color: gray;
+    margin-bottom: 3px;
+}
+
 .headings {
     color: gray;
 }
@@ -212,13 +218,25 @@
 }
 
 .contentBox {
-    box-shadow: rgba(0, 0, 0, 0.2) 0px 18px 50px -10px;
+    /* box-shadow: rgba(0, 0, 0, 0.2) 0px 18px 50px -10px;
     padding-top: 40px;
     padding-left: 30px;
     padding-right: 30px;
     padding-top: 10px;
     padding-bottom: 20px;
+     */
+    padding-top: 40px;
+    padding-left: 30px;
+    padding-right: 30px;
+    padding-bottom: 30px;
     width: 100%;
+    border-radius: 15px;
+    border: none !important;
+    box-shadow: 3px 3px 6px #bfc3cf, -3px -3px 6px #fff;
+    background-image: linear-gradient(to bottom right, #eff0f3, #e5e6eb);
+    /* width: calc(90vw); */
+    /* margin: auto; */
+    margin-left: 35px;
 }
 
 .userCreated {
