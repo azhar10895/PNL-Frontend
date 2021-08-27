@@ -20,7 +20,7 @@ const ChangeUserInfo = (props) => {
   }, []);
   const getRoles = async () => {
     try {
-      const res = await getApiCall(API_URLS.getRoles, {});
+      const res = await getApiCall(API_URLS.getRoles,{});
       const roles = res?.res?.users
         ? res?.res?.users.map((item) => {
             return item.RoleName;
@@ -86,7 +86,7 @@ const ChangeUserInfo = (props) => {
   return (
     <>
       <div className="HeadingAddNewUser">Update User</div>
-      <div className="EditUserPopup">
+      <div className="UpdateUserPopup">
       <form onSubmit={formik.handleSubmit}>
       
         <div className="editUserFormField">
@@ -160,7 +160,7 @@ const ChangeUserInfo = (props) => {
             onChange={formik.handleChange}
             onBlur={formik.handleBlur}
           >
-            <option value="" label="Select role" />
+            <option value="role" label="Select role" />
             {roles.map((role) => {
               return <option value={role} label={role} key={role} />;
             })}
@@ -171,20 +171,35 @@ const ChangeUserInfo = (props) => {
             ) : null}
           </div> */}
         </div>
-        <div className="overallCheckbox">
+
+        
+        {/* <label htmlFor="passBool" className="labell">
+    <div className="togggle">
+      <input className="togggle-state" type="checkbox" name="check" value="check
+            onClick={() => setPassBool(true)/>
+      <div className="indicator"></div>
+    </div>
+    <div className="labell-text">password</div>
+          </label> */}
+          
+
+
+
+          <div className="overallCheckbox">
           <input
             type="checkbox"
             
-            // className="PassBoolcheckbox"
+            className="PassBoolcheckbox"
             id="passBool"
             onClick={() => setPassBool(true)}
           />
           <label htmlFor="passBool" className="">
-            Change Password
           </label>
         </div>
-        <div className="editUserFormField">
-          <button type="submit" className="BrokerageSubmitButton">
+
+
+        <div className="UpdateuserrButtonOuter">
+          <button type="submit" className="UpdateUserSubmitButton">
             Change
           </button>
         </div>

@@ -97,7 +97,7 @@ const AddNewUser = (props) => {
           <div className="HeadingAddNewUser">Add New User</div>
 
           <form onSubmit={formik.handleSubmit}>
-            <div className="EditUserPopup">
+            <div className="AddUserPopup">
               <div className="editUserFormField ">
                 <input
                   type="text"
@@ -167,7 +167,7 @@ const AddNewUser = (props) => {
                   ) : null}
                 </div>
               </div>
-              <div className="AddNewUserRoles">
+              <div className="AddNewUserRoles DropdownRolesOuter">
                 <select
                   name="role"
                   value={formik.values.role}
@@ -175,7 +175,7 @@ const AddNewUser = (props) => {
                   className="InputclassofAdduser"
                   onBlur={formik.handleBlur}
                 >
-                  <option value="" label="Select role" />
+                  <option value="" label="Select role" className="DropdownOfRoles" />
                   {roles.map((role) => {
                     return <option value={role} label={role} key={role} />;
                   })}
