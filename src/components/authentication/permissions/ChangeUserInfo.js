@@ -191,7 +191,7 @@ const ChangeUserInfo = (props) => {
             
             className="PassBoolcheckbox"
             id="passBool"
-            onClick={() => setPassBool(true)}
+            onClick={() => setPassBool(!passBool)}
           />
           <label htmlFor="passBool" className="">
           </label>
