@@ -136,27 +136,26 @@
     height: 90%;
     background: #fff;
     box-sizing: border-box;
-    text-align:center;
-    padding-top:5px;
+    text-align: center;
+    padding-top: 5px;
     transition: all 0.3s ease-in 0s;
     color: black;
     border: #888 1px solid;
     border-radius: 15px;
-    
 }
 
 .PassBoolcheckbox:after {
     left: 2%;
     content: "OFF";
-    background-color:rgb(199, 65, 65);
-    color:white;
+    background-color: rgb(199, 65, 65);
+    color: white;
 }
 
 .PassBoolcheckbox:checked:after {
     left: 53%;
     content: "ON";
-    background-color:rgb(83, 126, 83);
-    color:white;
+    background-color: rgb(83, 126, 83);
+    color: white;
 }
 
 .ResetpermissionButton {
@@ -323,6 +322,11 @@
 .UpdateuserrButtonOuter {
     padding-top: 40px;
 }
+
+
+/* .EditUserChangeButton {
+    background-color: transparent;
+} */
 
 .InputclassofAdduser {
     padding: 13.3px 19.5px 14px 31.1px!important;
