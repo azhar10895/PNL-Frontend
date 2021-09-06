@@ -68,6 +68,7 @@ const Users = () => {
                       <div style={{cursor: "pointer"}}>
                         
                       <i class="bi bi-pencil-fill"
+                      style={{'font-size': "0.95rem"}}
                       value={data[user]?.userName}
                       name={data[user]?.userName}
                       id={user}
