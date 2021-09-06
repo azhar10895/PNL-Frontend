@@ -55,9 +55,10 @@ const Users = () => {
             return (
               <React.Fragment key={data[user].userId}>
                 <div className="row permissionPage-row">
-                  <div className="col-4">{data[user]?.userName}</div>
-                  <div className="col-3">{data[user]?.RoleName}</div>
-                  <div className="col-3">
+                  
+                  <div className="col-4 th">{data[user]?.userName}</div>
+                  <div className="col-3 th">{data[user]?.RoleName}</div>
+                  <div className="col-3 th">
                     {data[user]?.lastLogin ? data[user]?.lastLogin : "-"}
                   </div>
                   <div className="col-2">
@@ -77,6 +78,7 @@ const Users = () => {
                       </div>
                     </div>
                   </div>
+                  
                 </div>
               </React.Fragment>
             );
