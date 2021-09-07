@@ -47,9 +47,9 @@ const Users = () => {
             </div>
           </div>
           <div className="row headings">
-            <div className="col-4 permissionHeading">Username</div>
-            <div className="col-3 permissionHeading">Role</div>
-            <div className="col-3 permissionHeading">Last Login</div>
+            <div className="col-4 permissionHeading"><strong>Username</strong></div>
+            <div className="col-3 permissionHeading"><strong>Role</strong></div>
+            <div className="col-3 permissionHeading"><strong>Last Login</strong></div>
           </div>
           {Object.keys(data).map((user) => {
             return (

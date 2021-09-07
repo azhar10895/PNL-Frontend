@@ -384,8 +384,9 @@
 
 .permissionHeading {
     font-size: 16px;
-    color: gray;
+    color: rgb(102, 100, 100);
     margin-bottom: 3px;
+    
 }
 
 .headings {
