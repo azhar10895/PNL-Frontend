@@ -43,7 +43,7 @@ const NavigationEveryPage = (props) => {
             </div>
           </div>
           <div className="navigationPageItem">
-            <div className="color-forHeadings item-2">{pageName}</div>
+            <div className="item-2"><strong>{pageName}</strong></div>
           </div>
           <div className="navigationPageItem">
             <div className="item-3">
@@ -70,28 +70,28 @@ const NavigationEveryPage = (props) => {
               <div className="arrowDropdown container d-flex justify-content-between align-items-center my-dropdown">
                 <div className="dropdown">
                   <span className="Logout">
-                    <Icon.CaretDownFill color="#4a5f94" size={30} />
+                    <Icon.CaretDownFill color="#666666" size={25} />
                   </span>
                   <div className="dropdown-content">
                     <ul>
                       <li>
-                        <Icon.PersonFill size={25} />
+                        <Icon.PersonFill color="#337ab7" size={25} />
                         &nbsp;Admin Profile
                       </li>
                       <li onClick={permissionsHandler}>
-                        <Icon.CheckCircle />
-                        &nbsp;Permissions</li>
+                        <Icon.CheckCircleFill color="#337ab7" />
+                        &nbsp;&nbsp;Permissions</li>
                       <li onClick={settingsHandler}>
-                        <Icon.Gear />
-                        &nbsp;Settings
+                        <Icon.GearFill color="#337ab7" />
+                        &nbsp;&nbsp;Settings
                       </li>
                       <li onClick={historyHandler}>
-                        <Icon.ClockHistory />
-                        &nbsp;User history
+                        <Icon.ClockFill color="#337ab7" />
+                        &nbsp;&nbsp;User history
                       </li>
                       <li className="dropdown_elements" onClick={logout}>
-                        <Icon.BoxArrowRight />
-                        &nbsp;Logout
+                        <Icon.ArrowRightSquareFill color="#337ab7"/>
+                        &nbsp;&nbsp;Logout
                       </li>
                     </ul>
                   </div>

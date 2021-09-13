@@ -193,12 +193,12 @@
     height: auto;
     min-height: 20vh;
     margin-top: calc(100vh - 85vh - 20px);
-    /* background: #ffffff; */
+    background: #ffffff;
     border-radius: 7%;
     padding: 20px;
     border: 1px solid #999;
     background-image: linear-gradient(to bottom right, #eff0f3, #e5e6eb);
-    /* overflow: auto; */
+    /* overflow: auto;*/
 }
 
 .close-icon {
@@ -216,7 +216,7 @@
     border: none;
     background: -webkit-linear-gradient(top left, #eff0f3, #e5e6eb)!important;
     background: linear-gradient(to bottom right, #eff0f3, #e5e6eb)!important;
-    /* position: fixed;
+    /* position: fixed; */
     right: calc(35% - 27px);
     top: calc(100vh - 85vh - 33px);
     background: #ededed;
@@ -226,17 +226,18 @@
     line-height: 20px;
     text-align: center;
     border: 1px solid #999;
-    font-size: 20px; */
+    font-size: 20px;
 }
 
 .permissionPage-row {
     padding: 10px;
     border: 1px solid rgba(38, 39, 39, 0.342);
-    font-size: 17px;
-    color: rgb(19, 15, 15);
-    font-weight: 300;
-    font-family: "Open Sans", "Helvetica Neue", "Segoe UI", "Calibri", "Arial", sans-serif;
     vertical-align: middle;
+    font-family: Open Sans, sans-serif;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 1.75em;
+    text-align: center;
 }
 
 .permissionPage-row:nth-child(even) {
@@ -260,6 +261,15 @@
     /* width: 80%;
     margin: auto; */
     margin-bottom: 15px;
+}
+
+.permissionPage-row {
+    color: #777;
+    font-family: Open Sans, sans-serif;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 1.75em;
+    text-align: center;
 }
 
 .editUserFormField input {
@@ -383,10 +393,21 @@
 }
 
 .permissionHeading {
-    font-size: 16px;
+    /* font-size: 16px;
     color: rgb(102, 100, 100);
-    margin-bottom: 3px;
-    
+    margin-bottom: 3px; */
+    position: sticky;
+    top: 0;
+    font-size: 17px;
+    font-weight: 550;
+    /* color: black; */
+    color: #337ab7;
+    text-align: center;
+    background-color: white !important;
+    /* border: 1px black; */
+    /* width: 140px; */
+    border: none !important;
+    box-shadow: 1px 1px 2px #bfc3cf, -1px -1px 2px #fff;
 }
 
 .headings {
@@ -399,15 +420,20 @@
     margin-right: 7%;
 }
 
-.contentBox {
-    /* box-shadow: rgba(0, 0, 0, 0.2) 0px 18px 50px -10px;
+
+/* .contentBox { */
+
+
+/* box-shadow: rgba(0, 0, 0, 0.2) 0px 18px 50px -10px;
     padding-top: 40px;
     padding-left: 30px;
     padding-right: 30px;
     padding-top: 10px;
     padding-bottom: 20px;
      */
-    padding-top: 40px;
+
+
+/* padding-top: 40px;
     padding-left: 30px;
     padding-right: 30px;
     padding-bottom: 30px;
@@ -415,10 +441,34 @@
     border-radius: 15px;
     border: none !important;
     box-shadow: 3px 3px 6px #bfc3cf, -3px -3px 6px #fff;
-    background-image: linear-gradient(to bottom right, #eff0f3, #e5e6eb);
-    /* width: calc(90vw); */
+    background-image: linear-gradient(to bottom right, #eff0f3, #e5e6eb); */
+
+
+/* width: calc(90vw); */
+
+
+/* margin: auto; */
+
+
+/* margin-left: 35px; */
+
+.content-box {
+    padding: 25px;
+    border-radius: 12px;
+    border: none !important;
+    /* box-shadow: 1px 1px 2px #bfc3cf, -1px -1px 2px #fff; */
+    /* background-image: linear-gradient(to bottom right, #eff0f3, #e5e6eb); */
+    width: calc(90vw);
     /* margin: auto; */
-    /* margin-left: 35px; */
+    margin-bottom: 30px;
+    margin-left: 35px;
+    background-color: #f9fafb;
+}
+
+*,
+ ::after,
+ ::before {
+    box-sizing: border-box;
 }
 
 .userCreated {

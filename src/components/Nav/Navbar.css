@@ -1,119 +1,122 @@
 .menu-bars {
-  margin-left: 2rem;
-  font-size: 2rem;
-  background: none;
+    padding-top: 6px;
+    margin-left: 2rem;
+    font-size: 1.5rem;
+    background: none;
 }
 
 .navbar {
-  background-image: none;
+    background-image: none;
 }
+
 
 /* element.style {
     color: #060b26;
 }(used to set the colour of the sidebar icon but not working) */
 
 .nav-menu {
-  background-color: #060b26;
-  width: 250px;
-  height: 100vh;
-  display: flex;
-  justify-content: center;
-  position: fixed;
-  top: 0;
-  left: -100%;
-  transition: 850ms;
-  z-index: 999;
+    background-color: #060b26;
+    width: 250px;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    position: fixed;
+    top: 0;
+    left: -100%;
+    transition: 850ms;
+    z-index: 999;
 }
 
 .nav-menu.active {
-  left: 0;
-  transition: 350ms;
+    left: 0;
+    transition: 350ms;
 }
 
 .nav-text {
-  display: flex;
-  justify-content: start;
-  align-items: center;
-  padding: 8px 0px 8px 16px;
-  list-style: none;
-  height: 60px;
+    display: flex;
+    justify-content: start;
+    align-items: center;
+    padding: 8px 0px 8px 16px;
+    list-style: none;
+    height: 60px;
 }
 
 .nav-text a {
-  text-decoration: none;
-  color: #dfdde6;
-  font-size: 18px;
-  width: 95%;
-  height: 100%;
-  display: flex;
-  align-items: center;
-  padding: 0 16px;
-  border-radius: 4px;
+    text-decoration: none;
+    color: #dfdde6;
+    font-size: 18px;
+    width: 95%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    padding: 0 16px;
+    border-radius: 4px;
 }
+
 
 /* element.style {
     color: black;
 } */
 
 .nav-text a:hover {
-  background-color: #1a83ff;
+    background-color: #337ab7;
 }
 
 .nav-menu-items {
-  width: 100%;
+    width: 100%;
 }
 
 .navbar-toggle {
-  background-color: #060b26;
-  width: 100%;
-  height: 80px;
-  display: flex;
-  justify-content: start;
-  align-items: center;
+    background-color: #060b26;
+    width: 100%;
+    height: 80px;
+    display: flex;
+    justify-content: start;
+    align-items: center;
 }
 
 span {
-  margin-left: 16px;
+    margin-left: 16px;
 }
 
 .navigationPage {
-  display: grid;
-  grid-template-columns: 0.3fr 1fr 0.8fr 0.3fr;
-  width: 93%;
+    display: grid;
+    grid-template-columns: 0.3fr 1fr 0.8fr 0.3fr;
+    width: 93%;
 }
 
 .navigationPageItem {
-  color: #4a5f94;
-  font-size: 29px;
-  font-weight: 500;
-  /* padding: 10px; */
-  vertical-align: middle;
+    color: #337ab7;
+    font-size: 29px;
+    font-weight: 500;
+    /* padding: 10px; */
+    vertical-align: middle;
 }
 
 .item-2 {
-  margin-top: 7px;
+    margin-top: 7px;
 }
 
 .item-3 {
-  font-size: 16px;
-  margin-top: 17px;
-  padding-left: 70%;
-  display: grid;
-  grid-template-columns: 0.1fr 1fr;
-  
+    font-size: 16px;
+    margin-top: 17px;
+    padding-left: 70%;
+    display: grid;
+    grid-template-columns: 0.1fr 1fr;
+}
 
-}
 .item-3 input {
-  width: 100%;
-  border: 2px solid #4a5f94;
+    width: 100%;
+    border: 2px solid #337ab7;
 }
+
 .item-3-icon {
-  background-color: #4a5f94;
-  padding:3px;
-  vertical-align: middle;
+    background-color: #337ab7;
+    padding: 3px;
+    vertical-align: middle;
 }
 
 .item-4 {
-  padding-left: 90%;
-  margin-top: 7px;
+    padding-left: 90%;
+    margin-top: 7px;
 }

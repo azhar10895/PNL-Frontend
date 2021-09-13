@@ -13,7 +13,7 @@ function Navbar() {
 
   return (
     <>
-      <IconContext.Provider value={{ color: "#4a5f94" }}>
+      <IconContext.Provider value={{ color: "#666666" }}>
         <div className="">
           <Link to="#" className="menu-bars">
             <FaIcons.FaBars onClick={showSidebar} />
@@ -23,7 +23,7 @@ function Navbar() {
           <ul className="nav-menu-items" onClick={showSidebar}>
             <li className="navbar-toggle">
               <Link to="#" className="menu-bars">
-                <AiIcons.AiOutlineClose />
+                <AiIcons.AiOutlineClose color="white"/>
               </Link>
             </li>
             {SidebarData.map((item, index) => {
